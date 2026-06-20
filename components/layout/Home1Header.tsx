@@ -30,7 +30,7 @@ export function Home1Header() {
     href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(`${href}/`);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-black/[0.06] bg-white/95 backdrop-blur-md transition-all duration-300">
+    <header className="sticky top-0 z-50 w-full overflow-visible border-b border-black/[0.06] bg-white/95 backdrop-blur-md transition-all duration-300">
       <div
         dir="ltr"
         className="container-luxury grid h-[72px] grid-cols-[1fr_auto_1fr] items-center gap-4 sm:h-20"
@@ -45,8 +45,8 @@ export function Home1Header() {
           ))}
         </nav>
 
-        <div className="col-start-3 row-start-1 flex items-center justify-self-end gap-3 sm:gap-4">
-          <LanguageSwitcher variant="hero" className="inline-flex shrink-0" />
+        <div className="col-start-3 row-start-1 flex shrink-0 items-center justify-self-end gap-2 sm:gap-3">
+          <LanguageSwitcher variant="hero" className="inline-flex shrink-0 max-lg:hidden" />
           <Link
             href="/boats"
             className={cn(

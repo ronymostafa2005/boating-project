@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/lib/i18n/navigation";
 import { LanguageSwitcher } from "./LanguageSwitcher";
@@ -36,6 +36,21 @@ export function MobileNav({ variant = "dark", showDesktopMenu = false, alwaysVis
   const pathname = usePathname();
   const isHero = variant === "hero";
 
+  const switcherVariant = isHero ? "hero" : variant === "light" ? "light" : "dark";
+
+  useEffect(() => {
+    if (!isOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setIsOpen(false);
+    };
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [isOpen]);
+
   const iconColor = isHero
     ? "text-[#1a1a1a] hover:text-gold"
     : variant === "light"
@@ -43,7 +58,7 @@ export function MobileNav({ variant = "dark", showDesktopMenu = false, alwaysVis
       : "text-foreground hover:text-gold";
 
   return (
-    <div className={alwaysVisible || showDesktopMenu ? "" : "lg:hidden"}>
+    <div className={cn("relative", alwaysVisible || showDesktopMenu ? "" : "lg:hidden")}>
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
@@ -60,56 +75,75 @@ export function MobileNav({ variant = "dark", showDesktopMenu = false, alwaysVis
         )}
       </button>
 
-      {isOpen && (
-        <div
-          className={cn(
-            "absolute inset-x-0 top-full z-50 border-b backdrop-blur-md",
-            isHero
-              ? "border-black/10 bg-white/95"
-              : "border-luxury-slate bg-luxury-black/95"
-          )}
-        >
-          <nav className="container-luxury flex flex-col gap-1 py-4">
-            {navItems.map(({ key, href }) => (
-              <Link
-                key={key}
-                href={href}
-                onClick={() => setIsOpen(false)}
+      {isOpen ? (
+        <>
+          <button
+            type="button"
+            className="mobile-nav-backdrop fixed inset-0 top-[72px] z-40 bg-black/25 sm:top-20 lg:hidden"
+            aria-label="Close menu"
+            onClick={() => setIsOpen(false)}
+          />
+          <div
+            className={cn(
+              "mobile-nav-panel fixed inset-x-0 top-[72px] z-50 max-h-[calc(100dvh-72px)] overflow-y-auto border-b backdrop-blur-md sm:top-20 sm:max-h-[calc(100dvh-5rem)]",
+              "lg:absolute lg:inset-x-0 lg:top-full lg:max-h-none lg:overflow-visible",
+              isHero ? "border-black/10 bg-white/98" : "border-luxury-slate bg-luxury-black/95"
+            )}
+          >
+            <nav className="container-luxury flex flex-col gap-1 py-4 pb-8">
+              {navItems.map(({ key, href }) => (
+                <Link
+                  key={key}
+                  href={href}
+                  onClick={() => setIsOpen(false)}
+                  className={cn(
+                    "rounded px-4 py-3 text-sm font-medium uppercase tracking-wider transition-colors",
+                    isHero
+                      ? cn(
+                          "hover:bg-black/5 hover:text-gold",
+                          pathname === href ? "text-gold" : "text-[#1a1a1a]"
+                        )
+                      : cn(
+                          "hover:bg-luxury-charcoal hover:text-gold",
+                          pathname === href && "text-gold"
+                        )
+                  )}
+                >
+                  {t(key)}
+                </Link>
+              ))}
+
+              <div
                 className={cn(
-                  "rounded px-4 py-3 text-sm font-medium uppercase tracking-wider transition-colors",
-                  isHero
-                    ? cn(
-                        "hover:bg-black/5 hover:text-gold",
-                        pathname === href ? "text-gold" : "text-[#1a1a1a]"
-                      )
-                    : cn(
-                        "hover:bg-luxury-charcoal hover:text-gold",
-                        pathname === href && "text-gold"
-                      )
+                  "mobile-nav-lang mx-4 mt-3 flex items-center justify-between rounded-sm border px-4 py-3",
+                  isHero ? "border-black/10 bg-[#f4efe8]/80" : "border-white/15 bg-white/5"
                 )}
               >
-                {t(key)}
+                <span
+                  className={cn(
+                    "text-[11px] font-medium uppercase tracking-[0.14em]",
+                    isHero ? "text-[#1a1a1a]/65" : "text-white/70"
+                  )}
+                >
+                  {t("language")}
+                </span>
+                <LanguageSwitcher variant={switcherVariant} />
+              </div>
+
+              <Link
+                href="/boats"
+                onClick={() => setIsOpen(false)}
+                className={cn(
+                  "mx-4 mt-4 px-4 py-3 text-center text-xs font-semibold uppercase tracking-wider",
+                  isHero ? "bg-neera-gold text-white" : "btn-primary"
+                )}
+              >
+                {t("rentNow")}
               </Link>
-            ))}
-            <Link
-              href="/boats"
-              onClick={() => setIsOpen(false)}
-              className={cn(
-                "mt-2 px-4 py-3 text-center text-xs font-semibold uppercase tracking-wider",
-                isHero ? "bg-neera-gold text-white" : "btn-primary"
-              )}
-            >
-              {t("rentNow")}
-            </Link>
-            <div className="mt-4 flex items-center justify-between border-t border-black/10 px-4 pt-4">
-              <span className="text-[11px] font-medium uppercase tracking-[0.14em] text-[#1a1a1a]/60">
-                {t("language")}
-              </span>
-              <LanguageSwitcher variant={isHero ? "hero" : variant === "light" ? "light" : "dark"} />
-            </div>
-          </nav>
-        </div>
-      )}
+            </nav>
+          </div>
+        </>
+      ) : null}
     </div>
   );
 }

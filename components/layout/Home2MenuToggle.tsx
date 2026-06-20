@@ -179,7 +179,7 @@ export function Home2MenuToggle({ navItems }: Home2MenuToggleProps) {
               )}
             </nav>
 
-            <div className="home2-offcanvas__mobile-lang">
+            <div className="home2-offcanvas__mobile-lang mx-0 mt-4">
               <span className={cn(bodyFontClass(locale), "home2-offcanvas__lang-label")}>
                 {tNav("language")}
               </span>
