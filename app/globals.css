@@ -1860,24 +1860,24 @@ body {
 .home2-gallery-masonry {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 0;
+  gap: 4px;
 }
 
 .home2-gallery-masonry__item {
   position: relative;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 16 / 10;
   min-height: 200px;
   cursor: zoom-in;
 }
 
 @media (min-width: 768px) {
   .home2-gallery-masonry {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    grid-template-rows: repeat(3, minmax(180px, 1fr));
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    grid-template-rows: minmax(220px, 1.15fr) minmax(150px, 1fr) minmax(150px, 1fr);
     grid-template-areas:
-      "a b c"
-      "d b e"
-      "f . g";
+      "a a a b b b"
+      "c c d d d e"
+      "f f d d d g";
   }
 
   .home2-gallery-masonry__item {
@@ -1912,6 +1912,208 @@ body {
   .home2-gallery-masonry__item--g {
     grid-area: g;
   }
+
+  [dir="rtl"] .home2-gallery-masonry {
+    grid-template-areas:
+      "b b b a a a"
+      "e e d d d c"
+      "g g d d d f";
+  }
+}
+
+/* Home 2 — Off-canvas menu (desktop sidebar / mobile nav) */
+.home2-offcanvas {
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.home2-offcanvas--open {
+  pointer-events: auto;
+  visibility: visible;
+}
+
+.home2-offcanvas__backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 110;
+  border: 0;
+  background: rgba(10, 22, 40, 0.55);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  cursor: pointer;
+}
+
+.home2-offcanvas--open .home2-offcanvas__backdrop {
+  opacity: 1;
+}
+
+.home2-offcanvas__panel {
+  position: fixed;
+  top: 0;
+  inset-inline-end: 0;
+  z-index: 120;
+  display: flex;
+  flex-direction: column;
+  width: min(100%, 420px);
+  height: 100%;
+  overflow-y: auto;
+  background: #f4efe8;
+  padding: 1.5rem 1.25rem 1.25rem;
+  box-shadow: -12px 0 40px rgba(0, 0, 0, 0.12);
+  transform: translate3d(100%, 0, 0);
+  transition: transform 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+[dir="rtl"] .home2-offcanvas__panel {
+  box-shadow: 12px 0 40px rgba(0, 0, 0, 0.12);
+  transform: translate3d(-100%, 0, 0);
+}
+
+.home2-offcanvas--open .home2-offcanvas__panel {
+  transform: translate3d(0, 0, 0);
+}
+
+.home2-offcanvas__close {
+  position: absolute;
+  top: 1rem;
+  inset-inline-end: 1rem;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border: 0;
+  background: #c4a265;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.25s ease;
+}
+
+.home2-offcanvas__close:hover {
+  background: #a8864a;
+}
+
+.home2-offcanvas__mobile {
+  padding-top: 2.5rem;
+}
+
+.home2-offcanvas__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.home2-offcanvas__nav-link {
+  display: block;
+  padding: 0.85rem 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #1a1a1a;
+  transition: color 0.25s ease;
+}
+
+.home2-offcanvas__nav-link:hover {
+  color: #c4a265;
+}
+
+.home2-offcanvas__mobile-lang {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(26, 26, 26, 0.1);
+}
+
+.home2-offcanvas__lang-label {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(26, 26, 26, 0.55);
+}
+
+.home2-offcanvas__desktop {
+  min-height: 100%;
+  padding-top: 2.25rem;
+  padding-bottom: 0.5rem;
+}
+
+.home2-offcanvas__desc {
+  font-size: 0.875rem;
+  line-height: 1.75;
+  color: rgba(26, 26, 26, 0.62);
+}
+
+.home2-offcanvas__card {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.875rem;
+  padding: 1rem 1.125rem;
+  border: 1px solid rgba(26, 26, 26, 0.12);
+  background: rgba(255, 255, 255, 0.45);
+}
+
+.home2-offcanvas__card--whatsapp {
+  align-items: center;
+}
+
+.home2-offcanvas__card-text {
+  font-size: 0.8125rem;
+  line-height: 1.65;
+  color: rgba(26, 26, 26, 0.72);
+}
+
+.home2-offcanvas__qr {
+  display: block;
+  line-height: 0;
+}
+
+.home2-offcanvas__cta {
+  min-height: 220px;
+}
+
+.home2-offcanvas__input {
+  background: transparent;
+  font-size: 0.875rem;
+  color: #fff;
+  outline: none;
+}
+
+.home2-offcanvas__input::placeholder {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.home2-offcanvas__submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 0;
+  border-radius: 9999px;
+  background: #c4a265;
+  cursor: pointer;
+  transition: background 0.25s ease;
+}
+
+.home2-offcanvas__submit:hover:not(:disabled) {
+  background: #a8864a;
+}
+
+.home2-offcanvas__submit:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.home2-offcanvas__privacy {
+  font-size: 0.6875rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.72);
 }
 
 /* Home-2 Instagram strip */

@@ -31,7 +31,15 @@
     "termsOfService": "شروط الخدمة",
     "topBarPhone": "00-123-456789",
     "topBarAddress": "جدة، المملكة العربية السعودية",
-    "topBarEmail": "Info@Example.Com"
+    "topBarEmail": "Info@Example.Com",
+    "openMenu": "فتح القائمة",
+    "closeMenu": "إغلاق القائمة",
+    "language": "اللغة",
+    "sidebarCallPrefix": "اتصل بنا على",
+    "sidebarCallMiddle": "أو من على متن اليخت على",
+    "sidebarWhatsAppTitle": "أرسل لنا رسالة على واتساب",
+    "sidebarWhatsAppHelp": "نحن هنا لمساعدتك! امسح رمز QR لفتح واتساب ويب",
+    "sidebarPrivacyPrefix": "أنت توافق على"
   },
   "footer": {
     "brandName": "Boating.sa",

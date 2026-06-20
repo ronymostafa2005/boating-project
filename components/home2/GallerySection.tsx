@@ -17,13 +17,13 @@ const GALLERY_TITLE_GROUPS: Record<string, string[][]> = {
 };
 
 const GALLERY_MASONRY_AREAS = [
-  "a",
-  "c",
-  "d",
-  "b",
-  "e",
-  "f",
-  "g",
+  "a", // top left
+  "b", // top right
+  "c", // bottom left top
+  "f", // bottom left bottom
+  "d", // center tall
+  "e", // bottom right top
+  "g", // bottom right bottom
 ] as const;
 
 const zoomIn: Variants = {
@@ -137,7 +137,7 @@ export function GallerySection() {
               alt=""
               fill
               className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
-              sizes="(max-width: 768px) 100vw, 33vw"
+              sizes="(max-width: 767px) 100vw, (max-width: 1024px) 50vw, 33vw"
               quality={IMAGE_QUALITY}
               loading={i < 2 ? "eager" : "lazy"}
             />

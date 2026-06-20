@@ -31,7 +31,15 @@
     "termsOfService": "Terms Of Service",
     "topBarPhone": "00-123-456789",
     "topBarAddress": "Bernard 120, Lo-Reninge, Belgium",
-    "topBarEmail": "Info@Example.Com"
+    "topBarEmail": "Info@Example.Com",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "language": "Language",
+    "sidebarCallPrefix": "Call Us To",
+    "sidebarCallMiddle": "Or From Aboard At",
+    "sidebarWhatsAppTitle": "Send Us A Message On Our What's App",
+    "sidebarWhatsAppHelp": "We Are Here To Help You! Scan The QR To Open WhatsApp Web",
+    "sidebarPrivacyPrefix": "You Agree To Our Friendly"
   },
   "footer": {
     "brandName": "Boating.sa",

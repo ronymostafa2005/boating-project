@@ -5,7 +5,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { Link, usePathname, useRouter } from "@/lib/i18n/navigation";
 import { routing } from "@/i18n/routing";
 import { LanguageSwitcher } from "./LanguageSwitcher";
-import { MobileNav } from "./MobileNav";
+import { Home2MenuToggle } from "./Home2MenuToggle";
 import { NavDropdown } from "./NavDropdown";
 import { NavbarLogo } from "./NavbarLogo";
 import { buildNavItems } from "@/lib/buildNavItems";
@@ -155,7 +155,7 @@ export function Home2Header() {
             {t("requestQuote")}
           </Link>
 
-          <MobileNav variant="light" showDesktopMenu={false} alwaysVisible />
+          <Home2MenuToggle navItems={navItems} />
         </div>
       </div>
     </header>
