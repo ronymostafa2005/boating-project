@@ -12,14 +12,26 @@ interface MobileNavProps {
   alwaysVisible?: boolean;
 }
 
-const navItems = [
-  { key: "home", href: "/" },
+type MobileNavLink = {
+  key: string;
+  href?: string;
+  children?: { key: string; href: string }[];
+};
+
+const navItems: MobileNavLink[] = [
+  {
+    key: "home",
+    children: [
+      { key: "homeMarine", href: "/" },
+      { key: "homeYacht", href: "/home-2" },
+    ],
+  },
   { key: "about", href: "/about" },
   { key: "map", href: "/map" },
   { key: "boats", href: "/boats" },
   { key: "faq", href: "/faq" },
   { key: "contact", href: "/contact" },
-] as const;
+];
 
 function TwoLineMenuIcon({ className }: { className?: string }) {
   return (
@@ -32,11 +44,24 @@ function TwoLineMenuIcon({ className }: { className?: string }) {
 
 export function MobileNav({ variant = "dark", showDesktopMenu = false, alwaysVisible = false }: MobileNavProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const [openSections, setOpenSections] = useState<Record<string, boolean>>({ home: true });
   const t = useTranslations("nav");
   const pathname = usePathname();
   const isHero = variant === "hero";
 
   const switcherVariant = isHero ? "hero" : variant === "light" ? "light" : "dark";
+
+  const linkColor = (href: string) =>
+    isHero
+      ? cn("hover:bg-black/5 hover:text-gold", pathname === href ? "text-gold" : "text-[#1a1a1a]")
+      : cn("hover:bg-luxury-charcoal hover:text-gold", pathname === href && "text-gold");
+
+  const sectionIsActive = (item: MobileNavLink) =>
+    item.children?.some((child) => pathname === child.href) ?? false;
+
+  function toggleSection(key: string) {
+    setOpenSections((prev) => ({ ...prev, [key]: !prev[key] }));
+  }
 
   useEffect(() => {
     if (!isOpen) return;
@@ -93,27 +118,70 @@ export function MobileNav({ variant = "dark", showDesktopMenu = false, alwaysVis
             )}
           >
             <nav className="container-luxury flex flex-col gap-1 py-4 pb-8">
-              {navItems.map(({ key, href }) => (
-                <Link
-                  key={key}
-                  href={href}
-                  onClick={() => setIsOpen(false)}
-                  className={cn(
-                    "rounded px-4 py-3 text-sm font-medium uppercase tracking-wider transition-colors",
-                    isHero
-                      ? cn(
-                          "hover:bg-black/5 hover:text-gold",
-                          pathname === href ? "text-gold" : "text-[#1a1a1a]"
-                        )
-                      : cn(
-                          "hover:bg-luxury-charcoal hover:text-gold",
-                          pathname === href && "text-gold"
-                        )
-                  )}
-                >
-                  {t(key)}
-                </Link>
-              ))}
+              {navItems.map((item) => {
+                if (item.children?.length) {
+                  const expanded = openSections[item.key] ?? false;
+                  const active = sectionIsActive(item);
+
+                  return (
+                    <div key={item.key}>
+                      <button
+                        type="button"
+                        onClick={() => toggleSection(item.key)}
+                        className={cn(
+                          "flex w-full items-center justify-between rounded px-4 py-3 text-sm font-medium uppercase tracking-wider transition-colors",
+                          isHero
+                            ? cn("hover:bg-black/5 hover:text-gold", active ? "text-gold" : "text-[#1a1a1a]")
+                            : cn("hover:bg-luxury-charcoal hover:text-gold", active && "text-gold")
+                        )}
+                        aria-expanded={expanded}
+                      >
+                        {t(item.key)}
+                        <svg
+                          className={cn("h-3.5 w-3.5 shrink-0 transition-transform", expanded && "rotate-180")}
+                          viewBox="0 0 8 5"
+                          fill="none"
+                          aria-hidden
+                        >
+                          <path d="M1 1L4 4L7 1" stroke="currentColor" strokeWidth="1" />
+                        </svg>
+                      </button>
+
+                      {expanded ? (
+                        <div className="flex flex-col gap-0.5 pb-1 ps-2">
+                          {item.children.map((child) => (
+                            <Link
+                              key={child.key}
+                              href={child.href}
+                              onClick={() => setIsOpen(false)}
+                              className={cn(
+                                "rounded px-4 py-2.5 text-sm font-medium transition-colors",
+                                linkColor(child.href)
+                              )}
+                            >
+                              {t(child.key)}
+                            </Link>
+                          ))}
+                        </div>
+                      ) : null}
+                    </div>
+                  );
+                }
+
+                return (
+                  <Link
+                    key={item.key}
+                    href={item.href!}
+                    onClick={() => setIsOpen(false)}
+                    className={cn(
+                      "rounded px-4 py-3 text-sm font-medium uppercase tracking-wider transition-colors",
+                      linkColor(item.href!)
+                    )}
+                  >
+                    {t(item.key)}
+                  </Link>
+                );
+              })}
 
               <div
                 className={cn(
