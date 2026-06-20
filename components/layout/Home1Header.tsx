@@ -46,7 +46,7 @@ export function Home1Header() {
         </nav>
 
         <div className="col-start-3 row-start-1 flex items-center justify-self-end gap-3 sm:gap-4">
-          <LanguageSwitcher variant="hero" className="hidden sm:inline-flex" />
+          <LanguageSwitcher variant="hero" className="inline-flex shrink-0" />
           <Link
             href="/boats"
             className={cn(

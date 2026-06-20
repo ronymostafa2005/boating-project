@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/lib/i18n/navigation";
+import { LanguageSwitcher } from "./LanguageSwitcher";
 import { cn } from "@/lib/utils";
 
 interface MobileNavProps {
@@ -100,6 +101,12 @@ export function MobileNav({ variant = "dark", showDesktopMenu = false, alwaysVis
             >
               {t("rentNow")}
             </Link>
+            <div className="mt-4 flex items-center justify-between border-t border-black/10 px-4 pt-4">
+              <span className="text-[11px] font-medium uppercase tracking-[0.14em] text-[#1a1a1a]/60">
+                {t("language")}
+              </span>
+              <LanguageSwitcher variant={isHero ? "hero" : variant === "light" ? "light" : "dark"} />
+            </div>
           </nav>
         </div>
       )}

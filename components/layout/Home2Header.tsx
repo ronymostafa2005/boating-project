@@ -149,7 +149,7 @@ export function Home2Header() {
             </div>
           </div>
 
-          <LanguageSwitcher variant="light" className="hidden sm:inline-flex" />
+          <LanguageSwitcher variant="light" className="inline-flex shrink-0" />
 
           <Link href="/contact" className={cn("home2-quote-btn hidden sm:inline-flex", bodyFontClass(locale))}>
             {t("requestQuote")}
