@@ -79,15 +79,17 @@ export function MobileNav({ variant = "dark", showDesktopMenu = false, alwaysVis
         <>
           <button
             type="button"
-            className="mobile-nav-backdrop fixed inset-0 top-[72px] z-40 bg-black/25 sm:top-20 lg:hidden"
+            className="mobile-nav-backdrop fixed inset-0 top-[72px] z-[110] bg-black/40 sm:top-20 lg:hidden"
             aria-label="Close menu"
             onClick={() => setIsOpen(false)}
           />
           <div
             className={cn(
-              "mobile-nav-panel fixed inset-x-0 top-[72px] z-50 max-h-[calc(100dvh-72px)] overflow-y-auto border-b backdrop-blur-md sm:top-20 sm:max-h-[calc(100dvh-5rem)]",
-              "lg:absolute lg:inset-x-0 lg:top-full lg:max-h-none lg:overflow-visible",
-              isHero ? "border-black/10 bg-white/98" : "border-luxury-slate bg-luxury-black/95"
+              "mobile-nav-panel fixed inset-x-0 top-[72px] z-[120] min-h-[calc(100dvh-72px)] max-h-[calc(100dvh-72px)] overflow-y-auto border-b sm:top-20 sm:min-h-[calc(100dvh-5rem)] sm:max-h-[calc(100dvh-5rem)]",
+              "lg:absolute lg:inset-x-0 lg:top-full lg:z-50 lg:min-h-0 lg:max-h-none lg:overflow-visible",
+              isHero
+                ? "border-black/10 bg-white shadow-[0_12px_40px_rgba(0,0,0,0.12)] lg:bg-white/95 lg:backdrop-blur-md"
+                : "border-luxury-slate bg-luxury-black shadow-[0_12px_40px_rgba(0,0,0,0.35)] lg:bg-luxury-black/95 lg:backdrop-blur-md"
             )}
           >
             <nav className="container-luxury flex flex-col gap-1 py-4 pb-8">
@@ -116,7 +118,7 @@ export function MobileNav({ variant = "dark", showDesktopMenu = false, alwaysVis
               <div
                 className={cn(
                   "mobile-nav-lang mx-4 mt-3 flex items-center justify-between rounded-sm border px-4 py-3",
-                  isHero ? "border-black/10 bg-[#f4efe8]/80" : "border-white/15 bg-white/5"
+                  isHero ? "border-black/10 bg-[#f4efe8]" : "border-white/15 bg-luxury-charcoal"
                 )}
               >
                 <span
