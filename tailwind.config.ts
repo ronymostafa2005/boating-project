@@ -30,6 +30,7 @@ const config: Config = {
         bodyAr: ["var(--font-ibm-plex-arabic)", "sans-serif"],
         displayEn: ["var(--font-cormorant)", "serif"],
         bodyEn: ["var(--font-jost)", "sans-serif"],
+        tajawal: ["var(--font-tajawal)", "sans-serif"],
       },
       animation: {
         "fade-in": "fadeIn 0.6s ease-out forwards",

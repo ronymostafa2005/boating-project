@@ -995,6 +995,19 @@ body {
   transform: scaleX(-1);
 }
 
+/* Home 2 — Tajawal font */
+.home2-page,
+.home2-header,
+.home2-offcanvas {
+  font-family: var(--font-tajawal), sans-serif;
+}
+
+.home2-page :is(.font-bodyEn, .font-bodyAr, .font-displayEn, .font-displayAr),
+.home2-header :is(.font-bodyEn, .font-bodyAr, .font-displayEn, .font-displayAr),
+.home2-offcanvas :is(.font-bodyEn, .font-bodyAr, .font-displayEn, .font-displayAr) {
+  font-family: var(--font-tajawal), sans-serif;
+}
+
 /* Home 2 — Yacht Booking */
 .home2-about-section {
   background-color: #ffffff;

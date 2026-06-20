@@ -6,6 +6,7 @@ import {
   IBM_Plex_Sans_Arabic,
   Cormorant_Garamond,
   Jost,
+  Tajawal,
 } from "next/font/google";
 import { routing } from "@/i18n/routing";
 import { Header } from "@/components/layout/Header";
@@ -42,6 +43,13 @@ const jost = Jost({
   display: "swap",
 });
 
+const tajawal = Tajawal({
+  subsets: ["arabic", "latin"],
+  weight: ["300", "400", "500", "700"],
+  variable: "--font-tajawal",
+  display: "swap",
+});
+
 type Props = {
   children: React.ReactNode;
   params: Promise<{ locale: string }>;
@@ -71,7 +79,7 @@ export default async function LocaleLayout({ children, params }: Props) {
   return (
     <html lang={locale} dir={isArabic ? "rtl" : "ltr"}>
       <body
-        className={`${reemKufi.variable} ${ibmPlexArabic.variable} ${cormorant.variable} ${jost.variable} ${fontClasses} ${displayFont} bg-white text-foreground antialiased`}
+        className={`${reemKufi.variable} ${ibmPlexArabic.variable} ${cormorant.variable} ${jost.variable} ${tajawal.variable} ${fontClasses} ${displayFont} bg-white text-foreground antialiased`}
       >
         <NextIntlClientProvider messages={messages}>
           <Header />
