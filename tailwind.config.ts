@@ -13,6 +13,13 @@ const config: Config = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        "deep-sea": "#071628",
+        "ocean-navy": "#0B1F3A",
+        "horizon-blue": "#1A4A7A",
+        "mid-sea": "#2A6FAB",
+        seafoam: "#5AAFCB",
+        pearl: "#F4F0E8",
+        champagne: "#E8D5A3",
         gold: {
           DEFAULT: "#b19d7f",
           light: "#c4b59a",
@@ -21,8 +28,8 @@ const config: Config = {
         "neera-gold": "#b19d7f",
         "neera-gold-dark": "#9a8668",
         luxury: {
-          black: "#0A0A0A",
-          charcoal: "#1A1A1A",
+          black: "#071628",
+          charcoal: "#0B1F3A",
           slate: "#2A2A2A",
         },
       },
@@ -32,6 +39,7 @@ const config: Config = {
         displayEn: ["var(--font-cormorant)", "serif"],
         bodyEn: ["var(--font-jost)", "sans-serif"],
         marcellus: ["var(--font-marcellus)", "serif"],
+        scriptEn: ["var(--font-great-vibes)", "cursive"],
         tajawal: ["var(--font-tajawal)", "sans-serif"],
       },
       animation: {

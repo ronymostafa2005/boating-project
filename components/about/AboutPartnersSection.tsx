@@ -1,59 +1,21 @@
 "use client";
 
-import { useEffect, useRef, useState, useMemo } from "react";
 import Image from "next/image";
 import { useTranslations, useLocale } from "next-intl";
 import { motion, type Variants } from "framer-motion";
 import { SplitHeading } from "@/components/ui/SplitHeading";
-import { cn } from "@/lib/utils";
-import { slideInFromEndCustom } from "@/lib/motionVariants";
+import { ABOUT_PARTNERS } from "@/data/about";
 import { IMAGE_QUALITY } from "@/lib/imageDefaults";
-
-const CDN = "https://neera.wpenginepowered.com/wp-content/uploads";
-
-const PARTNERS = [
-  {
-    id: "dance",
-    logo: `${CDN}/2023/12/Neera-Client-4.png`,
-    logoWidth: 139,
-    logoHeight: 130,
-    hoverBg: `${CDN}/2023/12/Neera-Client-logo-bg-01.jpg`,
-    delay: 0.2,
-  },
-  {
-    id: "charlie",
-    logo: `${CDN}/2023/12/Neera-Client-3.png`,
-    logoWidth: 195,
-    logoHeight: 93,
-    hoverBg: `${CDN}/2024/01/contact-hover-image-1.jpg`,
-    delay: 0.35,
-  },
-  {
-    id: "weport",
-    logo: `${CDN}/2023/12/Neera-Client-2.png`,
-    logoWidth: 219,
-    logoHeight: 130,
-    hoverBg: `${CDN}/2024/01/contact-hover-image-2.jpg`,
-    delay: 0.55,
-  },
-  {
-    id: "bight",
-    logo: `${CDN}/2023/12/Neera-Client-1.png`,
-    logoWidth: 217,
-    logoHeight: 93,
-    hoverBg: `${CDN}/2024/01/contact-hover-image-3.jpg`,
-    delay: 0.75,
-  },
-] as const;
-
-const ease = [0.25, 0.46, 0.45, 0.94] as const;
+import { MOTION_EASE, slideInFromEndCustom } from "@/lib/motionVariants";
+import { cn, bodyFontClass, displayFontClass } from "@/lib/utils";
+import { useMemo } from "react";
 
 const headingZoom: Variants = {
   hidden: { opacity: 0, scale: 0.92 },
   visible: {
     opacity: 1,
     scale: 1,
-    transition: { duration: 0.75, ease },
+    transition: { duration: 0.75, ease: MOTION_EASE },
   },
 };
 
@@ -109,68 +71,50 @@ function PartnerCard({
   );
 }
 
-export function PartnersSection() {
+export function AboutPartnersSection() {
   const t = useTranslations("home");
   const locale = useLocale();
-  const sectionRef = useRef<HTMLElement>(null);
-  const [inView, setInView] = useState(false);
+  const isRtl = locale === "ar";
 
   const titleWords = [
     t("partnersTitle1"),
     t("partnersTitle2"),
     t("partnersTitle3"),
   ].filter(Boolean);
-  const titleWordGroups = [titleWords];
 
-  const cardVariants = useMemo(
-    () => slideInFromEndCustom(locale === "ar"),
-    [locale]
-  );
-
-  useEffect(() => {
-    const section = sectionRef.current;
-    if (!section) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) setInView(true);
-      },
-      { threshold: 0.15 }
-    );
-    observer.observe(section);
-    return () => observer.disconnect();
-  }, []);
+  const cardVariants = useMemo(() => slideInFromEndCustom(isRtl), [isRtl]);
 
   return (
-    <section ref={sectionRef} className="partners-section relative bg-white py-14 lg:py-20 xl:py-24">
+    <section className="partners-section relative bg-white py-14 lg:py-20 xl:py-24">
       <div className="container-luxury">
         <motion.div
-          className="mb-10 text-center lg:mb-12"
+          className="mx-auto mb-10 w-full max-w-5xl text-center lg:mb-12"
           variants={headingZoom}
           initial="hidden"
-          animate={inView ? "visible" : "hidden"}
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.35 }}
         >
           <p
             className={cn(
-              "mb-4 text-[11px] font-medium uppercase tracking-[0.22em] text-[#0f1e2d]/55",
-              locale === "ar" ? "font-bodyAr" : "font-bodyEn"
+              bodyFontClass(locale),
+              "mb-4 text-[11px] font-medium uppercase tracking-[0.22em] text-[#0f1e2d]/55"
             )}
           >
             {t("partnersEyebrow")}
           </p>
           <SplitHeading
-            wordGroups={titleWordGroups}
-            loop
-            active={inView}
+            wordGroups={[titleWords]}
+            active
             className={cn(
-              "partners-heading font-normal uppercase leading-[1.2] tracking-[0.05em] text-[#0f1e2d]",
-              locale === "ar" ? "font-displayAr text-2xl sm:text-3xl lg:text-4xl" : "font-displayEn text-2xl sm:text-3xl lg:text-[2.35rem]"
+              displayFontClass(locale),
+              "about-partners-title partners-heading text-2xl font-normal text-[#0f1e2d] sm:text-3xl lg:text-[2.35rem]",
+              isRtl ? "normal-case tracking-normal" : "uppercase tracking-[0.03em]"
             )}
           />
         </motion.div>
 
         <div className="partners-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
-          {PARTNERS.map((partner) => (
+          {ABOUT_PARTNERS.map((partner) => (
             <PartnerCard
               key={partner.id}
               logo={partner.logo}

@@ -6,10 +6,9 @@ import { Home2Header } from "./Home2Header";
 
 export function Header() {
   const pathname = usePathname();
-  const isHome2 =
-    pathname === "/home-2" || pathname.startsWith("/home-2/");
+  const isHome = pathname === "/";
 
-  if (isHome2) {
+  if (isHome) {
     return <Home2Header />;
   }
 

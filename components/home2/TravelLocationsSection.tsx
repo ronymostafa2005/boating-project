@@ -54,7 +54,7 @@ export function TravelLocationsSection() {
   const fadeInLeft: Variants = slideInFromEnd(!isRtl, 40, 0.3);
 
   return (
-    <section className="home2-locations overflow-hidden bg-[#f4efe8] py-[60px] sm:py-[80px] lg:py-[100px] xl:py-[120px]">
+    <section className="home2-locations overflow-hidden bg-pearl py-[60px] sm:py-[80px] lg:py-[100px] xl:py-[120px]">
       <div className="container-luxury">
         <motion.div
           className="home2-locations-heading mx-auto mb-8 max-w-4xl text-center sm:mb-10 lg:mb-12"

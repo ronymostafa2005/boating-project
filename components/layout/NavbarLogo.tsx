@@ -1,5 +1,5 @@
 import { YachtLogo } from "@/components/ui/YachtLogo";
-import { cn, displayFontClass } from "@/lib/utils";
+import { cn, bodyFontClass, scriptFontClass } from "@/lib/utils";
 
 interface NavbarLogoProps {
   locale: string;
@@ -7,7 +7,7 @@ interface NavbarLogoProps {
   showText?: boolean;
   textClassName?: string;
   imageClassName?: string;
-  fontClassName?: string;
+  descriptorClassName?: string;
 }
 
 export function NavbarLogo({
@@ -16,23 +16,32 @@ export function NavbarLogo({
   showText = true,
   textClassName,
   imageClassName,
-  fontClassName,
+  descriptorClassName,
 }: NavbarLogoProps) {
   return (
     <div dir="ltr" className={cn("flex items-center gap-2.5", className)}>
-      <YachtLogo
-        className={cn("h-9 sm:h-10 text-neera-gold", imageClassName)}
-      />
+      <YachtLogo className={cn("h-9 shrink-0 sm:h-10 text-neera-gold", imageClassName)} />
       {showText ? (
-        <span
-          className={cn(
-            fontClassName ?? displayFontClass(locale),
-            "navbar-logo-text whitespace-nowrap text-lg font-medium tracking-tight sm:text-xl",
-            textClassName
-          )}
-        >
-          Boating<span className="text-neera-gold">.sa</span>
-        </span>
+        <div className="flex flex-col leading-none">
+          <span
+            className={cn(
+              scriptFontClass(locale),
+              "text-[1.65rem] font-normal sm:text-[1.85rem]",
+              textClassName
+            )}
+          >
+            Boating
+          </span>
+          <span
+            className={cn(
+              bodyFontClass(locale),
+              "mt-1 text-[8px] font-medium uppercase tracking-[0.32em] text-champagne",
+              descriptorClassName
+            )}
+          >
+            Elite Boat Rentals
+          </span>
+        </div>
       ) : null}
     </div>
   );

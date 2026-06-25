@@ -1,9 +1,12 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import type { Metadata } from "next";
-import { PageHeader } from "@/components/ui/PageHeader";
-import { getPageContent } from "@/lib/sanity/fetch";
-import { getLocalized } from "@/lib/utils";
-import type { Locale } from "@/types/locale";
+import { AboutNewsletterSection } from "@/components/about/AboutNewsletterSection";
+import { AboutPartnersSection } from "@/components/about/AboutPartnersSection";
+import { AboutTeamSection } from "@/components/about/AboutTeamSection";
+import { AboutStatsCounterSection } from "@/components/about/AboutStatsCounterSection";
+import { AboutTravellingSection } from "@/components/about/AboutTravellingSection";
+import { AboutBookYachtSection } from "@/components/home2/AboutBookYachtSection";
+import { PageBreadcrumb } from "@/components/ui/PageBreadcrumb";
 
 export const revalidate = 3600;
 
@@ -21,20 +24,17 @@ export default async function AboutPage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations("about");
-  const content = await getPageContent("about");
+  const tNav = await getTranslations("nav");
 
   return (
     <>
-      <PageHeader title={t("title")} subtitle={t("subtitle")} />
-      <section className="py-16">
-        <div className="container-luxury max-w-3xl">
-          <p className="text-lg leading-relaxed text-gray-300">
-            {content
-              ? getLocalized(content.content, locale as Locale)
-              : ""}
-          </p>
-        </div>
-      </section>
+      <PageBreadcrumb title={t("title")} homeLabel={tNav("home")} locale={locale} />
+      <AboutBookYachtSection />
+      <AboutTravellingSection />
+      <AboutStatsCounterSection />
+      <AboutNewsletterSection />
+      <AboutTeamSection />
+      <AboutPartnersSection />
     </>
   );
 }

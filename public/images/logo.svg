@@ -1,12 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 48" fill="none" aria-hidden="true">
-  <!-- Hull -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 52" fill="none" aria-hidden="true">
+  <!-- Brand mark — script B -->
   <path
-    fill="currentColor"
-    d="M4 38 C 18 38, 28 34, 42 26 C 58 17, 72 12, 96 10 L 108 10 L 108 22 C 88 24, 68 30, 52 36 C 36 42, 22 44, 4 38 Z"
+    fill="#C9A84C"
+    d="M8 44V10c0-.6.4-1 1-1h8.5c4.8 0 8.2 3 8.2 7.6 0 3.1-1.6 5.6-4.3 6.9 3.2 1 5.5 4 5.5 7.7 0 5-3.7 8.3-9.4 8.3H9c-.6 0-1-.4-1-1V44zm3.3-16.1h5.1c2.7 0 4.3-1.5 4.3-3.9s-1.6-3.9-4.3-3.9h-5.1v7.8zm0 13.3h5.5c3 0 4.8-1.6 4.8-4.3 0-2.6-1.8-4.2-4.8-4.2h-5.5v8.5z"
   />
-  <!-- Cabin -->
-  <path
-    fill="currentColor"
-    d="M72 8 L 108 8 L 108 18 L 78 18 L 72 12 Z"
-  />
+  <!-- Boating wordmark placeholder paths — rendered via web fonts in React; SVG for static/OG use -->
+  <text x="44" y="30" fill="#071628" font-family="Georgia, 'Times New Roman', serif" font-size="28" font-style="italic">Boating</text>
+  <text x="44" y="46" fill="#071628" fill-opacity="0.65" font-family="Arial, Helvetica, sans-serif" font-size="7" letter-spacing="3.2">ELITE BOAT RENTALS</text>
 </svg>

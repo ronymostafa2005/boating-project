@@ -27,6 +27,7 @@ export interface NavDropdownChild {
   onClick?: () => void;
   showArrow?: boolean;
   active?: boolean;
+  children?: NavDropdownChild[];
 }
 
 export interface NavDropdownItem {
@@ -41,6 +42,104 @@ interface NavDropdownProps {
   variant?: "default" | "light";
 }
 
+function isChildActive(
+  child: NavDropdownChild,
+  isActive: (href: string) => boolean
+): boolean {
+  if (child.active) return true;
+  if (child.href && isActive(child.href)) return true;
+  return child.children?.some((nested) => isChildActive(nested, isActive)) ?? false;
+}
+
+function NavDropdownChildRow({
+  child,
+  isActive,
+  isLast,
+  onClose,
+}: {
+  child: NavDropdownChild;
+  isActive: (href: string) => boolean;
+  isLast: boolean;
+  onClose: () => void;
+}) {
+  const t = useTranslations("nav");
+  const [subOpen, setSubOpen] = useState(false);
+  const hasSubChildren = Boolean(child.children?.length);
+  const childActive = isChildActive(child, isActive);
+  const itemClass = cn(
+    "neera-nav-dropdown-item flex w-full items-center justify-between gap-4",
+    !isLast && "border-b border-black/[0.06]",
+    childActive && "text-neera-gold"
+  );
+
+  if (hasSubChildren) {
+    return (
+      <div
+        className="relative"
+        onMouseEnter={() => setSubOpen(true)}
+        onMouseLeave={() => setSubOpen(false)}
+      >
+        <Link
+          href={child.href!}
+          className={itemClass}
+          onClick={onClose}
+        >
+          <span>{t(child.key)}</span>
+          <ChevronRight className="shrink-0 opacity-50" />
+        </Link>
+
+        <div
+          className={cn(
+            "neera-nav-flyout absolute start-full top-0 z-50 min-w-[280px] ps-1 transition-all duration-200",
+            subOpen
+              ? "pointer-events-auto visible translate-x-0 opacity-100"
+              : "pointer-events-none invisible -translate-x-1 opacity-0"
+          )}
+        >
+          <div className="border-t-2 border-neera-gold bg-white shadow-[0_10px_30px_rgba(0,0,0,0.08)]">
+            {child.children!.map((nested, nestedIndex) => (
+              <NavDropdownChildRow
+                key={nested.key}
+                child={nested}
+                isActive={isActive}
+                isLast={nestedIndex === child.children!.length - 1}
+                onClose={onClose}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (child.onClick) {
+    return (
+      <button
+        type="button"
+        onClick={() => {
+          child.onClick?.();
+          onClose();
+        }}
+        className={itemClass}
+      >
+        <span>{t(child.key)}</span>
+        {child.showArrow && <ChevronRight className="shrink-0 opacity-50" />}
+      </button>
+    );
+  }
+
+  return (
+    <Link
+      href={child.href!}
+      className={itemClass}
+      onClick={onClose}
+    >
+      <span>{t(child.key)}</span>
+      {child.showArrow && <ChevronRight className="shrink-0 opacity-50" />}
+    </Link>
+  );
+}
+
 export function NavDropdown({ item, isActive, variant = "default" }: NavDropdownProps) {
   const t = useTranslations("nav");
   const [isOpen, setIsOpen] = useState(false);
@@ -48,9 +147,7 @@ export function NavDropdown({ item, isActive, variant = "default" }: NavDropdown
 
   const isParentActive =
     (item.href && isActive(item.href)) ||
-    item.children?.some(
-      (child) => child.active || (child.href ? isActive(child.href) : false)
-    );
+    item.children?.some((child) => isChildActive(child, isActive));
 
   const linkClass = variant === "light" ? "neera-nav-link-light" : "neera-nav-link";
 
@@ -94,45 +191,15 @@ export function NavDropdown({ item, isActive, variant = "default" }: NavDropdown
         )}
       >
         <div className="border-t-2 border-neera-gold bg-white shadow-[0_10px_30px_rgba(0,0,0,0.08)]">
-          {item.children!.map((child, index) => {
-            const childActive =
-              child.active ?? (child.href ? isActive(child.href) : false);
-            const isLast = index === item.children!.length - 1;
-            const itemClass = cn(
-              "neera-nav-dropdown-item flex w-full items-center justify-between gap-4",
-              !isLast && "border-b border-black/[0.06]",
-              childActive && "text-neera-gold"
-            );
-
-            if (child.onClick) {
-              return (
-                <button
-                  key={child.key}
-                  type="button"
-                  onClick={() => {
-                    child.onClick?.();
-                    setIsOpen(false);
-                  }}
-                  className={itemClass}
-                >
-                  <span>{t(child.key)}</span>
-                  {child.showArrow && <ChevronRight className="shrink-0 opacity-50" />}
-                </button>
-              );
-            }
-
-            return (
-              <Link
-                key={child.key}
-                href={child.href!}
-                className={itemClass}
-                onClick={() => setIsOpen(false)}
-              >
-                <span>{t(child.key)}</span>
-                {child.showArrow && <ChevronRight className="shrink-0 opacity-50" />}
-              </Link>
-            );
-          })}
+          {item.children!.map((child, index) => (
+            <NavDropdownChildRow
+              key={child.key}
+              child={child}
+              isActive={isActive}
+              isLast={index === item.children!.length - 1}
+              onClose={() => setIsOpen(false)}
+            />
+          ))}
         </div>
       </div>
     </div>

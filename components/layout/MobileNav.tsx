@@ -19,13 +19,7 @@ type MobileNavLink = {
 };
 
 const navItems: MobileNavLink[] = [
-  {
-    key: "home",
-    children: [
-      { key: "homeMarine", href: "/" },
-      { key: "homeYacht", href: "/home-2" },
-    ],
-  },
+  { key: "home", href: "/" },
   { key: "about", href: "/about" },
   { key: "map", href: "/map" },
   { key: "boats", href: "/boats" },

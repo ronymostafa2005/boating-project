@@ -13,6 +13,25 @@
     "map": "Map",
     "howItWorks": "How It Works",
     "about": "About",
+    "aboutUs": "About Us",
+    "ourCrew": "Our Crew",
+    "pricingPlans": "Pricing Plans",
+    "shop": "Shop",
+    "shopListing": "Shop Listing",
+    "shopDetail": "Shop Detail",
+    "myAccount": "My Account",
+    "cart": "Cart",
+    "wishlist": "Wishlist",
+    "checkout": "Checkout",
+    "portfolio": "Portfolio",
+    "portfolioListing": "Portfolio Listing",
+    "portfolioDetail": "Portfolio Detail",
+    "services": "Services",
+    "serviceListing": "Service Listing",
+    "serviceDetail": "Service Detail",
+    "login": "Login",
+    "comingSoon": "Coming Soon",
+    "page404": "404 Page",
     "safety": "Safety & Trust",
     "faq": "FAQ",
     "contact": "Contact",
@@ -282,7 +301,93 @@
   },
   "about": {
     "title": "About Us",
-    "subtitle": "Our maritime passion, our commitment to you"
+    "subtitle": "Our maritime passion, our commitment to you",
+    "newsletterEyebrow": "Get Instant updates",
+    "newsletterTitleLine1": "Subscribe",
+    "newsletterTitleLine2": "today!",
+    "newsletterPlaceholder": "Email Address",
+    "newsletterSubmit": "Submit",
+    "teamEyebrow": "Our Team Members",
+    "teamTitleLine1": "Our",
+    "teamTitleLine2": "Yacht",
+    "teamTitleLine3": "Experts"
+  },
+  "pages": {
+    "ourCrew": {
+      "title": "Our Crew",
+      "subtitle": "Meet the team behind your journey",
+      "body": "Our experienced captains and crew are dedicated to delivering safe, memorable maritime experiences."
+    },
+    "pricingPlans": {
+      "title": "Pricing Plans",
+      "subtitle": "Choose the plan that fits your voyage",
+      "body": "Explore flexible pricing options for yacht rentals, tours, and premium services."
+    },
+    "shop": {
+      "title": "Shop",
+      "subtitle": "Browse our maritime collection",
+      "body": "Discover curated boating essentials, accessories, and gear for your next adventure."
+    },
+    "shopDetail": {
+      "title": "Shop Detail",
+      "subtitle": "Product details",
+      "body": "View product specifications, pricing, and availability."
+    },
+    "myAccount": {
+      "title": "My Account",
+      "subtitle": "Manage your profile",
+      "body": "Access your bookings, preferences, and account settings."
+    },
+    "cart": {
+      "title": "Cart",
+      "subtitle": "Your selected items",
+      "body": "Review items in your cart before proceeding to checkout."
+    },
+    "wishlist": {
+      "title": "Wishlist",
+      "subtitle": "Saved for later",
+      "body": "Keep track of products and experiences you want to revisit."
+    },
+    "checkout": {
+      "title": "Checkout",
+      "subtitle": "Complete your purchase",
+      "body": "Securely complete your order and payment details."
+    },
+    "portfolio": {
+      "title": "Portfolio",
+      "subtitle": "Our finest voyages",
+      "body": "Browse highlights from our yacht charters, tours, and maritime experiences."
+    },
+    "portfolioDetail": {
+      "title": "Portfolio Detail",
+      "subtitle": "Voyage spotlight",
+      "body": "Dive into the details of a featured journey, vessel, and destination."
+    },
+    "services": {
+      "title": "Services",
+      "subtitle": "Everything for your voyage",
+      "body": "Explore our full range of yacht services, charters, and onboard experiences."
+    },
+    "serviceDetail": {
+      "title": "Service Detail",
+      "subtitle": "Service overview",
+      "body": "Learn more about this service, what's included, and how to book."
+    },
+    "login": {
+      "title": "Login",
+      "subtitle": "Welcome back",
+      "body": "Sign in to manage bookings and access your account."
+    },
+    "comingSoon": {
+      "title": "Coming Soon",
+      "subtitle": "Something exciting is on the horizon",
+      "body": "We're preparing a new experience. Check back soon for updates."
+    },
+    "page404": {
+      "title": "404 Page",
+      "subtitle": "Page not found",
+      "body": "The page you're looking for doesn't exist or may have been moved."
+    }
   },
   "safety": {
     "title": "Safety & Trust",

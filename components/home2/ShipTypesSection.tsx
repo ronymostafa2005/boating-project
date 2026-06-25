@@ -81,7 +81,7 @@ export function ShipTypesSection() {
         loading="lazy"
         priority={false}
       />
-      <div className="absolute inset-0 bg-[#021526]/80" aria-hidden />
+      <div className="absolute inset-0 bg-deep-sea/80" aria-hidden />
 
       <div className="container-luxury relative z-10">
         <div className="mb-10 flex flex-wrap items-end justify-between gap-6 lg:mb-12">
@@ -169,7 +169,7 @@ export function ShipTypesSection() {
                 quality={IMAGE_QUALITY}
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-[#021526]/55" />
+              <div className="absolute inset-0 bg-ocean-navy/55" />
             </div>
 
             <div className="relative z-10">

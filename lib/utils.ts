@@ -27,6 +27,11 @@ export function home2DisplayFontClass(locale: string): string {
   return isRtlLocale(locale) ? "font-displayAr" : "font-marcellus";
 }
 
+/** Great Vibes — logo & hero headlines (EN); Arabic keeps display serif */
+export function scriptFontClass(locale: string): string {
+  return isRtlLocale(locale) ? "font-displayAr" : "font-scriptEn";
+}
+
 export function getLocalized(
   field: LocalizedString | string | undefined,
   locale: Locale
