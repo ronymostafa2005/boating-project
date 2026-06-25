@@ -19,6 +19,14 @@ export function displayFontClass(locale: string): string {
   return isRtlLocale(locale) ? "font-displayAr" : "font-displayEn";
 }
 
+export function home2FontClass(locale: string): string {
+  return isRtlLocale(locale) ? "font-bodyAr" : "font-marcellus";
+}
+
+export function home2DisplayFontClass(locale: string): string {
+  return isRtlLocale(locale) ? "font-displayAr" : "font-marcellus";
+}
+
 export function getLocalized(
   field: LocalizedString | string | undefined,
   locale: Locale

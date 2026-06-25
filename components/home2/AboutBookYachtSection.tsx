@@ -16,6 +16,7 @@ import {
 import { IMAGE_QUALITY } from "@/lib/imageDefaults";
 import { MOTION_EASE } from "@/lib/motionVariants";
 import { cn, bodyFontClass, displayFontClass } from "@/lib/utils";
+import { hydratedInitial, useIsHydrated } from "@/hooks/useIsHydrated";
 
 function ArrowLinkIcon({ className }: { className?: string }) {
   return (
@@ -45,6 +46,7 @@ const featureItem: Variants = {
 };
 
 export function AboutBookYachtSection() {
+  const hydrated = useIsHydrated();
   const t = useTranslations("home2");
   const locale = useLocale();
   const isRtl = locale === "ar";
@@ -78,7 +80,7 @@ export function AboutBookYachtSection() {
           <motion.div
             className="text-start lg:col-span-6 xl:col-span-6"
             variants={fadeInUp(0.3)}
-            initial="hidden"
+            initial={hydratedInitial(hydrated, "hidden")}
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
           >
@@ -112,7 +114,7 @@ export function AboutBookYachtSection() {
                         key={key}
                         custom={globalIndex}
                         variants={featureItem}
-                        initial="hidden"
+                        initial={hydratedInitial(hydrated, "hidden")}
                         whileInView="visible"
                         viewport={{ once: true, amount: 0.5 }}
                         className="flex items-center gap-4"
@@ -157,7 +159,7 @@ export function AboutBookYachtSection() {
           <motion.div
             className="lg:col-span-3"
             variants={fadeInUp(0.4)}
-            initial="hidden"
+            initial={hydratedInitial(hydrated, "hidden")}
             whileInView="visible"
             viewport={{ once: true, amount: 0.15 }}
           >
@@ -166,7 +168,7 @@ export function AboutBookYachtSection() {
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={filler.titleKey}
-                    initial={{ opacity: 0 }}
+                    initial={hydratedInitial(hydrated, { opacity: 0 })}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.65, ease: MOTION_EASE }}
@@ -188,7 +190,7 @@ export function AboutBookYachtSection() {
               <AnimatePresence mode="wait">
                 <motion.h3
                   key={filler.titleKey}
-                  initial={{ opacity: 0, y: 8 }}
+                  initial={hydratedInitial(hydrated, { opacity: 0, y: 8 })}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -8 }}
                   transition={{ duration: 0.45, ease: MOTION_EASE }}
@@ -230,7 +232,7 @@ export function AboutBookYachtSection() {
           <motion.div
             className="lg:col-span-3"
             variants={fadeInUp(0.5)}
-            initial="hidden"
+            initial={hydratedInitial(hydrated, "hidden")}
             whileInView="visible"
             viewport={{ once: true, amount: 0.15 }}
           >
@@ -260,7 +262,7 @@ export function AboutBookYachtSection() {
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={testimonial.authorKey}
-                    initial={{ opacity: 0, y: 14 }}
+                    initial={hydratedInitial(hydrated, { opacity: 0, y: 14 })}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
                     transition={{ duration: 0.55, ease: MOTION_EASE }}

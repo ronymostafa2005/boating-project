@@ -9,15 +9,13 @@ import { Home2MenuToggle } from "./Home2MenuToggle";
 import { NavDropdown } from "./NavDropdown";
 import { NavbarLogo } from "./NavbarLogo";
 import { buildNavItems } from "@/lib/buildNavItems";
-import { cn, bodyFontClass } from "@/lib/utils";
+import { cn, home2FontClass, home2DisplayFontClass } from "@/lib/utils";
 import type { Locale } from "@/types/locale";
 
 function HeadsetIcon({ className }: { className?: string }) {
   return (
     <svg
       className={className}
-      width="28"
-      height="28"
       viewBox="0 0 28 28"
       fill="none"
       aria-hidden
@@ -64,23 +62,24 @@ export function Home2Header() {
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(`${href}/`);
 
-  const topLinkClass = "text-white/75 transition-colors hover:text-white";
+  const topLinkClass = "text-[#fff] transition-colors hover:text-neera-gold";
 
   return (
     <header
       className={cn(
         "home2-header fixed inset-x-0 top-0 z-[100] w-full transition-all duration-300",
+        home2FontClass(locale),
         isTransparent
           ? "bg-transparent"
           : "border-b border-white/10 bg-[#0a1628]/95 shadow-[0_8px_32px_rgba(0,0,0,0.18)] backdrop-blur-md"
       )}
     >
       <div className={cn("home2-top-bar hidden border-b lg:block", isTransparent ? "border-white/10" : "border-white/10")}>
-        <div dir="ltr" className="container-luxury flex items-center justify-between gap-4 py-2.5">
+        <div dir="ltr" className="container-luxury-nav flex items-center justify-between gap-4 py-2.5">
           <div
             className={cn(
-              bodyFontClass(locale),
-              "flex flex-wrap items-center gap-x-3 gap-y-1 text-[10px] uppercase tracking-[0.14em] text-white/75 sm:text-[11px]"
+              home2FontClass(locale),
+              "flex flex-wrap items-center gap-x-3 gap-y-1 text-[10px] uppercase tracking-[0.14em] text-[#fff] sm:text-[11px]"
             )}
           >
             <a href={`tel:${t("topBarPhone").replace(/\s/g, "")}`} className={topLinkClass}>
@@ -96,8 +95,8 @@ export function Home2Header() {
 
           <div
             className={cn(
-              bodyFontClass(locale),
-              "flex items-center gap-3 text-[10px] uppercase tracking-[0.14em] text-white/75 sm:text-[11px]"
+              home2FontClass(locale),
+              "flex items-center gap-3 text-[10px] uppercase tracking-[0.14em] text-[#fff] sm:text-[11px]"
             )}
           >
             <Link href="/faq" className={topLinkClass}>
@@ -113,26 +112,30 @@ export function Home2Header() {
 
       <div
         dir="ltr"
-        className="container-luxury grid min-h-[68px] grid-cols-[1fr_auto_1fr] items-center gap-3 py-3 sm:min-h-[76px] sm:gap-4 sm:py-4 lg:min-h-[84px]"
+        className="container-luxury-nav grid min-h-[68px] grid-cols-[1fr_auto_1fr] items-center gap-3 py-3 sm:min-h-[76px] sm:gap-4 sm:py-4 lg:min-h-[84px]"
       >
-        <nav className="col-start-1 row-start-1 hidden items-center gap-5 justify-self-start xl:gap-7 lg:flex">
+        <nav className="col-start-1 row-start-1 hidden items-center gap-6 justify-self-start lg:flex xl:gap-8">
           {navItems.map((item) => (
             <NavDropdown key={item.key} item={item} isActive={isActive} variant="light" />
           ))}
         </nav>
 
         <Link href="/home-2" className="col-start-2 row-start-1 justify-self-center" aria-label="Boating.sa">
-          <NavbarLogo locale={locale} textClassName="text-white" />
+          <NavbarLogo
+            locale={locale}
+            textClassName="text-white"
+            fontClassName={home2DisplayFontClass(locale)}
+          />
         </Link>
 
         <div className="col-start-3 row-start-1 flex items-center justify-self-end gap-3 sm:gap-4 lg:gap-5">
           <div className="hidden items-center gap-2.5 xl:flex">
-            <HeadsetIcon className="text-white/85" />
+            <HeadsetIcon className="h-8 w-8 shrink-0 text-white" />
             <div className="leading-tight">
               <span
                 className={cn(
-                  bodyFontClass(locale),
-                  "block text-[9px] font-medium uppercase tracking-[0.18em] text-white/65"
+                  home2FontClass(locale),
+                  "block text-[11px] font-medium uppercase tracking-[0.18em] text-white"
                 )}
               >
                 {t("callUs")}
@@ -140,8 +143,8 @@ export function Home2Header() {
               <a
                 href={`tel:${t("callPhone").replace(/\s/g, "")}`}
                 className={cn(
-                  bodyFontClass(locale),
-                  "text-[12px] font-medium tracking-wide text-white transition-colors hover:text-neera-gold"
+                  home2FontClass(locale),
+                  "text-sm font-medium tracking-wide text-neera-gold transition-colors hover:text-neera-gold-dark"
                 )}
               >
                 {t("callPhone")}
@@ -151,7 +154,7 @@ export function Home2Header() {
 
           <LanguageSwitcher variant="light" className="inline-flex shrink-0 max-lg:hidden" />
 
-          <Link href="/contact" className={cn("home2-quote-btn hidden sm:inline-flex", bodyFontClass(locale))}>
+          <Link href="/contact" className={cn("home2-quote-btn hidden sm:inline-flex", home2DisplayFontClass(locale))}>
             {t("requestQuote")}
           </Link>
 

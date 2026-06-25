@@ -4,10 +4,9 @@ import { useCallback, useState } from "react";
 import Image from "next/image";
 import { useTranslations, useLocale } from "next-intl";
 import { Link } from "@/lib/i18n/navigation";
-import { SplitHeading } from "@/components/ui/SplitHeading";
 import { HOME2_HERO_SLIDES } from "@/data/home2";
 import { IMAGE_QUALITY } from "@/lib/imageDefaults";
-import { cn, bodyFontClass, displayFontClass } from "@/lib/utils";
+import { cn, home2FontClass, home2DisplayFontClass } from "@/lib/utils";
 
 export function HeroHome2() {
   const t = useTranslations("home2");
@@ -22,7 +21,7 @@ export function HeroHome2() {
   const slide = HOME2_HERO_SLIDES[active];
 
   return (
-    <section className="home2-hero relative min-h-screen overflow-hidden bg-[#0a1628]">
+    <section className={cn("home2-hero relative min-h-screen overflow-hidden bg-[#0a1628]", home2FontClass(locale))}>
       {HOME2_HERO_SLIDES.map((item, i) => {
         const isActive = i === active;
 
@@ -67,34 +66,34 @@ export function HeroHome2() {
       <div className="container-luxury relative z-10 flex min-h-screen flex-col items-center justify-center px-4 pb-36 pt-32 text-center sm:pt-36 lg:pt-40">
         <p
           className={cn(
-            bodyFontClass(locale),
-            "mb-4 text-[11px] font-medium uppercase tracking-[0.28em] text-white/80"
+            home2FontClass(locale),
+            "mb-8 text-sm font-normal tracking-[0.22em] text-white/90 sm:text-base"
           )}
         >
           {t(slide.subtitleKey)}
         </p>
 
-        <SplitHeading
-          wordGroups={[t(slide.titleKey).split(" ")]}
-          active
-          loop
+        <h1
           className={cn(
-            displayFontClass(locale),
-            "home2-hero-title mb-6 max-w-4xl text-3xl font-normal leading-[1.15] text-white sm:text-4xl lg:text-[3.25rem]",
-            isRtl ? "normal-case tracking-normal" : "uppercase tracking-[0.06em]"
+            home2DisplayFontClass(locale),
+            "home2-hero-title mb-8 w-full max-w-4xl text-[2.5rem] font-medium leading-[1.28] text-white sm:max-w-5xl sm:text-5xl lg:mb-10 lg:max-w-6xl lg:text-[4rem] lg:leading-[1.32] xl:max-w-7xl xl:text-[4.5rem] 2xl:max-w-[85rem]",
+            isRtl ? "normal-case tracking-normal" : "uppercase tracking-[0.12em]"
           )}
-        />
+        >
+          <span className="block">{t(slide.titleLine1Key)}</span>
+          <span className="block">{t(slide.titleLine2Key)}</span>
+        </h1>
 
         <p
           className={cn(
-            bodyFontClass(locale),
-            "mx-auto mb-10 max-w-2xl text-sm leading-relaxed text-white/80 sm:text-[15px]"
+            home2FontClass(locale),
+            "mx-auto mb-12 max-w-xl text-base leading-[1.6] text-white/80 sm:mb-14 sm:text-lg"
           )}
         >
           {t(slide.descKey)}
         </p>
 
-        <Link href="/boats" className="neera-btn-explore">
+        <Link href="/boats" className="home2-hero-explore-btn">
           {t("heroExplore")}
         </Link>
       </div>
@@ -103,7 +102,7 @@ export function HeroHome2() {
         <button
           type="button"
           onClick={() => goTo(active - 1)}
-          className={cn(bodyFontClass(locale), "text-[10px] uppercase tracking-[0.16em] text-white/70 hover:text-white")}
+          className={cn(home2FontClass(locale), "text-[10px] uppercase tracking-[0.16em] text-white/70 hover:text-white")}
           aria-label={t("heroPrev")}
         >
           {t("heroPrev")}
@@ -137,7 +136,7 @@ export function HeroHome2() {
         <button
           type="button"
           onClick={() => goTo(active + 1)}
-          className={cn(bodyFontClass(locale), "text-[10px] uppercase tracking-[0.16em] text-white/70 hover:text-white")}
+          className={cn(home2FontClass(locale), "text-[10px] uppercase tracking-[0.16em] text-white/70 hover:text-white")}
           aria-label={t("heroNext")}
         >
           {t("heroNext")}

@@ -7,6 +7,7 @@ interface NavbarLogoProps {
   showText?: boolean;
   textClassName?: string;
   imageClassName?: string;
+  fontClassName?: string;
 }
 
 export function NavbarLogo({
@@ -15,6 +16,7 @@ export function NavbarLogo({
   showText = true,
   textClassName,
   imageClassName,
+  fontClassName,
 }: NavbarLogoProps) {
   return (
     <div dir="ltr" className={cn("flex items-center gap-2.5", className)}>
@@ -24,8 +26,8 @@ export function NavbarLogo({
       {showText ? (
         <span
           className={cn(
-            displayFontClass(locale),
-            "whitespace-nowrap text-lg font-medium tracking-tight sm:text-xl",
+            fontClassName ?? displayFontClass(locale),
+            "navbar-logo-text whitespace-nowrap text-lg font-medium tracking-tight sm:text-xl",
             textClassName
           )}
         >

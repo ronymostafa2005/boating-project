@@ -8,7 +8,7 @@ import { LanguageSwitcher } from "./LanguageSwitcher";
 import { NavbarLogo } from "./NavbarLogo";
 import type { NavDropdownItem } from "./NavDropdown";
 import { IMAGE_QUALITY } from "@/lib/imageDefaults";
-import { cn, bodyFontClass, displayFontClass } from "@/lib/utils";
+import { cn, home2FontClass } from "@/lib/utils";
 import type { Locale } from "@/types/locale";
 
 const CDN = "https://neera.wpenginepowered.com/wp-content/uploads";
@@ -158,7 +158,7 @@ export function Home2MenuToggle({ navItems }: Home2MenuToggleProps) {
                       link.onClick?.();
                       setOpen(false);
                     }}
-                    className={cn(bodyFontClass(locale), "home2-offcanvas__nav-link text-start")}
+                    className={cn(home2FontClass(locale), "home2-offcanvas__nav-link text-start")}
                   >
                     {tNav(link.key)}
                   </button>
@@ -168,7 +168,7 @@ export function Home2MenuToggle({ navItems }: Home2MenuToggleProps) {
                     href={link.href!}
                     onClick={() => setOpen(false)}
                     className={cn(
-                      bodyFontClass(locale),
+                      home2FontClass(locale),
                       "home2-offcanvas__nav-link",
                       pathname === link.href && "text-neera-gold"
                     )}
@@ -180,7 +180,7 @@ export function Home2MenuToggle({ navItems }: Home2MenuToggleProps) {
             </nav>
 
             <div className="home2-offcanvas__mobile-lang mx-0 mt-4">
-              <span className={cn(bodyFontClass(locale), "home2-offcanvas__lang-label")}>
+              <span className={cn(home2FontClass(locale), "home2-offcanvas__lang-label")}>
                 {tNav("language")}
               </span>
               <LanguageSwitcher variant="hero" />
@@ -193,13 +193,13 @@ export function Home2MenuToggle({ navItems }: Home2MenuToggleProps) {
               <NavbarLogo locale={locale} textClassName="text-[#1a1a1a]" imageClassName="text-[#1a1a1a]" />
             </Link>
 
-            <p className={cn(bodyFontClass(locale), "home2-offcanvas__desc mb-6")}>
+            <p className={cn(home2FontClass(locale), "home2-offcanvas__desc mb-6")}>
               {tFooter("description")}
             </p>
 
             <div className="home2-offcanvas__card mb-4">
               <HeadsetIcon className="shrink-0 text-neera-gold" />
-              <p className={cn(bodyFontClass(locale), "home2-offcanvas__card-text")}>
+              <p className={cn(home2FontClass(locale), "home2-offcanvas__card-text")}>
                 {tNav("sidebarCallPrefix")}{" "}
                 <a href={`tel:${phoneMain.replace(/\s/g, "")}`} className="text-neera-gold">
                   {phoneMain}
@@ -215,11 +215,11 @@ export function Home2MenuToggle({ navItems }: Home2MenuToggleProps) {
               <div className="min-w-0 flex-1">
                 <div className="mb-2 flex items-center gap-2 text-[#1a1a1a]">
                   <WhatsAppIcon className="h-5 w-5 shrink-0" />
-                  <span className={cn(bodyFontClass(locale), "text-sm font-medium")}>
+                  <span className={cn(home2FontClass(locale), "text-sm font-medium")}>
                     {tNav("sidebarWhatsAppTitle")}
                   </span>
                 </div>
-                <p className={cn(bodyFontClass(locale), "home2-offcanvas__card-text")}>
+                <p className={cn(home2FontClass(locale), "home2-offcanvas__card-text")}>
                   {tNav("sidebarWhatsAppHelp")}
                 </p>
               </div>
@@ -261,14 +261,14 @@ export function Home2MenuToggle({ navItems }: Home2MenuToggleProps) {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder={tFooter("emailPlaceholder")}
-                      className={cn(bodyFontClass(locale), "home2-offcanvas__input min-w-0 flex-1")}
+                      className={cn(home2FontClass(locale), "home2-offcanvas__input min-w-0 flex-1")}
                     />
                     <button type="submit" className="home2-offcanvas__submit shrink-0" disabled={!agreed}>
                       <span className="sr-only">{tFooter("submit")}</span>
                       <PaperPlaneIcon className="h-4 w-4 text-white" />
                     </button>
                   </div>
-                  <label className={cn(bodyFontClass(locale), "home2-offcanvas__privacy mt-4 flex items-start gap-2")}>
+                  <label className={cn(home2FontClass(locale), "home2-offcanvas__privacy mt-4 flex items-start gap-2")}>
                     <input
                       type="checkbox"
                       checked={agreed}
@@ -306,7 +306,7 @@ function SplitHeadingMini({
   return (
     <h2
       className={cn(
-        displayFontClass(locale),
+        home2FontClass(locale),
         "mb-5 text-xl uppercase leading-snug tracking-[0.06em] text-white sm:text-2xl",
         locale === "ar" && "normal-case tracking-normal"
       )}

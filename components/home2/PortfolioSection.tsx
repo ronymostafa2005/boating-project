@@ -10,6 +10,7 @@ import { HOME2_PORTFOLIO } from "@/data/home2";
 import { IMAGE_QUALITY } from "@/lib/imageDefaults";
 import { MOTION_EASE, slideInFromEnd } from "@/lib/motionVariants";
 import { cn, bodyFontClass, displayFontClass } from "@/lib/utils";
+import { hydratedInitial, useIsHydrated } from "@/hooks/useIsHydrated";
 
 function CarouselArrow({ className, flip }: { className?: string; flip?: boolean }) {
   return (
@@ -37,6 +38,7 @@ const fadeInLeft: Variants = {
 const fadeInRight = (isRtl: boolean): Variants => slideInFromEnd(isRtl, 40, 0.3);
 
 export function PortfolioSection() {
+  const hydrated = useIsHydrated();
   const t = useTranslations("home2");
   const locale = useLocale();
   const isRtl = locale === "ar";
@@ -63,7 +65,7 @@ export function PortfolioSection() {
           <motion.div
             className="text-start"
             variants={fadeInLeft}
-            initial="hidden"
+            initial={hydratedInitial(hydrated, "hidden")}
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
           >
@@ -90,7 +92,7 @@ export function PortfolioSection() {
           <motion.div
             className="flex items-center gap-5"
             variants={fadeInRight(isRtl)}
-            initial="hidden"
+            initial={hydratedInitial(hydrated, "hidden")}
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
           >
@@ -118,7 +120,7 @@ export function PortfolioSection() {
         ref={scrollRef}
         className="home2-portfolio-track"
         variants={fadeInRight(isRtl)}
-        initial="hidden"
+        initial={hydratedInitial(hydrated, "hidden")}
         whileInView="visible"
         viewport={{ once: true, amount: 0.1 }}
       >

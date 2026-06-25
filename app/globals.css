@@ -2,12 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  .font-marcellus {
+    font-family: var(--font-marcellus), serif;
+  }
+}
+
 :root {
   --background: #ffffff;
   --foreground: #1a1a1a;
-  --gold: #d4a017;
-  --gold-light: #e8c547;
-  --gold-dark: #b8860b;
+  --gold: #b19d7f;
+  --gold-light: #c4b59a;
+  --gold-dark: #9a8668;
+  --neera-gold: #b19d7f;
+  --neera-gold-dark: #9a8668;
   --charcoal: #1a1a1a;
   --slate: #e5e5e5;
 }
@@ -56,7 +64,11 @@ body {
 
 @layer components {
   .container-luxury {
-    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+    @apply mx-auto w-full max-w-[93rem] px-4 sm:px-6 lg:px-8;
+  }
+
+  .container-luxury-nav {
+    @apply mx-auto w-full max-w-[100rem] px-4 sm:px-6 lg:px-8;
   }
 
   .heading-display {
@@ -76,7 +88,7 @@ body {
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center rounded-lg bg-gold px-6 py-3 text-sm font-semibold text-luxury-black transition-all hover:bg-gold-light focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2 focus:ring-offset-white;
+    @apply inline-flex items-center justify-center rounded-lg bg-gold px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-gold-dark focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2 focus:ring-offset-white;
   }
 
   .btn-outline {
@@ -301,7 +313,7 @@ body {
   }
 
   .boat-select-tab-active {
-    box-shadow: inset 0 -2px 0 0 var(--neera-gold, #c9a86c);
+    box-shadow: inset 0 -2px 0 0 var(--neera-gold);
   }
 
   .boat-select-card-overlay {
@@ -889,7 +901,7 @@ body {
 [data-bokun-widget],
 .bokun-widget,
 .bokun-online-sales-widget {
-  --bokun-primary-color: #d4a017 !important;
+  --bokun-primary-color: #b19d7f !important;
   --bokun-background-color: #1a1a1a !important;
   --bokun-text-color: #f5f5f5 !important;
   --bokun-border-color: #2a2a2a !important;
@@ -995,17 +1007,51 @@ body {
   transform: scaleX(-1);
 }
 
-/* Home 2 — Tajawal font */
-.home2-page,
-.home2-header,
-.home2-offcanvas {
-  font-family: var(--font-tajawal), sans-serif;
+/* Home 2 — Marcellus on hero + nav (EN) */
+[dir="ltr"] .home2-hero,
+[dir="ltr"] .home2-header,
+[dir="ltr"] .home2-offcanvas {
+  font-family: var(--font-marcellus), serif;
 }
 
-.home2-page :is(.font-bodyEn, .font-bodyAr, .font-displayEn, .font-displayAr),
-.home2-header :is(.font-bodyEn, .font-bodyAr, .font-displayEn, .font-displayAr),
-.home2-offcanvas :is(.font-bodyEn, .font-bodyAr, .font-displayEn, .font-displayAr) {
-  font-family: var(--font-tajawal), sans-serif;
+[dir="ltr"] .home2-hero :is(.font-bodyEn, .font-displayEn, .font-marcellus),
+[dir="ltr"] .home2-header :is(.font-bodyEn, .font-displayEn, .font-marcellus),
+[dir="ltr"] .home2-offcanvas :is(.font-bodyEn, .font-displayEn, .font-marcellus),
+[dir="ltr"] .home2-hero-title,
+[dir="ltr"] .home2-hero .home2-hero-explore-btn,
+[dir="ltr"] .home2-header .home2-quote-btn,
+[dir="ltr"] .home2-header .neera-nav-link-light,
+[dir="ltr"] .home2-header .neera-nav-dropdown-item,
+[dir="ltr"] .home2-header .navbar-logo-text {
+  font-family: var(--font-marcellus), serif;
+}
+
+.home2-header .neera-nav-link-light {
+  @apply text-[13.5px] font-semibold tracking-[0.22em] text-[#fff] transition-colors hover:text-neera-gold;
+}
+
+[dir="rtl"] .home2-header .neera-nav-dropdown-item {
+  font-family: var(--font-ibm-plex-arabic), sans-serif;
+}
+
+[dir="rtl"] .home2-header .neera-nav-link-light {
+  font-family: var(--font-ibm-plex-arabic), sans-serif;
+}
+
+.home2-header .home2-quote-btn {
+  @apply px-6 py-3 text-sm font-normal normal-case tracking-normal;
+}
+
+[dir="rtl"] .home2-header .home2-quote-btn {
+  font-family: var(--font-reem-kufi), serif;
+}
+
+.home2-hero .home2-hero-explore-btn {
+  @apply inline-flex items-center justify-center bg-neera-gold px-10 py-4 text-base font-normal normal-case tracking-normal text-white transition-colors hover:bg-neera-gold-dark;
+}
+
+[dir="rtl"] .home2-hero .home2-hero-explore-btn {
+  font-family: var(--font-reem-kufi), serif;
 }
 
 /* Home 2 — Yacht Booking */
@@ -1336,7 +1382,7 @@ body {
 }
 
 .home2-portfolio-card__btn {
-  @apply mt-6 inline-flex min-w-[9.5rem] items-center justify-center bg-neera-gold px-5 py-2.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#1a1a1a] opacity-0 transition-all duration-500 hover:bg-[#c9b08f];
+  @apply mt-6 inline-flex min-w-[9.5rem] items-center justify-center bg-neera-gold px-5 py-2.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-white opacity-0 transition-all duration-500 hover:bg-neera-gold-dark;
   transform: translateY(12px);
 }
 
@@ -1372,6 +1418,21 @@ body {
   @apply relative;
 }
 
+[dir="ltr"] .home2-ships-section,
+[dir="ltr"] .home2-ships-section :is(.font-bodyEn, .font-displayEn, .font-marcellus) {
+  font-family: var(--font-marcellus), serif;
+}
+
+.home2-ships-title.split-heading > span {
+  display: block;
+  width: 100%;
+  line-height: inherit;
+}
+
+.home2-ships-title.split-heading .split-word {
+  margin-inline-end: 0.2em;
+}
+
 .home2-ships-arrow {
   @apply p-2 text-white/80 transition-colors hover:text-white;
 }
@@ -1384,8 +1445,37 @@ body {
   display: none;
 }
 
+.home2-ships-track {
+  scrollbar-width: none;
+  scroll-snap-type: x proximity;
+}
+
 .home2-ship-card {
   @apply transition-[box-shadow] duration-500;
+  flex: 0 0 78%;
+  min-width: 78%;
+  scroll-snap-align: start;
+}
+
+@media (min-width: 640px) {
+  .home2-ship-card {
+    flex: 0 0 50%;
+    min-width: 50%;
+  }
+}
+
+@media (min-width: 768px) {
+  .home2-ship-card {
+    flex: 0 0 33.3333%;
+    min-width: 33.3333%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .home2-ship-card {
+    flex: 0 0 25%;
+    min-width: 25%;
+  }
 }
 
 .home2-ship-card-divider {
@@ -1393,15 +1483,25 @@ body {
 }
 
 .home2-ship-card__reveal {
-  @apply pointer-events-none absolute inset-0 overflow-hidden;
-  transform: scaleX(0);
-  transform-origin: inline-start;
-  transition: transform 0.75s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  @apply pointer-events-none absolute inset-y-0 overflow-hidden;
+  inset-inline-start: 0;
+  width: 0;
+  transition: width 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.home2-ship-card__reveal img {
+  transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform: scaleX(1);
 }
 
 .home2-ship-card:hover .home2-ship-card__reveal,
 .home2-ship-card:focus-within .home2-ship-card__reveal {
-  transform: scaleX(1);
+  width: 100%;
+}
+
+.home2-ship-card:hover .home2-ship-card__reveal img,
+.home2-ship-card:focus-within .home2-ship-card__reveal img {
+  transform: scaleX(1.1);
 }
 
 .home2-ship-card:hover,
@@ -1410,11 +1510,13 @@ body {
 }
 
 .home2-ship-know-more {
-  @apply bg-neera-gold px-5 py-2.5 text-[10px] font-semibold uppercase tracking-[0.15em] text-white transition-colors hover:bg-neera-gold-dark;
+  font-family: var(--font-marcellus), serif;
+  @apply bg-neera-gold px-10 py-4 text-sm font-semibold uppercase tracking-[0.15em] text-white transition-colors hover:bg-neera-gold-dark;
 }
 
 [dir="rtl"] .home2-ship-know-more {
-  @apply font-bodyAr normal-case tracking-normal;
+  font-family: var(--font-ibm-plex-arabic), sans-serif;
+  @apply normal-case tracking-normal;
 }
 
 .home2-ship-card-active {
@@ -1429,9 +1531,14 @@ body {
   @apply font-bodyAr text-start;
 }
 
-.home2-hero-title.split-heading > span {
+.home2-hero-title {
+  font-weight: 500;
+}
+
+.home2-hero-title > span {
   display: block;
   width: 100%;
+  line-height: inherit;
 }
 
 .home2-pricing-title.split-heading > span {
@@ -1651,14 +1758,8 @@ body {
 
 @media (min-width: 1024px) {
   .home2-ships-track {
-    display: grid;
-    grid-template-columns: repeat(6, minmax(0, 1fr));
-    overflow: visible;
+    overflow-x: auto;
     padding-bottom: 0;
-  }
-
-  .home2-ship-card {
-    min-width: 0;
   }
 }
 
@@ -2006,14 +2107,14 @@ body {
   width: 2rem;
   height: 2rem;
   border: 0;
-  background: #c4a265;
+  background: var(--neera-gold);
   color: #fff;
   cursor: pointer;
   transition: background 0.25s ease;
 }
 
 .home2-offcanvas__close:hover {
-  background: #a8864a;
+  background: var(--neera-gold-dark);
 }
 
 .home2-offcanvas__mobile {
@@ -2038,7 +2139,7 @@ body {
 }
 
 .home2-offcanvas__nav-link:hover {
-  color: #c4a265;
+  color: var(--neera-gold);
 }
 
 .home2-offcanvas__mobile-lang {
@@ -2119,13 +2220,13 @@ body {
   height: 2.5rem;
   border: 0;
   border-radius: 9999px;
-  background: #c4a265;
+  background: var(--neera-gold);
   cursor: pointer;
   transition: background 0.25s ease;
 }
 
 .home2-offcanvas__submit:hover:not(:disabled) {
-  background: #a8864a;
+  background: var(--neera-gold-dark);
 }
 
 .home2-offcanvas__submit:disabled {

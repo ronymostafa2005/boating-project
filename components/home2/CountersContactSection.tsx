@@ -9,6 +9,7 @@ import { HOME2_COUNTERS, HOME2_COUNTERS_BG } from "@/data/home2";
 import { IMAGE_QUALITY } from "@/lib/imageDefaults";
 import { MOTION_EASE } from "@/lib/motionVariants";
 import { cn, bodyFontClass, displayFontClass } from "@/lib/utils";
+import { hydratedInitial, useIsHydrated } from "@/hooks/useIsHydrated";
 
 const COUNTERS_TITLE_GROUPS: Record<string, string[][]> = {
   en: [["We", "Recommend"], ["Beautiful", "Places"]],
@@ -65,6 +66,7 @@ function useCountUp(target: number, active: boolean) {
 }
 
 export function CountersContactSection() {
+  const hydrated = useIsHydrated();
   const t = useTranslations("home2");
   const tContact = useTranslations("contact");
   const locale = useLocale();
@@ -141,7 +143,7 @@ export function CountersContactSection() {
         <motion.div
           className="home2-counters-contact__about pe-0 text-start text-white lg:pe-[10%]"
           variants={fadeInLeft}
-          initial="hidden"
+          initial={hydratedInitial(hydrated, "hidden")}
           whileInView="visible"
           viewport={{ once: true, amount: 0.25 }}
         >
@@ -189,7 +191,7 @@ export function CountersContactSection() {
         <motion.div
           className="home2-counters-contact__form bg-white px-6 py-10 sm:px-10 sm:py-12 lg:px-[60px] lg:py-[60px]"
           variants={fadeInRight}
-          initial="hidden"
+          initial={hydratedInitial(hydrated, "hidden")}
           whileInView="visible"
           viewport={{ once: true, amount: 0.25 }}
         >

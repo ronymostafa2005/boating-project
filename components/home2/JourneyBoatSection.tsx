@@ -10,6 +10,7 @@ import { JourneyDecorIcons } from "@/components/home2/JourneyDecorIcons";
 import { HOME2_TOURS } from "@/data/home2";
 import { MOTION_EASE, slideInFromEnd } from "@/lib/motionVariants";
 import { cn, bodyFontClass, displayFontClass } from "@/lib/utils";
+import { hydratedInitial, useIsHydrated } from "@/hooks/useIsHydrated";
 
 function CapacityIcon({ className }: { className?: string }) {
   return (
@@ -73,6 +74,7 @@ const JOURNEY_TITLE_GROUPS: Record<string, string[][]> = {
 };
 
 export function JourneyBoatSection() {
+  const hydrated = useIsHydrated();
   const t = useTranslations("home2");
   const locale = useLocale();
   const isRtl = locale === "ar";
@@ -85,7 +87,7 @@ export function JourneyBoatSection() {
         <motion.div
           className="home2-journey-heading mx-auto mb-10 max-w-7xl text-center sm:mb-14 lg:mb-[70px]"
           variants={zoomIn}
-          initial="hidden"
+          initial={hydratedInitial(hydrated, "hidden")}
           whileInView="visible"
           viewport={{ once: true, amount: 0.35 }}
         >
@@ -112,7 +114,7 @@ export function JourneyBoatSection() {
         <motion.div
           className="home2-journey-grid"
           variants={fadeInRight(isRtl)}
-          initial="hidden"
+          initial={hydratedInitial(hydrated, "hidden")}
           whileInView="visible"
           viewport={{ once: true, amount: 0.12 }}
         >
@@ -191,7 +193,7 @@ export function JourneyBoatSection() {
         <motion.div
           className="mt-16 flex justify-center sm:mt-20 lg:mt-[100px]"
           variants={fadeIn}
-          initial="hidden"
+          initial={hydratedInitial(hydrated, "hidden")}
           whileInView="visible"
           viewport={{ once: true, amount: 0.5 }}
         >

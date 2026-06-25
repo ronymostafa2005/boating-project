@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useTranslations, useLocale } from "next-intl";
 import { Link } from "@/lib/i18n/navigation";
 import { SplitHeading } from "@/components/ui/SplitHeading";
+import { BackToTopAnchorIcon } from "@/components/ui/BackToTopAnchorIcon";
 import { YachtLogo } from "@/components/ui/YachtLogo";
 import { cn } from "@/lib/utils";
 
@@ -55,15 +56,6 @@ function PaperPlaneIcon({ className }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 100 100" fill="currentColor" aria-hidden>
       <path d="M97.7,6.1c-16.1,5.9-31.4,14.3-47,21.5c-16.6,7.7-33,16.1-49.5,24.2c-1,0.5-0.9,2.4,0.3,2.6c10.9,1.5,21.5,3.9,32.2,6.3c0.2,10.9-0.1,21.8,0.1,32.7c0,1.5,1.8,1.8,2.6,0.7c5.6-8.1,11.4-16.2,17.4-24.1c8.4,5,16.8,10.1,24.8,15.8c0.7,0.5,1.9,0,2.1-0.8c2.5-13.1,5.1-25.7,8.8-38.4c3.7-12.8,7.1-25.6,10-38.6C99.7,6.8,98.8,5.7,97.7,6.1z" />
-    </svg>
-  );
-}
-
-function ScrollTopIcon({ className }: { className?: string }) {
-  return (
-    <svg className={className} viewBox="0 0 30 90" fill="currentColor" aria-hidden>
-      <path d="M14.3,88.6l-12.8-18c-0.3-0.4-0.2-0.9,0.1-1.2c0.3-0.3,0.8-0.4,1.2-0.2L15.1,77l12.2-7.7c0.4-0.2,0.9-0.2,1.2,0.2c0.2,0.2,0.3,0.4,0.3,0.7c0,0.2-0.1,0.4-0.2,0.6L15.8,88.6C15.6,88.9,15.4,89,15,89C14.7,89,14.5,88.9,14.3,88.6z" />
-      <path d="M13,68.5V1h4.3v67.5H13z" />
     </svg>
   );
 }
@@ -385,10 +377,10 @@ export function Footer() {
             <button
               type="button"
               onClick={scrollToTop}
-              className="footer-scroll-top flex h-11 w-11 shrink-0 items-center justify-center bg-neera-gold text-white transition-colors hover:bg-neera-gold-dark"
+              className="footer-scroll-top flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-neera-gold transition-colors hover:bg-neera-gold-dark"
               aria-label={t("scrollTop")}
             >
-              <ScrollTopIcon className="h-4 w-2" />
+              <BackToTopAnchorIcon className="h-8 w-8" />
             </button>
           </div>
         </div>

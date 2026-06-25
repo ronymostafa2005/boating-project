@@ -6,7 +6,8 @@ export const HOME2_HERO_SLIDES = [
     video: `${CDN}/2023/12/Neera-Slider-video-03.mp4`,
     thumb: `${CDN}/2024/01/Neera-slider-2-img-01.png`,
     subtitleKey: "heroSlide1Subtitle",
-    titleKey: "heroSlide1Title",
+    titleLine1Key: "heroSlide1TitleLine1",
+    titleLine2Key: "heroSlide1TitleLine2",
     descKey: "heroSlide1Desc",
   },
   {
@@ -14,7 +15,8 @@ export const HOME2_HERO_SLIDES = [
     video: `${CDN}/2023/12/Neera-Slider-video-02.mp4`,
     thumb: `${CDN}/2024/01/Neera-slider-2-img-03.png`,
     subtitleKey: "heroSlide2Subtitle",
-    titleKey: "heroSlide2Title",
+    titleLine1Key: "heroSlide2TitleLine1",
+    titleLine2Key: "heroSlide2TitleLine2",
     descKey: "heroSlide2Desc",
   },
   {
@@ -22,7 +24,8 @@ export const HOME2_HERO_SLIDES = [
     video: `${CDN}/2023/12/Neera-Slider-video-01.mp4`,
     thumb: `${CDN}/2024/01/Neera-slider-2-img-02.png`,
     subtitleKey: "heroSlide3Subtitle",
-    titleKey: "heroSlide3Title",
+    titleLine1Key: "heroSlide3TitleLine1",
+    titleLine2Key: "heroSlide3TitleLine2",
     descKey: "heroSlide3Desc",
   },
 ] as const;

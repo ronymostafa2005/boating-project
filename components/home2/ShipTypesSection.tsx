@@ -10,7 +10,8 @@ import { ShipTypeIcon } from "@/components/home2/ShipTypeIcons";
 import { HOME2_SHIP_TYPES, HOME2_SHIPS_BG } from "@/data/home2";
 import { IMAGE_QUALITY } from "@/lib/imageDefaults";
 import { MOTION_EASE } from "@/lib/motionVariants";
-import { cn, bodyFontClass, displayFontClass } from "@/lib/utils";
+import { hydratedInitial, useIsHydrated } from "@/hooks/useIsHydrated";
+import { cn, home2FontClass, home2DisplayFontClass } from "@/lib/utils";
 
 function CarouselArrow({ className, flip }: { className?: string; flip?: boolean }) {
   return (
@@ -44,24 +45,32 @@ const fadeInRight: Variants = {
   },
 };
 
+const VISIBLE_SHIP_CARDS = 4;
+
 export function ShipTypesSection() {
+  const hydrated = useIsHydrated();
   const t = useTranslations("home2");
   const locale = useLocale();
   const isRtl = locale === "ar";
   const scrollRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
+  const maxScrollIndex = Math.max(0, HOME2_SHIP_TYPES.length - VISIBLE_SHIP_CARDS);
+  const shipsTitleWords = t("shipsTitle").split(" ");
+  const shipsTitleLines = isRtl
+    ? [shipsTitleWords]
+    : [shipsTitleWords.slice(0, 4), shipsTitleWords.slice(4)];
 
   const scroll = (dir: number) => {
     const el = scrollRef.current;
     if (!el) return;
-    const next = Math.max(0, Math.min(HOME2_SHIP_TYPES.length - 1, activeIndex + dir));
+    const next = Math.max(0, Math.min(maxScrollIndex, activeIndex + dir));
     setActiveIndex(next);
     const card = el.children[next] as HTMLElement | undefined;
-    card?.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+    card?.scrollIntoView({ behavior: "smooth", inline: "start", block: "nearest" });
   };
 
   return (
-    <section className="home2-ships-section relative overflow-hidden py-[60px] sm:py-[80px] lg:py-[100px] xl:py-[150px]">
+    <section className={cn("home2-ships-section relative overflow-hidden py-[60px] sm:py-[80px] lg:py-[100px] xl:py-[150px]", home2FontClass(locale))}>
       <Image
         src={HOME2_SHIPS_BG}
         alt=""
@@ -77,27 +86,27 @@ export function ShipTypesSection() {
       <div className="container-luxury relative z-10">
         <div className="mb-10 flex flex-wrap items-end justify-between gap-6 lg:mb-12">
           <motion.div
-            className="max-w-xl text-start"
+            className="max-w-3xl text-start"
             variants={fadeInLeft}
-            initial="hidden"
+            initial={hydratedInitial(hydrated, "hidden")}
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
           >
             <p
               className={cn(
-                bodyFontClass(locale),
-                "mb-3 text-[11px] font-medium uppercase tracking-[0.24em] text-white/70"
+                home2FontClass(locale),
+                "mb-3 text-xs font-semibold uppercase tracking-[0.24em] text-[#fff] sm:text-sm"
               )}
             >
               {t("shipsEyebrow")}
             </p>
             <SplitHeading
-              wordGroups={[t("shipsTitle").split(" ")]}
+              wordGroups={shipsTitleLines}
               active
               loop
               className={cn(
-                displayFontClass(locale),
-                "text-3xl font-normal leading-[1.12] text-white sm:text-4xl lg:text-[2.65rem]",
+                home2DisplayFontClass(locale),
+                "home2-ships-title text-3xl font-semibold leading-[1.4] text-[#fff] sm:text-4xl sm:leading-[1.45] lg:text-[3rem] lg:leading-[1.5]",
                 isRtl ? "normal-case tracking-normal" : "uppercase tracking-[0.03em]"
               )}
             />
@@ -106,7 +115,7 @@ export function ShipTypesSection() {
           <motion.div
             className="flex items-center gap-4"
             variants={fadeInRight}
-            initial="hidden"
+            initial={hydratedInitial(hydrated, "hidden")}
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
           >
@@ -122,7 +131,7 @@ export function ShipTypesSection() {
             <button
               type="button"
               onClick={() => scroll(1)}
-              disabled={activeIndex === HOME2_SHIP_TYPES.length - 1}
+              disabled={activeIndex >= maxScrollIndex}
               className="home2-ships-arrow disabled:opacity-30"
               aria-label="Next"
             >
@@ -136,7 +145,7 @@ export function ShipTypesSection() {
         ref={scrollRef}
         className="home2-ships-track relative z-10 flex overflow-x-auto"
         variants={fadeInRight}
-        initial="hidden"
+        initial={hydratedInitial(hydrated, "hidden")}
         whileInView="visible"
         viewport={{ once: true, amount: 0.15 }}
       >
@@ -144,7 +153,7 @@ export function ShipTypesSection() {
           <article
             key={ship.key}
             className={cn(
-              "home2-ship-card group relative flex min-h-[420px] min-w-[78%] shrink-0 flex-col justify-between px-6 py-10 sm:min-w-[52%] md:min-w-[38%] lg:min-h-[460px] lg:min-w-0 lg:flex-1 xl:px-8",
+              "home2-ship-card group relative flex min-h-[420px] shrink-0 flex-col justify-between px-6 py-10 lg:min-h-[460px] xl:px-8",
               index < HOME2_SHIP_TYPES.length - 1 && "home2-ship-card-divider"
             )}
             onMouseEnter={() => setActiveIndex(index)}
@@ -167,8 +176,8 @@ export function ShipTypesSection() {
               <ShipTypeIcon index={index} className="mb-6 text-white" />
               <h3
                 className={cn(
-                  displayFontClass(locale),
-                  "mb-4 text-xl text-white sm:text-2xl",
+                  home2DisplayFontClass(locale),
+                  "mb-4 text-2xl font-semibold text-[#fff] sm:text-3xl",
                   !isRtl && "uppercase tracking-[0.04em]"
                 )}
               >
@@ -176,8 +185,8 @@ export function ShipTypesSection() {
               </h3>
               <p
                 className={cn(
-                  bodyFontClass(locale),
-                  "max-w-[280px] text-sm leading-relaxed text-white/78"
+                  home2FontClass(locale),
+                  "max-w-[300px] text-base font-medium leading-relaxed text-[#fff] sm:text-lg"
                 )}
               >
                 {t(ship.descKey)}
@@ -188,7 +197,7 @@ export function ShipTypesSection() {
               href="/boats"
               className={cn(
                 "home2-ship-know-more relative z-10 mt-8 inline-flex w-fit",
-                bodyFontClass(locale)
+                home2FontClass(locale)
               )}
             >
               {t("knowMore")}

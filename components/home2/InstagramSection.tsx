@@ -5,6 +5,7 @@ import { motion, type Variants } from "framer-motion";
 import { HOME2_INSTAGRAM_IMAGES, HOME2_INSTAGRAM_URL } from "@/data/home2";
 import { IMAGE_QUALITY } from "@/lib/imageDefaults";
 import { MOTION_EASE } from "@/lib/motionVariants";
+import { hydratedInitial, useIsHydrated } from "@/hooks/useIsHydrated";
 
 function InstagramIcon() {
   return (
@@ -32,11 +33,12 @@ const fadeInLeft: Variants = {
 };
 
 export function InstagramSection() {
+  const hydrated = useIsHydrated();
   return (
     <motion.section
       className="home2-instagram overflow-hidden"
       variants={fadeInLeft}
-      initial="hidden"
+      initial={hydratedInitial(hydrated, "hidden")}
       whileInView="visible"
       viewport={{ once: true, amount: 0.15 }}
       aria-label="Instagram gallery"

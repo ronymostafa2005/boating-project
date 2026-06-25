@@ -33,7 +33,7 @@ export function Home1Header() {
     <header className="sticky top-0 z-50 w-full overflow-visible border-b border-black/[0.06] bg-white/95 backdrop-blur-md transition-all duration-300">
       <div
         dir="ltr"
-        className="container-luxury grid h-[72px] grid-cols-[1fr_auto_1fr] items-center gap-4 sm:h-20"
+        className="container-luxury-nav grid h-[72px] grid-cols-[1fr_auto_1fr] items-center gap-4 sm:h-20"
       >
         <Link href="/" className="col-start-1 row-start-1 flex justify-self-start">
           <NavbarLogo locale={locale} textClassName="text-[#1a1a1a]" />

@@ -8,6 +8,7 @@ import {
   Jost,
   Tajawal,
 } from "next/font/google";
+import localFont from "next/font/local";
 import { routing } from "@/i18n/routing";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -50,6 +51,13 @@ const tajawal = Tajawal({
   display: "swap",
 });
 
+const marcellus = localFont({
+  src: "../fonts/Marcellus-Regular.ttf",
+  variable: "--font-marcellus",
+  display: "swap",
+  weight: "400",
+});
+
 type Props = {
   children: React.ReactNode;
   params: Promise<{ locale: string }>;
@@ -79,7 +87,7 @@ export default async function LocaleLayout({ children, params }: Props) {
   return (
     <html lang={locale} dir={isArabic ? "rtl" : "ltr"}>
       <body
-        className={`${reemKufi.variable} ${ibmPlexArabic.variable} ${cormorant.variable} ${jost.variable} ${tajawal.variable} ${fontClasses} ${displayFont} bg-white text-foreground antialiased`}
+        className={`${reemKufi.variable} ${ibmPlexArabic.variable} ${cormorant.variable} ${jost.variable} ${tajawal.variable} ${marcellus.variable} ${fontClasses} ${displayFont} bg-white text-foreground antialiased`}
       >
         <NextIntlClientProvider messages={messages}>
           <Header />

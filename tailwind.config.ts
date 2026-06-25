@@ -7,18 +7,19 @@ const config: Config = {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  safelist: ["font-marcellus"],
   theme: {
     extend: {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
         gold: {
-          DEFAULT: "#D4A017",
-          light: "#E8C547",
-          dark: "#B8860B",
+          DEFAULT: "#b19d7f",
+          light: "#c4b59a",
+          dark: "#9a8668",
         },
-        "neera-gold": "#C4A265",
-        "neera-gold-dark": "#A8864A",
+        "neera-gold": "#b19d7f",
+        "neera-gold-dark": "#9a8668",
         luxury: {
           black: "#0A0A0A",
           charcoal: "#1A1A1A",
@@ -30,6 +31,7 @@ const config: Config = {
         bodyAr: ["var(--font-ibm-plex-arabic)", "sans-serif"],
         displayEn: ["var(--font-cormorant)", "serif"],
         bodyEn: ["var(--font-jost)", "sans-serif"],
+        marcellus: ["var(--font-marcellus)", "serif"],
         tajawal: ["var(--font-tajawal)", "sans-serif"],
       },
       animation: {

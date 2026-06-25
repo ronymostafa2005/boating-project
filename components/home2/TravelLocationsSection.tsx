@@ -9,6 +9,7 @@ import { HOME2_LOCATION_TABS } from "@/data/home2";
 import { IMAGE_QUALITY } from "@/lib/imageDefaults";
 import { MOTION_EASE, slideInFromEnd } from "@/lib/motionVariants";
 import { cn, bodyFontClass, displayFontClass } from "@/lib/utils";
+import { hydratedInitial, useIsHydrated } from "@/hooks/useIsHydrated";
 
 const LOCATIONS_TITLE_GROUPS: Record<string, string[][]> = {
   en: [["Visit", "stunning"], ["locations"]],
@@ -42,6 +43,7 @@ const zoomIn: Variants = {
 };
 
 export function TravelLocationsSection() {
+  const hydrated = useIsHydrated();
   const t = useTranslations("home2");
   const locale = useLocale();
   const isRtl = locale === "ar";
@@ -57,7 +59,7 @@ export function TravelLocationsSection() {
         <motion.div
           className="home2-locations-heading mx-auto mb-8 max-w-4xl text-center sm:mb-10 lg:mb-12"
           variants={zoomIn}
-          initial="hidden"
+          initial={hydratedInitial(hydrated, "hidden")}
           whileInView="visible"
           viewport={{ once: true, amount: 0.35 }}
         >
@@ -84,7 +86,7 @@ export function TravelLocationsSection() {
         <motion.div
           className="home2-locations-tabs mb-8 sm:mb-10 lg:mb-12"
           variants={fadeInRight}
-          initial="hidden"
+          initial={hydratedInitial(hydrated, "hidden")}
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
         >
@@ -119,7 +121,7 @@ export function TravelLocationsSection() {
           <motion.div
             key={tab.id}
             className="home2-locations-panel grid lg:grid-cols-2"
-            initial={{ opacity: 0, y: 16 }}
+            initial={hydratedInitial(hydrated, { opacity: 0, y: 16 })}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.45, ease: MOTION_EASE }}
@@ -127,7 +129,7 @@ export function TravelLocationsSection() {
             <motion.div
               className="home2-locations-map border-[#1a1a1a]/10 lg:border-e lg:pe-0"
               variants={fadeInLeft}
-              initial="hidden"
+              initial={hydratedInitial(hydrated, "hidden")}
               whileInView="visible"
               viewport={{ once: true, amount: 0.2 }}
             >
@@ -174,7 +176,7 @@ export function TravelLocationsSection() {
             <motion.div
               className="home2-locations-itinerary px-0 pt-10 lg:px-[10%] lg:pt-0"
               variants={fadeInRight}
-              initial="hidden"
+              initial={hydratedInitial(hydrated, "hidden")}
               whileInView="visible"
               viewport={{ once: true, amount: 0.2 }}
             >
@@ -202,7 +204,7 @@ export function TravelLocationsSection() {
                   key={`${tab.id}-line`}
                   className="home2-locations-schedule__line"
                   aria-hidden
-                  initial={{ clipPath: "inset(0 0 100% 0)" }}
+                  initial={hydratedInitial(hydrated, { clipPath: "inset(0 0 100% 0)" })}
                   animate={{ clipPath: "inset(0 0 0% 0)" }}
                   transition={{ duration: 1.05, ease: MOTION_EASE, delay: 0.15 }}
                 />

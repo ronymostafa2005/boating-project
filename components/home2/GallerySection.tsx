@@ -10,6 +10,7 @@ import { HOME2_GALLERY_FEATURES, HOME2_GALLERY_IMAGES } from "@/data/home2";
 import { IMAGE_QUALITY } from "@/lib/imageDefaults";
 import { MOTION_EASE, slideInFromEnd } from "@/lib/motionVariants";
 import { cn, bodyFontClass, displayFontClass } from "@/lib/utils";
+import { hydratedInitial, useIsHydrated } from "@/hooks/useIsHydrated";
 
 const GALLERY_TITLE_GROUPS: Record<string, string[][]> = {
   en: [["Why", "Cruise"], ["Nation?"]],
@@ -45,6 +46,7 @@ const featureItem: Variants = {
 };
 
 export function GallerySection() {
+  const hydrated = useIsHydrated();
   const t = useTranslations("home2");
   const locale = useLocale();
   const isRtl = locale === "ar";
@@ -58,7 +60,7 @@ export function GallerySection() {
       <div className="container-luxury mb-10 text-center sm:mb-12 lg:mb-14">
         <motion.div
           variants={zoomIn}
-          initial="hidden"
+          initial={hydratedInitial(hydrated, "hidden")}
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
         >
@@ -86,7 +88,7 @@ export function GallerySection() {
       <div className="container-luxury mb-12 lg:mb-[50px]">
         <motion.div
           className="home2-gallery-features"
-          initial="hidden"
+          initial={hydratedInitial(hydrated, "hidden")}
           whileInView="visible"
           viewport={{ once: true, amount: 0.15 }}
         >
@@ -117,7 +119,7 @@ export function GallerySection() {
       <motion.div
         className="home2-gallery-masonry"
         variants={fadeInRight}
-        initial="hidden"
+        initial={hydratedInitial(hydrated, "hidden")}
         whileInView="visible"
         viewport={{ once: true, amount: 0.1 }}
       >

@@ -10,6 +10,7 @@ import type { PricingFeatureStatus } from "@/data/home2";
 import { IMAGE_QUALITY } from "@/lib/imageDefaults";
 import { MOTION_EASE } from "@/lib/motionVariants";
 import { cn, bodyFontClass, displayFontClass } from "@/lib/utils";
+import { hydratedInitial, useIsHydrated } from "@/hooks/useIsHydrated";
 
 function CheckIcon({ className }: { className?: string }) {
   return (
@@ -52,6 +53,7 @@ const fadeInRight = (isRtl: boolean, delay = 0.2): Variants => ({
 });
 
 export function PricingPlanSection() {
+  const hydrated = useIsHydrated();
   const t = useTranslations("home2");
   const locale = useLocale();
   const isRtl = locale === "ar";
@@ -63,7 +65,7 @@ export function PricingPlanSection() {
         <motion.div
           className="mx-auto max-w-4xl text-center"
           variants={zoomIn}
-          initial="hidden"
+          initial={hydratedInitial(hydrated, "hidden")}
           whileInView="visible"
           viewport={{ once: true, amount: 0.35 }}
         >
@@ -97,7 +99,7 @@ export function PricingPlanSection() {
               key={plan.nameKey}
               className={cn("home2-pricing-card", featured && "home2-pricing-card--featured")}
               variants={fadeInRight(isRtl, 0.2 + index * 0.2)}
-              initial="hidden"
+              initial={hydratedInitial(hydrated, "hidden")}
               whileInView="visible"
               viewport={{ once: true, amount: 0.15 }}
             >

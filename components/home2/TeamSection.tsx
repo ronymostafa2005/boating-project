@@ -8,6 +8,7 @@ import { HOME2_TEAM, HOME2_TEAM_BG } from "@/data/home2";
 import { IMAGE_QUALITY } from "@/lib/imageDefaults";
 import { MOTION_EASE, slideInFromEnd } from "@/lib/motionVariants";
 import { cn, bodyFontClass, displayFontClass } from "@/lib/utils";
+import { hydratedInitial, useIsHydrated } from "@/hooks/useIsHydrated";
 
 const SOCIAL_LINKS = [
   { label: "Facebook", href: "https://www.facebook.com", icon: "facebook" },
@@ -55,6 +56,7 @@ const zoomIn: Variants = {
 };
 
 export function TeamSection() {
+  const hydrated = useIsHydrated();
   const t = useTranslations("home2");
   const locale = useLocale();
   const isRtl = locale === "ar";
@@ -78,7 +80,7 @@ export function TeamSection() {
         <motion.div
           className="mx-auto mb-12 max-w-3xl text-center lg:mb-14"
           variants={zoomIn}
-          initial="hidden"
+          initial={hydratedInitial(hydrated, "hidden")}
           whileInView="visible"
           viewport={{ once: true, amount: 0.35 }}
         >
@@ -105,7 +107,7 @@ export function TeamSection() {
         <motion.div
           className="home2-team-track"
           variants={slideInFromEnd(isRtl, 40, 0.3)}
-          initial="hidden"
+          initial={hydratedInitial(hydrated, "hidden")}
           whileInView="visible"
           viewport={{ once: true, amount: 0.12 }}
         >
