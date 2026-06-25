@@ -807,5 +807,24 @@
     "newsletterSubmit": "Submit",
     "newsletterPrivacy": "You agree to our friendly Privacy Policy.",
     "newsletterClose": "Close"
+  },
+  "comingSoon": {
+    "metaTitle": "Coming Soon",
+    "metaDescription": "Neera Yacht is launching soon. Stay tuned for our new experience.",
+    "title": "Coming Soon",
+    "description": "Theme natoque penatibus et magnis dis parturient, nascetur mus. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum.",
+    "backToHome": "Back To Home",
+    "days": "Days",
+    "hours": "Hrs",
+    "minutes": "Mins",
+    "seconds": "Secs"
+  },
+  "page404": {
+    "title": "404 Page",
+    "metaDescription": "The page you are looking for could not be found.",
+    "code": "404",
+    "heading": "Oops ! The Page Not Found.",
+    "description": "Proin non eros elementum, sagittis diam at, feugiat nunc. Ut velit arcu, posuere at neque quis, vestibulum vehicula dui. Praesent at felis ante. Cras sed ultricies risus. Nullam porta fermentum egestas. Praesent quis mauris ultrices.",
+    "backToHome": "Back To Home"
   }
 }

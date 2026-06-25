@@ -1,12 +1,18 @@
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import type { Metadata } from "next";
-import { generateSimplePageMetadata, SimpleContentPage } from "@/components/pages/SimpleContentPage";
+import { ComingSoonSection } from "@/components/coming-soon/ComingSoonSection";
 
 type Props = { params: Promise<{ locale: string }> };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  return generateSimplePageMetadata({ params }, "comingSoon");
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "comingSoon" });
+  return { title: t("metaTitle"), description: t("metaDescription") };
 }
 
-export default function ComingSoonPage({ params }: Props) {
-  return <SimpleContentPage params={params} pageKey="comingSoon" />;
+export default async function ComingSoonPage({ params }: Props) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
+  return <ComingSoonSection locale={locale} fullScreen />;
 }
