@@ -16,7 +16,7 @@ export function buildNavItems(): NavDropdownItem[] {
           showArrow: true,
           children: [
             { key: "shopListing", href: "/shop" },
-            { key: "shopDetail", href: "/shop/detail" },
+            { key: "shopDetail", href: "/shop/direction-compass" },
             { key: "myAccount", href: "/my-account" },
             { key: "cart", href: "/cart" },
             { key: "wishlist", href: "/wishlist" },

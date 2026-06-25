@@ -2,15 +2,25 @@ import { Link } from "@/lib/i18n/navigation";
 import { cn, bodyFontClass, displayFontClass } from "@/lib/utils";
 
 const BREADCRUMB_BG =
-  "https://neera.wpenginepowered.com/wp-content/uploads/2024/01/Neera-breadrcrumb-img-2.jpg";
+  "https://neera.wpenginepowered.com/wp-content/uploads/2024/01/Neera-breadrcrumb-img-01.jpg";
+
+export type BreadcrumbSegment = {
+  label: string;
+  href?: string;
+};
 
 interface PageBreadcrumbProps {
   title: string;
   homeLabel: string;
   locale: string;
+  segments?: BreadcrumbSegment[];
 }
 
-export function PageBreadcrumb({ title, homeLabel, locale }: PageBreadcrumbProps) {
+export function PageBreadcrumb({ title, homeLabel, locale, segments }: PageBreadcrumbProps) {
+  const trail = segments?.length
+    ? segments
+    : [{ label: title }];
+
   return (
     <section className="neera-page-breadcrumb aligncenter overlay-wrapper dark-bg-breadcrumb">
       <div className="neera-page-breadcrumb__container">
@@ -20,8 +30,16 @@ export function PageBreadcrumb({ title, homeLabel, locale }: PageBreadcrumbProps
           </div>
           <nav className={cn("neera-page-breadcrumb__trail", bodyFontClass(locale))} aria-label="Breadcrumb">
             <Link href="/">{homeLabel}</Link>
-            <span className="neera-page-breadcrumb__delimiter" aria-hidden />
-            <span className="current">{title}</span>
+            {trail.map((segment, index) => (
+              <span key={`${segment.label}-${index}`} className="contents">
+                <span className="neera-page-breadcrumb__delimiter" aria-hidden />
+                {segment.href ? (
+                  <Link href={segment.href}>{segment.label}</Link>
+                ) : (
+                  <span className="current">{segment.label}</span>
+                )}
+              </span>
+            ))}
           </nav>
         </div>
       </div>
