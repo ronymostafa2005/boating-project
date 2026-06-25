@@ -21,7 +21,7 @@ export function Home1Header() {
     href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(`${href}/`);
 
   return (
-    <header className="sticky top-0 z-50 w-full overflow-visible border-b border-black/[0.06] bg-white/95 backdrop-blur-md transition-all duration-300">
+    <header className="home1-header fixed inset-x-0 top-0 z-[100] w-full overflow-visible border-b border-black/[0.06] bg-white/95 backdrop-blur-md transition-all duration-300">
       <div
         dir="ltr"
         className="container-luxury-nav grid h-[72px] grid-cols-[1fr_auto_1fr] items-center gap-4 sm:h-20"

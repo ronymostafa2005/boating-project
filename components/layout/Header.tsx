@@ -12,5 +12,10 @@ export function Header() {
     return <Home2Header />;
   }
 
-  return <Home1Header />;
+  return (
+    <>
+      <Home1Header />
+      <div className="home1-header-spacer h-[72px] sm:h-20" aria-hidden />
+    </>
+  );
 }

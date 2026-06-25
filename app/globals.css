@@ -3595,6 +3595,8 @@ body {
 /* ── 404 Page (Neera type2 dark) ── */
 body:has(.page-404--fullscreen) header,
 body:has(.coming-soon--fullscreen) header,
+body:has(.page-404--fullscreen) .home1-header-spacer,
+body:has(.coming-soon--fullscreen) .home1-header-spacer,
 body:has(.page-404--fullscreen) .neera-footer,
 body:has(.coming-soon--fullscreen) .neera-footer,
 body:has(.page-404--fullscreen) button.fixed.bottom-8.right-8,
