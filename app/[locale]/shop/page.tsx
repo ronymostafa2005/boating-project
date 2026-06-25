@@ -1,12 +1,28 @@
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import type { Metadata } from "next";
-import { generateSimplePageMetadata, SimpleContentPage } from "@/components/pages/SimpleContentPage";
+import { PageBreadcrumb } from "@/components/ui/PageBreadcrumb";
+import { ShopListingSection } from "@/components/shop/ShopListingSection";
 
-type Props = { params: Promise<{ locale: string }> };
+type Props = {
+  params: Promise<{ locale: string }>;
+};
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  return generateSimplePageMetadata({ params }, "shop");
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "shop" });
+  return { title: t("title"), description: t("metaDescription") };
 }
 
-export default function ShopPage({ params }: Props) {
-  return <SimpleContentPage params={params} pageKey="shop" />;
+export default async function ShopPage({ params }: Props) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const t = await getTranslations("shop");
+  const tNav = await getTranslations("nav");
+
+  return (
+    <>
+      <PageBreadcrumb title={t("title")} homeLabel={tNav("home")} locale={locale} />
+      <ShopListingSection />
+    </>
+  );
 }
