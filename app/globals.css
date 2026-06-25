@@ -128,11 +128,11 @@ body {
   }
 
   .neera-nav-link {
-    @apply font-bodyEn text-[11px] font-medium uppercase tracking-[0.18em] text-[#1a1a1a]/80 transition-colors hover:text-neera-gold;
+    @apply font-bodyEn text-[13px] font-medium uppercase tracking-[0.16em] text-[#1a1a1a]/80 transition-colors hover:text-neera-gold;
   }
 
   .neera-nav-link-light {
-    @apply font-bodyEn text-[11px] font-medium uppercase tracking-[0.18em] text-white/85 transition-colors hover:text-neera-gold;
+    @apply font-bodyEn text-[13px] font-medium uppercase tracking-[0.16em] text-white/85 transition-colors hover:text-neera-gold;
   }
 
   .home2-quote-btn {
@@ -140,7 +140,7 @@ body {
   }
 
   .neera-nav-dropdown-item {
-    @apply px-6 py-3.5 text-start font-bodyEn text-[10px] font-semibold uppercase tracking-[0.16em] text-[#1a1a1a]/90 transition-colors hover:text-neera-gold;
+    @apply px-6 py-3.5 text-start font-bodyEn text-[12px] font-semibold uppercase tracking-[0.14em] text-[#1a1a1a]/90 transition-colors hover:text-neera-gold;
   }
 
   .neera-page-breadcrumb {
@@ -1199,15 +1199,46 @@ body {
 }
 
 .home2-header .neera-nav-link-light {
-  @apply text-[13.5px] font-semibold tracking-[0.22em] text-[#fff] transition-colors hover:text-neera-gold;
+  @apply text-[15px] font-semibold tracking-[0.2em] text-[#fff] transition-colors hover:text-neera-gold;
 }
 
-[dir="rtl"] .home2-header .neera-nav-dropdown-item {
+[dir="rtl"] .neera-nav-link {
   font-family: var(--font-ibm-plex-arabic), sans-serif;
+  font-size: 1.125rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+
+[dir="rtl"] .neera-nav-dropdown-item {
+  font-family: var(--font-ibm-plex-arabic), sans-serif;
+  font-size: 1.0625rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
 }
 
 [dir="rtl"] .home2-header .neera-nav-link-light {
   font-family: var(--font-ibm-plex-arabic), sans-serif;
+  font-size: 1.1875rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+
+[dir="rtl"] .home2-header .neera-nav-dropdown-item {
+  font-family: var(--font-ibm-plex-arabic), sans-serif;
+  font-size: 1.125rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+[dir="rtl"] .home2-offcanvas__nav-link {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: none;
 }
 
 .home2-header .home2-quote-btn {
