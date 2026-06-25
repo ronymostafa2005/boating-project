@@ -1,30 +1,49 @@
 import type { NavDropdownItem } from "@/components/layout/NavDropdown";
 
-export function buildNavItems(
-  switchLocale: () => void,
-  pathname: string
-): NavDropdownItem[] {
-  const isHome1 = pathname === "/";
-  const isHome2 = pathname === "/home-2";
-
+export function buildNavItems(): NavDropdownItem[] {
   return [
-    {
-      key: "home",
-      children: [
-        { key: "homeMarine", href: "/", active: isHome1 },
-        { key: "homeYacht", href: "/home-2", active: isHome2 },
-        { key: "rtlVersion", onClick: switchLocale, showArrow: true },
-      ],
-    },
+    { key: "home", href: "/" },
     {
       key: "pages",
       children: [
-        { key: "about", href: "/about" },
-        { key: "howItWorks", href: "/how-it-works" },
-        { key: "safety", href: "/safety" },
-        { key: "listBoat", href: "/list-your-boat" },
-        { key: "terms", href: "/terms" },
-        { key: "privacy", href: "/privacy" },
+        { key: "aboutUs", href: "/about" },
+        { key: "faq", href: "/faq" },
+        { key: "ourCrew", href: "/our-crew" },
+        { key: "pricingPlans", href: "/pricing-plans" },
+        {
+          key: "shop",
+          href: "/shop",
+          showArrow: true,
+          children: [
+            { key: "shopListing", href: "/shop" },
+            { key: "shopDetail", href: "/shop/detail" },
+            { key: "myAccount", href: "/my-account" },
+            { key: "cart", href: "/cart" },
+            { key: "wishlist", href: "/wishlist" },
+            { key: "checkout", href: "/checkout" },
+          ],
+        },
+        {
+          key: "portfolio",
+          href: "/portfolio",
+          showArrow: true,
+          children: [
+            { key: "portfolioListing", href: "/portfolio" },
+            { key: "portfolioDetail", href: "/portfolio/detail" },
+          ],
+        },
+        {
+          key: "services",
+          href: "/services",
+          showArrow: true,
+          children: [
+            { key: "serviceListing", href: "/services" },
+            { key: "serviceDetail", href: "/services/detail" },
+          ],
+        },
+        { key: "login", href: "/login" },
+        { key: "comingSoon", href: "/coming-soon" },
+        { key: "page404", href: "/404" },
       ],
     },
     { key: "locations", href: "/map" },

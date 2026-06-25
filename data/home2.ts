@@ -381,3 +381,5 @@ export const HOME2_INSTAGRAM_IMAGES = [
 ] as const;
 
 export const HOME2_NEWSLETTER_IMAGE = `${CDN}/2023/12/Neera-Newsletter-aside-img.jpg`;
+
+export const HOME2_CLIENTS_IMAGE = `${CDN}/2024/01/Neera-clients-img.png`;

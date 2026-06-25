@@ -54,7 +54,7 @@ export function GallerySection() {
   const fadeInRight: Variants = slideInFromEnd(isRtl, 40, 0.4);
 
   return (
-    <section className="home2-gallery overflow-hidden bg-[#f4efe8] py-14 sm:py-20 lg:py-[150px]">
+    <section className="home2-gallery overflow-hidden bg-pearl py-14 sm:py-20 lg:py-[150px]">
       <div className="container-luxury mb-10 text-center sm:mb-12 lg:mb-14">
         <motion.div
           variants={zoomIn}

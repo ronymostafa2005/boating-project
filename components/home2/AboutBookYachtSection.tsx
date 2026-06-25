@@ -92,7 +92,7 @@ export function AboutBookYachtSection() {
             </p>
 
             <SplitHeading
-              wordGroups={[t("aboutTitle").split(" ")]}
+              wordGroups={t("aboutTitle").split(" ").map((word) => [word])}
               active
               loop
               className={cn(

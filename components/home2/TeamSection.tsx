@@ -72,7 +72,7 @@ export function TeamSection() {
         priority={false}
         aria-hidden
       />
-      <div className="absolute inset-0 bg-[#021526]/72" aria-hidden />
+      <div className="absolute inset-0 bg-deep-sea/72" aria-hidden />
 
       <div className="container-luxury relative z-10">
         <motion.div

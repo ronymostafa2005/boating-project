@@ -57,7 +57,7 @@ export function PortfolioSection() {
   );
 
   return (
-    <section className="home2-portfolio overflow-hidden bg-[#f4efe8] py-16 lg:py-24 xl:py-28">
+    <section className="home2-portfolio overflow-hidden bg-pearl py-16 lg:py-24 xl:py-28">
       <div className="container-luxury mb-10 lg:mb-12">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <motion.div

@@ -1,18 +1,17 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import type { Metadata } from "next";
-import { Hero } from "@/components/ui/Hero";
-import { BookNowSection } from "@/components/ui/BookNowSection";
-import { CategoryShowcase } from "@/components/ui/CategoryShowcase";
-import { BoatTravellingSection } from "@/components/ui/BoatTravellingSection";
-import { BoatSelectSection } from "@/components/ui/BoatSelectSection";
-import { StatsCounterSection } from "@/components/ui/StatsCounterSection";
-import { GorgeousVistasSection } from "@/components/ui/GorgeousVistasSection";
-import { ExtravagantBoatSection } from "@/components/ui/ExtravagantBoatSection";
-import { TestimonialsSection } from "@/components/ui/TestimonialsSection";
-import { BlogUpdatesSection } from "@/components/ui/BlogUpdatesSection";
-import { FaqParallaxSection } from "@/components/ui/FaqParallaxSection";
-import { PartnersSection } from "@/components/ui/PartnersSection";
-import type { Locale } from "@/types/locale";
+import { HeroHome2 } from "@/components/home2/HeroHome2";
+import { AboutBookYachtSection } from "@/components/home2/AboutBookYachtSection";
+import { ShipTypesSection } from "@/components/home2/ShipTypesSection";
+import { JourneyBoatSection } from "@/components/home2/JourneyBoatSection";
+import { PortfolioSection } from "@/components/home2/PortfolioSection";
+import { PricingPlanSection } from "@/components/home2/PricingPlanSection";
+import { TeamSection } from "@/components/home2/TeamSection";
+import { TravelLocationsSection } from "@/components/home2/TravelLocationsSection";
+import { CountersContactSection } from "@/components/home2/CountersContactSection";
+import { GallerySection } from "@/components/home2/GallerySection";
+import { InstagramSection } from "@/components/home2/InstagramSection";
+import { NewsletterPopup } from "@/components/home2/NewsletterPopup";
 
 export const revalidate = 3600;
 
@@ -22,54 +21,31 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "metadata" });
+  const t = await getTranslations({ locale, namespace: "home2" });
   return {
-    title: t("title"),
-    description: t("description"),
+    title: t("metaTitle"),
+    description: t("metaDescription"),
   };
 }
 
 export default async function HomePage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
-  const t = await getTranslations("home");
 
   return (
-    <>
-      <Hero
-        eyebrow={t("heroEyebrow")}
-        titleLine1={t("heroTitleLine1")}
-        titleLine2={t("heroTitleLine2")}
-        description={t("heroDescription")}
-        exploreText={t("heroExplore")}
-        exploreHref="/boats"
-        viewVideoText={t("heroViewVideo")}
-        prevLabel={t("heroPrev")}
-        nextLabel={t("heroNext")}
-        locale={locale as Locale}
-      />
-
-      <BookNowSection />
-
-      <CategoryShowcase />
-
-      <BoatTravellingSection />
-
-      <BoatSelectSection />
-
-      <StatsCounterSection />
-
-      <GorgeousVistasSection />
-
-      <ExtravagantBoatSection />
-
-      <TestimonialsSection />
-
-      <BlogUpdatesSection />
-
-      <FaqParallaxSection />
-
-      <PartnersSection />
-    </>
+    <div className="home2-page">
+      <HeroHome2 />
+      <AboutBookYachtSection />
+      <ShipTypesSection />
+      <JourneyBoatSection />
+      <PortfolioSection />
+      <PricingPlanSection />
+      <TeamSection />
+      <TravelLocationsSection />
+      <CountersContactSection />
+      <GallerySection />
+      <InstagramSection />
+      <NewsletterPopup />
+    </div>
   );
 }

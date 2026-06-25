@@ -7,6 +7,15 @@ const nextConfig = {
   experimental: {
     serverComponentsExternalPackages: ["@sanity/client", "@sanity/image-url"],
   },
+  async redirects() {
+    return [
+      {
+        source: "/:locale(en|ar)/home-2",
+        destination: "/:locale",
+        permanent: true,
+      },
+    ];
+  },
   images: {
     remotePatterns: [
       {

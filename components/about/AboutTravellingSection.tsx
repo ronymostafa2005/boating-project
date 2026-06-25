@@ -5,6 +5,8 @@ import Image from "next/image";
 import { useTranslations, useLocale } from "next-intl";
 import { Link } from "@/lib/i18n/navigation";
 import { SplitHeading } from "@/components/ui/SplitHeading";
+import { HOME2_CLIENTS_IMAGE } from "@/data/home2";
+import { IMAGE_QUALITY } from "@/lib/imageDefaults";
 import { cn, bodyFontClass, displayFontClass } from "@/lib/utils";
 
 const FEATURE_KEYS = [
@@ -58,9 +60,6 @@ function ExperienceIcon() {
 
 const FEATURE_ICONS = [VesselIcon, SurfIcon, QualityIcon, CookingIcon, ExperienceIcon];
 
-const REVIEWS_IMAGE =
-  "https://neera.wpenginepowered.com/wp-content/uploads/2024/01/Neera-clients-img.png";
-
 function FadeInRight({
   children,
   delay = 0,
@@ -82,7 +81,7 @@ function FadeInRight({
   );
 }
 
-export function BoatTravellingSection() {
+export function AboutTravellingSection() {
   const t = useTranslations("home");
   const locale = useLocale();
   const isRtl = locale === "ar";
@@ -145,89 +144,81 @@ export function BoatTravellingSection() {
         dir="ltr"
         className="container-luxury relative z-10 flex min-h-screen items-center py-20 lg:py-28"
       >
-          <div
-            dir={isRtl ? "rtl" : "ltr"}
+        <div
+          dir={isRtl ? "rtl" : "ltr"}
+          className={cn(
+            "travelling-content ml-auto w-full max-w-xl lg:max-w-[46%] xl:max-w-[42%]",
+            isRtl ? "text-right" : "text-left"
+          )}
+        >
+          <SplitHeading
+            wordGroups={[t("travellingTitleLine1").split(" "), t("travellingTitleLine2").split(" ")]}
+            active={contentVisible}
             className={cn(
-              "travelling-content ml-auto w-full max-w-xl lg:max-w-[46%] xl:max-w-[42%]",
-              isRtl ? "text-right" : "text-left"
+              displayFontClass(locale),
+              "travelling-heading mb-6 w-full text-4xl font-normal leading-[1.15] text-white sm:text-5xl lg:text-[3.35rem]",
+              isRtl ? "normal-case tracking-normal" : "uppercase tracking-[0.06em]"
             )}
-          >
-            <SplitHeading
-              wordGroups={[
-                t("travellingTitleLine1").split(" "),
-                t("travellingTitleLine2").split(" "),
-              ]}
-              active={contentVisible}
-              loop
+          />
+
+          <FadeInRight visible={contentVisible} delay={900}>
+            <p
               className={cn(
-                displayFontClass(locale),
-                "travelling-heading mb-6 w-full text-4xl font-normal leading-[1.15] text-white sm:text-5xl lg:text-[3.35rem]",
-                isRtl ? "normal-case tracking-normal" : "uppercase tracking-[0.06em]"
+                bodyFontClass(locale),
+                "mb-10 max-w-lg text-sm leading-relaxed text-white/90"
               )}
-            />
+            >
+              {t("travellingDescription")}
+            </p>
+          </FadeInRight>
 
-            <FadeInRight visible={contentVisible} delay={900}>
-              <p
-                className={cn(
-                  bodyFontClass(locale),
-                  "mb-10 max-w-lg text-sm leading-relaxed text-white/90"
-                )}
-              >
-                {t("travellingDescription")}
-              </p>
-            </FadeInRight>
-
-            <div className="mb-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3">
-              {FEATURE_KEYS.map((key, index) => {
-                const Icon = FEATURE_ICONS[index];
-                return (
-                  <FadeInRight
-                    key={key}
-                    visible={contentVisible}
-                    delay={1020 + index * 90}
-                  >
-                    <div className="flex items-start gap-3 text-left">
-                      <Icon />
-                      <p
-                        dir={isRtl ? "rtl" : "ltr"}
-                        className={cn(bodyFontClass(locale), "text-sm leading-snug text-white/90")}
-                      >
-                        {t(key)}
-                      </p>
-                    </div>
-                  </FadeInRight>
-                );
-              })}
-            </div>
-
-            <FadeInRight visible={contentVisible} delay={1500}>
-              <div dir="ltr" className="flex flex-wrap items-center justify-start gap-6">
-                <Link href="/boats" className="neera-btn-know-more inline-flex shrink-0">
-                  {t("travellingExplore")}
-                </Link>
-
-                <div className="flex items-center gap-4">
-                  <div className="relative h-10 w-[88px] shrink-0">
-                    <Image
-                      src={REVIEWS_IMAGE}
-                      alt=""
-                      fill
-                      className="object-contain object-start"
-                      sizes="88px"
-                    />
+          <div className="mb-10 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+            {FEATURE_KEYS.map((key, index) => {
+              const Icon = FEATURE_ICONS[index];
+              return (
+                <FadeInRight key={key} visible={contentVisible} delay={1020 + index * 90}>
+                  <div className="flex items-start gap-3 text-start">
+                    <Icon />
+                    <p
+                      dir={isRtl ? "rtl" : "ltr"}
+                      className={cn(bodyFontClass(locale), "text-sm leading-snug text-white/90")}
+                    >
+                      {t(key)}
+                    </p>
                   </div>
-                  <p
-                    dir={isRtl ? "rtl" : "ltr"}
-                    className={cn(displayFontClass(locale), "whitespace-nowrap text-lg text-white")}
-                  >
-                    {t("travellingReviews")}
-                  </p>
-                </div>
-              </div>
-            </FadeInRight>
+                </FadeInRight>
+              );
+            })}
           </div>
-        </div>
 
+          <FadeInRight visible={contentVisible} delay={1500}>
+            <div dir="ltr" className="flex flex-wrap items-center justify-start gap-6">
+              <Link href="/map" className="travelling-explore-btn inline-flex shrink-0">
+                {t("travellingExplore")}
+              </Link>
+
+              <Link href="/faq" className="flex items-center gap-4 transition-opacity hover:opacity-90">
+                <div className="relative h-10 w-[88px] shrink-0">
+                  <Image
+                    src={HOME2_CLIENTS_IMAGE}
+                    alt=""
+                    fill
+                    quality={IMAGE_QUALITY}
+                    className="object-contain object-start"
+                    sizes="88px"
+                  />
+                </div>
+                <p
+                  dir={isRtl ? "rtl" : "ltr"}
+                  className={cn(displayFontClass(locale), "whitespace-nowrap text-lg text-white")}
+                >
+                  {t("travellingReviews")}
+                </p>
+              </Link>
+            </div>
+          </FadeInRight>
+        </div>
+      </div>
     </section>
   );
 }

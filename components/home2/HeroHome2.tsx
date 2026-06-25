@@ -7,7 +7,7 @@ import { Link } from "@/lib/i18n/navigation";
 import { SplitHeading } from "@/components/ui/SplitHeading";
 import { HOME2_HERO_SLIDES } from "@/data/home2";
 import { IMAGE_QUALITY } from "@/lib/imageDefaults";
-import { cn, bodyFontClass, displayFontClass } from "@/lib/utils";
+import { cn, bodyFontClass, scriptFontClass } from "@/lib/utils";
 
 export function HeroHome2() {
   const t = useTranslations("home2");
@@ -22,7 +22,7 @@ export function HeroHome2() {
   const slide = HOME2_HERO_SLIDES[active];
 
   return (
-    <section className="home2-hero relative min-h-screen overflow-hidden bg-[#0a1628]">
+    <section className="home2-hero relative min-h-screen overflow-hidden bg-deep-sea">
       {HOME2_HERO_SLIDES.map((item, i) => {
         const isActive = i === active;
 
@@ -62,9 +62,7 @@ export function HeroHome2() {
         );
       })}
 
-      <div className="absolute inset-0 bg-black/55" aria-hidden />
-
-      <div className="container-luxury relative z-10 flex min-h-screen flex-col items-center justify-center px-4 pb-36 pt-32 text-center sm:pt-36 lg:pt-40">
+      <div className="container-luxury relative z-10 flex min-h-screen flex-col items-center justify-center px-4 pb-36 pt-40 text-center sm:pt-44 lg:pt-48">
         <p
           className={cn(
             bodyFontClass(locale),
@@ -79,9 +77,9 @@ export function HeroHome2() {
           active
           loop
           className={cn(
-            displayFontClass(locale),
-            "home2-hero-title mb-6 max-w-4xl text-3xl font-normal leading-[1.15] text-white sm:text-4xl lg:text-[3.25rem]",
-            isRtl ? "normal-case tracking-normal" : "uppercase tracking-[0.06em]"
+            scriptFontClass(locale),
+            "home2-hero-title mb-6 max-w-4xl text-4xl font-normal normal-case leading-[1.15] text-white sm:text-5xl lg:text-[4.25rem]",
+            isRtl && "font-displayAr normal-case tracking-normal"
           )}
         />
 

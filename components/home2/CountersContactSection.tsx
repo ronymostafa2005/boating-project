@@ -135,7 +135,7 @@ export function CountersContactSection() {
         sizes="100vw"
         quality={IMAGE_QUALITY}
       />
-      <div className="absolute inset-0 bg-[#0a1628]/80" aria-hidden />
+      <div className="absolute inset-0 bg-deep-sea/80" aria-hidden />
 
       <div className="container-luxury relative z-10 grid items-center gap-10 lg:grid-cols-2 lg:gap-0">
         <motion.div

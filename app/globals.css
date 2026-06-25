@@ -4,12 +4,21 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #1a1a1a;
-  --gold: #d4a017;
-  --gold-light: #e8c547;
-  --gold-dark: #b8860b;
-  --charcoal: #1a1a1a;
+  --foreground: #071628;
+  --deep-sea: #071628;
+  --ocean-navy: #0b1f3a;
+  --horizon-blue: #1a4a7a;
+  --mid-sea-blue: #2a6fab;
+  --seafoam: #5aafcb;
+  --nautical-gold: #c9a84c;
+  --champagne: #e8d5a3;
+  --pearl: #f4f0e8;
+  --gold: #c9a84c;
+  --gold-light: #e8d5a3;
+  --gold-dark: #a8864a;
+  --charcoal: #071628;
   --slate: #e5e5e5;
+  --neera-gold: #c9a84c;
 }
 
 * {
@@ -54,17 +63,23 @@ body {
   color: #ffffff;
 }
 
+@layer base {
+  .font-displayEn {
+    @apply font-light;
+  }
+}
+
 @layer components {
   .container-luxury {
     @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
   }
 
   .heading-display {
-    @apply text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl;
+    @apply text-4xl font-light tracking-tight sm:text-5xl lg:text-6xl;
   }
 
   .heading-section {
-    @apply text-2xl font-semibold sm:text-3xl lg:text-4xl;
+    @apply text-2xl font-light sm:text-3xl lg:text-4xl;
   }
 
   .text-gold-gradient {
@@ -76,11 +91,11 @@ body {
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center rounded-lg bg-gold px-6 py-3 text-sm font-semibold text-luxury-black transition-all hover:bg-gold-light focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2 focus:ring-offset-white;
+    @apply inline-flex items-center justify-center rounded-lg bg-horizon-blue px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-mid-sea focus:outline-none focus:ring-2 focus:ring-horizon-blue focus:ring-offset-2 focus:ring-offset-white;
   }
 
   .btn-outline {
-    @apply inline-flex items-center justify-center rounded-lg border border-gold px-6 py-3 text-sm font-semibold text-gold transition-all hover:bg-gold hover:text-luxury-black focus:outline-none focus:ring-2 focus:ring-gold;
+    @apply inline-flex items-center justify-center rounded-lg border border-horizon-blue px-6 py-3 text-sm font-semibold text-horizon-blue transition-all hover:bg-horizon-blue hover:text-white focus:outline-none focus:ring-2 focus:ring-horizon-blue;
   }
 
   .input-luxury {
@@ -89,7 +104,7 @@ body {
 
   /* Neera Yacht hero styles */
   .neera-btn-explore {
-    @apply inline-flex items-center justify-center bg-neera-gold px-9 py-3.5 font-bodyEn text-[11px] font-semibold uppercase tracking-[0.2em] text-white transition-colors hover:bg-neera-gold-dark;
+    @apply inline-flex items-center justify-center bg-horizon-blue px-9 py-3.5 font-bodyEn text-[11px] font-semibold uppercase tracking-[0.2em] text-white transition-colors hover:bg-mid-sea;
   }
 
   .neera-play-btn {
@@ -110,11 +125,59 @@ body {
   }
 
   .home2-quote-btn {
-    @apply bg-neera-gold px-5 py-2.5 text-[10px] font-semibold uppercase tracking-[0.15em] text-white transition-colors hover:bg-neera-gold-dark;
+    @apply bg-horizon-blue px-5 py-2.5 text-[10px] font-semibold uppercase tracking-[0.15em] text-white transition-colors hover:bg-mid-sea;
   }
 
   .neera-nav-dropdown-item {
     @apply px-6 py-3.5 text-start font-bodyEn text-[10px] font-medium uppercase tracking-[0.16em] text-[#1a1a1a]/90 transition-colors hover:text-neera-gold;
+  }
+
+  .neera-page-breadcrumb {
+    @apply relative w-full text-center;
+  }
+
+  .neera-page-breadcrumb__container {
+    @apply relative z-[1];
+    padding: clamp(2.5rem, 1.6635rem + 3.7179vw, 6.125rem) 0;
+  }
+
+  .neera-page-breadcrumb__title h1 {
+    @apply m-0 mb-5 font-normal capitalize text-white;
+    font-size: clamp(1.875rem, 1.375rem + 2.5vw, 4.375rem);
+    letter-spacing: 0.06em;
+    line-height: 1.15;
+  }
+
+  .neera-page-breadcrumb__trail {
+    @apply flex flex-wrap items-center justify-center gap-0 font-medium uppercase text-white;
+    font-size: clamp(0.75rem, 0.7rem + 0.25vw, 1rem);
+    letter-spacing: 0.14em;
+  }
+
+  .neera-page-breadcrumb__trail a {
+    @apply text-white no-underline transition-colors hover:text-neera-gold;
+  }
+
+  .neera-page-breadcrumb__trail .current {
+    @apply text-white;
+  }
+
+  .neera-page-breadcrumb__delimiter {
+    @apply mx-3 inline-block bg-current opacity-100;
+    width: 2px;
+    height: 14px;
+    transform: rotate(20deg);
+    vertical-align: middle;
+  }
+
+  .neera-page-breadcrumb__bg {
+    @apply absolute inset-0 z-0 bg-deep-sea bg-cover bg-center bg-no-repeat;
+  }
+
+  .neera-page-breadcrumb__bg::after {
+    content: "";
+    @apply absolute inset-0 bg-deep-sea/80;
+    pointer-events: none;
   }
 
   .book-now-section {
@@ -124,7 +187,7 @@ body {
   }
 
   .book-now-contact-box {
-    background: linear-gradient(135deg, rgba(26, 26, 26, 0.92) 0%, rgba(26, 26, 26, 0.78) 100%);
+    background: linear-gradient(135deg, rgba(7, 22, 40, 0.92) 0%, rgba(11, 31, 58, 0.78) 100%);
   }
 
   .book-now-form-card {
@@ -156,7 +219,7 @@ body {
   }
 
   .book-now-guests-box {
-    @apply bg-[#f2f0eb] px-5 py-5;
+    @apply bg-pearl px-5 py-5;
   }
 
   .book-now-room-label {
@@ -165,11 +228,11 @@ body {
   }
 
   .book-now-search-btn {
-    @apply inline-flex min-w-[140px] items-center justify-center bg-[#3d5a6c] px-10 py-3.5 font-bodyEn text-[11px] font-semibold uppercase tracking-[0.18em] text-white transition-colors hover:bg-[#324a59];
+    @apply inline-flex min-w-[140px] items-center justify-center bg-horizon-blue px-10 py-3.5 font-bodyEn text-[11px] font-semibold uppercase tracking-[0.18em] text-white transition-colors hover:bg-mid-sea;
   }
 
   .neera-btn-know-more {
-    @apply inline-flex items-center justify-center bg-neera-gold px-9 py-3.5 font-bodyEn text-[11px] font-semibold uppercase tracking-[0.2em] text-white transition-colors hover:bg-neera-gold-dark;
+    @apply inline-flex items-center justify-center bg-horizon-blue px-9 py-3.5 font-bodyEn text-[11px] font-semibold uppercase tracking-[0.2em] text-white transition-colors hover:bg-mid-sea;
   }
 
   .travelling-content .split-heading > span {
@@ -204,10 +267,55 @@ body {
     transform: translateX(0);
   }
 
+  .travelling-section {
+    position: relative;
+  }
+
+  .travelling-explore-btn {
+    @apply inline-flex items-center justify-center bg-neera-gold px-9 py-3.5 font-bodyEn text-[11px] font-semibold uppercase tracking-[0.2em] text-white transition-colors hover:bg-gold-dark;
+  }
+
+  [dir="rtl"] .travelling-explore-btn {
+    @apply font-bodyAr normal-case tracking-normal;
+  }
+
+  .about-newsletter-title.split-heading > span {
+    display: block;
+    width: 100%;
+  }
+
+  .about-newsletter-input {
+    border: none;
+    border-bottom: 1px solid rgba(26, 26, 26, 0.22);
+    border-radius: 0;
+  }
+
+  .about-newsletter-input:focus {
+    border-bottom-color: var(--gold);
+  }
+
+  .about-newsletter-submit {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.625rem;
+    background-color: var(--horizon-blue);
+    padding: 0.875rem 1.5rem;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #ffffff;
+    transition: background-color 0.3s ease;
+  }
+
+  .about-newsletter-submit:hover {
+    background-color: var(--mid-sea-blue);
+  }
+
   .category-showcase {
     position: relative;
     overflow: hidden;
-    background-color: #051120;
+    background-color: #071628;
   }
 
   .category-showcase-bg {
@@ -240,11 +348,11 @@ body {
     background:
       radial-gradient(
         ellipse 72% 60% at 50% 40%,
-        rgba(5, 17, 32, 0.68) 0%,
-        rgba(5, 17, 32, 0.38) 52%,
-        rgba(5, 17, 32, 0.14) 100%
+        rgba(7, 22, 40, 0.68) 0%,
+        rgba(7, 22, 40, 0.38) 52%,
+        rgba(7, 22, 40, 0.14) 100%
       ),
-      linear-gradient(180deg, rgba(5, 17, 32, 0.18) 0%, rgba(5, 17, 32, 0.42) 100%);
+      linear-gradient(180deg, rgba(7, 22, 40, 0.18) 0%, rgba(7, 22, 40, 0.42) 100%);
     pointer-events: none;
   }
 
@@ -295,7 +403,7 @@ body {
   }
 
   .boat-select-section {
-    background-color: #e8f4f8;
+    background-color: #f4f0e8;
     background-image: url("data:image/svg+xml,%3Csvg width='200' height='200' viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 100 Q50 60 100 100 T200 100' fill='none' stroke='%23b8d4e0' stroke-width='0.6' opacity='0.5'/%3E%3Cpath d='M0 130 Q50 90 100 130 T200 130' fill='none' stroke='%23b8d4e0' stroke-width='0.6' opacity='0.4'/%3E%3Cpath d='M0 70 Q50 30 100 70 T200 70' fill='none' stroke='%23b8d4e0' stroke-width='0.6' opacity='0.4'/%3E%3C/svg%3E");
     background-size: 220px 220px;
   }
@@ -314,7 +422,7 @@ body {
   }
 
   .stats-counter-section {
-    background-color: #0f1e2d;
+    background-color: #071628;
   }
 
   .stats-counter-item {
@@ -331,7 +439,7 @@ body {
     right: 0;
     bottom: 0;
     width: 0;
-    background-color: #e9e4dc;
+    background-color: #f4f0e8;
     transition: width 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     z-index: 0;
   }
@@ -357,7 +465,7 @@ body {
   }
 
   .stats-counter-item:hover {
-    color: #0f1e2d;
+    color: #0b1f3a;
   }
 
   .stats-counter-item:hover .stats-counter-label {
@@ -398,8 +506,60 @@ body {
     }
   }
 
+  .about-stats-carousel {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .about-stats-carousel::-webkit-scrollbar {
+    display: none;
+  }
+
+  .about-stats-slide {
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+    min-width: 0;
+  }
+
+  @media (min-width: 481px) {
+    .about-stats-slide {
+      flex-basis: 50%;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .about-stats-slide {
+      flex-basis: 33.333%;
+    }
+  }
+
+  @media (min-width: 1025px) {
+    .about-stats-slide {
+      flex-basis: 25%;
+    }
+  }
+
+  @media (min-width: 1281px) {
+    .about-stats-carousel {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      overflow: visible;
+    }
+
+    .about-stats-slide {
+      flex-basis: auto;
+    }
+
+    .about-stats-pagination {
+      display: none;
+    }
+  }
+
   .gorgeous-vistas-panel {
-    background-color: #e1f0ff;
+    background-color: #f4f0e8;
   }
 
   .gorgeous-vistas-panel-grid {
@@ -435,7 +595,7 @@ body {
   }
 
   .gorgeous-vistas-hotspot-label {
-    background-color: #0f1e2d;
+    background-color: #0b1f3a;
   }
 
   .gorgeous-vistas-heading .split-heading,
@@ -456,11 +616,11 @@ body {
   }
 
   .extravagant-boat-section {
-    background-color: #0f1e2d;
+    background-color: #0b1f3a;
   }
 
   .extravagant-yacht-content {
-    background-color: #0f1e2d;
+    background-color: #0b1f3a;
   }
 
   .extravagant-btn {
@@ -468,11 +628,11 @@ body {
   }
 
   .extravagant-btn-gold {
-    @apply bg-neera-gold text-white hover:bg-neera-gold-dark;
+    @apply bg-horizon-blue text-white hover:bg-mid-sea;
   }
 
   .extravagant-btn-outline {
-    @apply border border-white/25 bg-white text-[#0f1e2d] hover:bg-white/90;
+    @apply border border-white/25 bg-white text-ocean-navy hover:bg-white/90;
   }
 
   .extravagant-carousel-dots .swiper-pagination-bullet-active,
@@ -495,7 +655,7 @@ body {
   }
 
   .testimonials-overlay {
-    background-color: #0f1e2d;
+    background-color: #0b1f3a;
     opacity: 0.8;
   }
 
@@ -578,7 +738,7 @@ body {
   }
 
   .blog-updates-section {
-    background-color: #0f1e2d;
+    background-color: #0b1f3a;
   }
 
   .blog-updates-section .split-heading {
@@ -601,7 +761,7 @@ body {
   }
 
   .blog-entry-button {
-    @apply bg-neera-gold px-7 py-3 font-bodyEn text-[10px] font-semibold uppercase tracking-[0.18em] text-white transition-colors hover:bg-neera-gold-dark;
+    @apply bg-horizon-blue px-7 py-3 font-bodyEn text-[10px] font-semibold uppercase tracking-[0.18em] text-white transition-colors hover:bg-mid-sea;
   }
 
   .faq-parallax-section {
@@ -666,6 +826,20 @@ body {
   .partners-heading > span {
     display: block;
     width: 100%;
+  }
+
+  .about-partners-title.split-heading > span {
+    white-space: nowrap;
+  }
+
+  .about-partners-title.split-heading .split-word + .split-word {
+    margin-inline-start: 0.18em;
+  }
+
+  @media (min-width: 640px) {
+    .about-partners-title.split-heading .split-word + .split-word {
+      margin-inline-start: 0.28em;
+    }
   }
 
   .partners-grid {
@@ -744,7 +918,7 @@ body {
   }
 
   .footer-cta-overlay {
-    background-color: #0f1e2d;
+    background-color: #0b1f3a;
     opacity: 0.8;
   }
 
@@ -889,8 +1063,8 @@ body {
 [data-bokun-widget],
 .bokun-widget,
 .bokun-online-sales-widget {
-  --bokun-primary-color: #d4a017 !important;
-  --bokun-background-color: #1a1a1a !important;
+  --bokun-primary-color: #1a4a7a !important;
+  --bokun-background-color: #071628 !important;
   --bokun-text-color: #f5f5f5 !important;
   --bokun-border-color: #2a2a2a !important;
   background-color: var(--charcoal) !important;
@@ -995,18 +1169,7 @@ body {
   transform: scaleX(-1);
 }
 
-/* Home 2 — Tajawal font */
-.home2-page,
-.home2-header,
-.home2-offcanvas {
-  font-family: var(--font-tajawal), sans-serif;
-}
-
-.home2-page :is(.font-bodyEn, .font-bodyAr, .font-displayEn, .font-displayAr),
-.home2-header :is(.font-bodyEn, .font-bodyAr, .font-displayEn, .font-displayAr),
-.home2-offcanvas :is(.font-bodyEn, .font-bodyAr, .font-displayEn, .font-displayAr) {
-  font-family: var(--font-tajawal), sans-serif;
-}
+/* Home 2 — brand typography (inherits from locale layout) */
 
 /* Home 2 — Yacht Booking */
 .home2-about-section {
@@ -1165,7 +1328,7 @@ body {
 }
 
 .home2-tour-card-vbo__btn {
-  @apply mt-3 inline-flex w-fit min-w-[7.5rem] items-center justify-center self-end bg-neera-gold px-5 py-2.5 text-center text-[11px] font-semibold uppercase tracking-[0.14em] text-white transition-colors hover:bg-[#021526];
+  @apply mt-3 inline-flex w-fit min-w-[7.5rem] items-center justify-center self-end bg-horizon-blue px-5 py-2.5 text-center text-[11px] font-semibold uppercase tracking-[0.14em] text-white transition-colors hover:bg-deep-sea;
 }
 
 [dir="rtl"] .home2-tour-card-vbo__btn {
@@ -1173,7 +1336,7 @@ body {
 }
 
 .home2-journey-explore-btn {
-  @apply relative inline-flex overflow-hidden bg-neera-gold px-9 py-3.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-white transition-colors;
+  @apply relative inline-flex overflow-hidden bg-horizon-blue px-9 py-3.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-white transition-colors;
 }
 
 .home2-journey-explore-btn::before {
@@ -1181,7 +1344,7 @@ body {
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: #021526;
+  background: #071628;
   transform: translateY(100%);
   transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
@@ -1336,7 +1499,7 @@ body {
 }
 
 .home2-portfolio-card__btn {
-  @apply mt-6 inline-flex min-w-[9.5rem] items-center justify-center bg-neera-gold px-5 py-2.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#1a1a1a] opacity-0 transition-all duration-500 hover:bg-[#c9b08f];
+  @apply mt-6 inline-flex min-w-[9.5rem] items-center justify-center bg-horizon-blue px-5 py-2.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-white opacity-0 transition-all duration-500 hover:bg-mid-sea;
   transform: translateY(12px);
 }
 
@@ -1410,7 +1573,7 @@ body {
 }
 
 .home2-ship-know-more {
-  @apply bg-neera-gold px-5 py-2.5 text-[10px] font-semibold uppercase tracking-[0.15em] text-white transition-colors hover:bg-neera-gold-dark;
+  @apply bg-horizon-blue px-5 py-2.5 text-[10px] font-semibold uppercase tracking-[0.15em] text-white transition-colors hover:bg-mid-sea;
 }
 
 [dir="rtl"] .home2-ship-know-more {
@@ -1531,7 +1694,7 @@ body {
 }
 
 .home2-pricing-card__btn {
-  @apply mt-auto flex w-full items-center justify-center bg-neera-gold px-4 py-3 text-center text-[11px] font-semibold uppercase tracking-[0.16em] text-white transition-colors hover:bg-[#021526];
+  @apply mt-auto flex w-full items-center justify-center bg-horizon-blue px-4 py-3 text-center text-[11px] font-semibold uppercase tracking-[0.16em] text-white transition-colors hover:bg-deep-sea;
 }
 
 [dir="rtl"] .home2-pricing-card__btn {
@@ -1551,6 +1714,22 @@ body {
 .home2-team-title.split-heading > span {
   display: block;
   width: 100%;
+}
+
+.about-team-title.split-heading > span {
+  display: block;
+  width: 100%;
+  white-space: nowrap;
+}
+
+.about-team-title.split-heading .split-word + .split-word {
+  margin-inline-start: 0.35em;
+}
+
+@media (min-width: 640px) {
+  .about-team-title.split-heading .split-word + .split-word {
+    margin-inline-start: 0.5em;
+  }
 }
 
 .home2-team-track {

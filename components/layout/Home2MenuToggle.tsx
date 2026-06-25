@@ -58,13 +58,23 @@ function PaperPlaneIcon({ className }: { className?: string }) {
   );
 }
 
+function flattenNavChildren(
+  children: NonNullable<NavDropdownItem["children"]>,
+  links: { key: string; href?: string; onClick?: () => void }[]
+) {
+  for (const child of children) {
+    links.push({ key: child.key, href: child.href, onClick: child.onClick });
+    if (child.children?.length) {
+      flattenNavChildren(child.children, links);
+    }
+  }
+}
+
 function flattenNavItems(items: NavDropdownItem[]) {
   const links: { key: string; href?: string; onClick?: () => void }[] = [];
   for (const item of items) {
     if (item.children?.length) {
-      for (const child of item.children) {
-        links.push({ key: child.key, href: child.href, onClick: child.onClick });
-      }
+      flattenNavChildren(item.children, links);
     } else if (item.href) {
       links.push({ key: item.key, href: item.href });
     }
@@ -189,8 +199,13 @@ export function Home2MenuToggle({ navItems }: Home2MenuToggleProps) {
 
           {/* Desktop: contact sidebar */}
           <div className="home2-offcanvas__desktop hidden lg:flex lg:flex-col">
-            <Link href="/home-2" className="mb-5 inline-flex" onClick={() => setOpen(false)}>
-              <NavbarLogo locale={locale} textClassName="text-[#1a1a1a]" imageClassName="text-[#1a1a1a]" />
+            <Link href="/" className="mb-5 inline-flex" onClick={() => setOpen(false)}>
+              <NavbarLogo
+                locale={locale}
+                textClassName="text-deep-sea"
+                descriptorClassName="text-deep-sea/65"
+                imageClassName="text-neera-gold"
+              />
             </Link>
 
             <p className={cn(bodyFontClass(locale), "home2-offcanvas__desc mb-6")}>

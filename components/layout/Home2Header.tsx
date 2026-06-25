@@ -2,8 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
-import { Link, usePathname, useRouter } from "@/lib/i18n/navigation";
-import { routing } from "@/i18n/routing";
+import { Link, usePathname } from "@/lib/i18n/navigation";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { Home2MenuToggle } from "./Home2MenuToggle";
 import { NavDropdown } from "./NavDropdown";
@@ -40,7 +39,6 @@ function TopBarSeparator() {
 export function Home2Header() {
   const t = useTranslations("nav");
   const pathname = usePathname();
-  const router = useRouter();
   const locale = useLocale() as Locale;
   const [scrolled, setScrolled] = useState(false);
 
@@ -53,13 +51,7 @@ export function Home2Header() {
 
   const isTransparent = !scrolled;
 
-  const otherLocale = routing.locales.find((l) => l !== locale) as Locale;
-
-  function switchLocale() {
-    router.replace(pathname, { locale: otherLocale });
-  }
-
-  const navItems = buildNavItems(switchLocale, pathname);
+  const navItems = buildNavItems();
 
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(`${href}/`);
@@ -72,7 +64,7 @@ export function Home2Header() {
         "home2-header fixed inset-x-0 top-0 z-[100] w-full transition-all duration-300",
         isTransparent
           ? "bg-transparent"
-          : "border-b border-white/10 bg-[#0a1628]/95 shadow-[0_8px_32px_rgba(0,0,0,0.18)] backdrop-blur-md"
+          : "border-b border-white/10 bg-deep-sea/95 shadow-[0_8px_32px_rgba(0,0,0,0.18)] backdrop-blur-md"
       )}
     >
       <div className={cn("home2-top-bar hidden border-b lg:block", isTransparent ? "border-white/10" : "border-white/10")}>
@@ -121,8 +113,12 @@ export function Home2Header() {
           ))}
         </nav>
 
-        <Link href="/home-2" className="col-start-2 row-start-1 justify-self-center" aria-label="Boating.sa">
-          <NavbarLogo locale={locale} textClassName="text-white" />
+        <Link href="/" className="col-start-2 row-start-1 justify-self-center" aria-label="Boating.sa">
+          <NavbarLogo
+            locale={locale}
+            textClassName="text-white"
+            descriptorClassName="text-champagne"
+          />
         </Link>
 
         <div className="col-start-3 row-start-1 flex items-center justify-self-end gap-3 sm:gap-4 lg:gap-5">

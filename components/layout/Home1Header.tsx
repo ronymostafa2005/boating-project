@@ -1,8 +1,7 @@
 "use client";
 
 import { useLocale, useTranslations } from "next-intl";
-import { Link, usePathname, useRouter } from "@/lib/i18n/navigation";
-import { routing } from "@/i18n/routing";
+import { Link, usePathname } from "@/lib/i18n/navigation";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { MobileNav } from "./MobileNav";
 import { NavDropdown } from "./NavDropdown";
@@ -14,17 +13,9 @@ import type { Locale } from "@/types/locale";
 export function Home1Header() {
   const t = useTranslations("nav");
   const pathname = usePathname();
-  const router = useRouter();
   const locale = useLocale() as Locale;
-  const isHome = pathname === "/";
 
-  const otherLocale = routing.locales.find((l) => l !== locale) as Locale;
-
-  function switchLocale() {
-    router.replace(pathname, { locale: otherLocale });
-  }
-
-  const navItems = buildNavItems(switchLocale, pathname);
+  const navItems = buildNavItems();
 
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(`${href}/`);
@@ -36,7 +27,11 @@ export function Home1Header() {
         className="container-luxury grid h-[72px] grid-cols-[1fr_auto_1fr] items-center gap-4 sm:h-20"
       >
         <Link href="/" className="col-start-1 row-start-1 flex justify-self-start">
-          <NavbarLogo locale={locale} textClassName="text-[#1a1a1a]" />
+          <NavbarLogo
+            locale={locale}
+            textClassName="text-deep-sea"
+            descriptorClassName="text-deep-sea/65"
+          />
         </Link>
 
         <nav className="col-start-2 row-start-1 hidden items-center justify-center gap-6 xl:gap-8 lg:flex">
@@ -50,13 +45,13 @@ export function Home1Header() {
           <Link
             href="/boats"
             className={cn(
-              "hidden bg-neera-gold px-5 py-2.5 text-[11px] font-semibold uppercase tracking-[0.15em] text-white transition-colors hover:bg-neera-gold-dark sm:inline-flex",
+              "hidden bg-horizon-blue px-5 py-2.5 text-[11px] font-semibold uppercase tracking-[0.15em] text-white transition-colors hover:bg-mid-sea sm:inline-flex",
               bodyFontClass(locale)
             )}
           >
             {t("rentNow")}
           </Link>
-          <MobileNav variant="hero" showDesktopMenu={isHome} />
+          <MobileNav variant="hero" />
         </div>
       </div>
     </header>

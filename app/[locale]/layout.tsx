@@ -5,6 +5,7 @@ import {
   Reem_Kufi,
   IBM_Plex_Sans_Arabic,
   Cormorant_Garamond,
+  Great_Vibes,
   Jost,
   Tajawal,
 } from "next/font/google";
@@ -31,14 +32,22 @@ const ibmPlexArabic = IBM_Plex_Sans_Arabic({
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["300", "400", "500", "600", "700"],
+  style: ["normal", "italic"],
   variable: "--font-cormorant",
+  display: "swap",
+});
+
+const greatVibes = Great_Vibes({
+  subsets: ["latin"],
+  weight: ["400"],
+  variable: "--font-great-vibes",
   display: "swap",
 });
 
 const jost = Jost({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["200", "300", "400", "500", "600", "700"],
   variable: "--font-jost",
   display: "swap",
 });
@@ -79,7 +88,7 @@ export default async function LocaleLayout({ children, params }: Props) {
   return (
     <html lang={locale} dir={isArabic ? "rtl" : "ltr"}>
       <body
-        className={`${reemKufi.variable} ${ibmPlexArabic.variable} ${cormorant.variable} ${jost.variable} ${tajawal.variable} ${fontClasses} ${displayFont} bg-white text-foreground antialiased`}
+        className={`${reemKufi.variable} ${ibmPlexArabic.variable} ${cormorant.variable} ${greatVibes.variable} ${jost.variable} ${tajawal.variable} ${fontClasses} ${displayFont} bg-white text-foreground antialiased`}
       >
         <NextIntlClientProvider messages={messages}>
           <Header />
