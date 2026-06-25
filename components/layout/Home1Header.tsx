@@ -45,7 +45,7 @@ export function Home1Header() {
           <Link
             href="/boats"
             className={cn(
-              "hidden bg-horizon-blue px-5 py-2.5 text-[11px] font-semibold uppercase tracking-[0.15em] text-white transition-colors hover:bg-mid-sea sm:inline-flex",
+              "hidden bg-neera-gold px-10 py-4 text-sm font-semibold uppercase tracking-[0.12em] text-white transition-colors hover:bg-neera-gold-dark sm:inline-flex",
               bodyFontClass(locale)
             )}
           >

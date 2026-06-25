@@ -395,7 +395,17 @@
   },
   "faq": {
     "title": "Frequently Asked Questions",
-    "subtitle": "Answers to the most common questions"
+    "subtitle": "Answers to the most common questions",
+    "sectionTitle": "Often Asked Question",
+    "contactTitle": "Contact Us",
+    "hours": "Mon - Fri : 9Am - 10Pm",
+    "addressLine1": "12a, 2nd Floor British Building",
+    "addressLine2": "Iceland, North USA",
+    "email": "Info@Examples.Com",
+    "phone": "+180 7895 874 56",
+    "ctaTitle": "Still Have Questions?",
+    "ctaSubtitle": "Please Chat To Our Friendly Team",
+    "ctaButton": "Get In Touch"
   },
   "contact": {
     "title": "Contact Us",

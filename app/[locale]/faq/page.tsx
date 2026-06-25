@@ -1,7 +1,7 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import type { Metadata } from "next";
-import { PageHeader } from "@/components/ui/PageHeader";
-import { Accordion } from "@/components/ui/Accordion";
+import { PageBreadcrumb } from "@/components/ui/PageBreadcrumb";
+import { FaqPageSection } from "@/components/faq/FaqPageSection";
 import { getFaqs } from "@/lib/sanity/fetch";
 import { getLocalized } from "@/lib/utils";
 import type { Locale } from "@/types/locale";
@@ -22,6 +22,7 @@ export default async function FAQPage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations("faq");
+  const tNav = await getTranslations("nav");
   const faqs = await getFaqs();
 
   const items = faqs.map((faq) => ({
@@ -32,12 +33,8 @@ export default async function FAQPage({ params }: Props) {
 
   return (
     <>
-      <PageHeader title={t("title")} subtitle={t("subtitle")} />
-      <section className="py-16">
-        <div className="container-luxury max-w-3xl">
-          <Accordion items={items} />
-        </div>
-      </section>
+      <PageBreadcrumb title={t("title")} homeLabel={tNav("home")} locale={locale} />
+      <FaqPageSection items={items} />
     </>
   );
 }

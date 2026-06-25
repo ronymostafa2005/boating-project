@@ -198,8 +198,10 @@ export function MobileNav({ variant = "dark", showDesktopMenu = false, alwaysVis
                 href="/boats"
                 onClick={() => setIsOpen(false)}
                 className={cn(
-                  "mx-4 mt-4 px-4 py-3 text-center text-xs font-semibold uppercase tracking-wider",
-                  isHero ? "bg-neera-gold text-white" : "btn-primary"
+                  "mx-4 mt-4 px-10 py-4 text-center text-sm font-semibold uppercase tracking-[0.12em] transition-colors",
+                  isHero
+                    ? "bg-neera-gold text-white hover:bg-neera-gold-dark"
+                    : "btn-primary"
                 )}
               >
                 {t("rentNow")}

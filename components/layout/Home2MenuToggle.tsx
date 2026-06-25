@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import Image from "next/image";
 import { useTranslations, useLocale } from "next-intl";
 import { Link, usePathname } from "@/lib/i18n/navigation";
@@ -84,6 +85,7 @@ function flattenNavItems(items: NavDropdownItem[]) {
 
 export function Home2MenuToggle({ navItems }: Home2MenuToggleProps) {
   const [open, setOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const [email, setEmail] = useState("");
   const [agreed, setAgreed] = useState(false);
   const tNav = useTranslations("nav");
@@ -95,6 +97,10 @@ export function Home2MenuToggle({ navItems }: Home2MenuToggleProps) {
   const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "966500000000";
   const phoneMain = tNav("callPhone");
   const phoneAboard = tNav("topBarPhone");
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     if (!open) return;
@@ -116,6 +122,184 @@ export function Home2MenuToggle({ navItems }: Home2MenuToggleProps) {
     setAgreed(false);
   }
 
+  const offcanvas = (
+    <div
+      className={cn("home2-offcanvas", open && "home2-offcanvas--open")}
+      aria-hidden={!open}
+    >
+      <button
+        type="button"
+        className="home2-offcanvas__backdrop"
+        aria-label={tNav("closeMenu")}
+        onClick={() => setOpen(false)}
+      />
+
+      <aside
+        className="home2-offcanvas__panel"
+        role="dialog"
+        aria-modal="true"
+        aria-label={tNav("openMenu")}
+      >
+        <button
+          type="button"
+          className="home2-offcanvas__close"
+          aria-label={tNav("closeMenu")}
+          onClick={() => setOpen(false)}
+        >
+          <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden>
+            <path strokeLinecap="round" strokeWidth="1.75" d="M6 6l12 12M18 6L6 18" />
+          </svg>
+        </button>
+
+        {/* Mobile: pages + language */}
+        <div className="home2-offcanvas__mobile lg:hidden">
+          <nav className="home2-offcanvas__nav">
+            {mobileLinks.map((link) =>
+              link.onClick ? (
+                <button
+                  key={link.key}
+                  type="button"
+                  onClick={() => {
+                    link.onClick?.();
+                    setOpen(false);
+                  }}
+                  className={cn(home2FontClass(locale), "home2-offcanvas__nav-link text-start")}
+                >
+                  {tNav(link.key)}
+                </button>
+              ) : (
+                <Link
+                  key={link.key}
+                  href={link.href!}
+                  onClick={() => setOpen(false)}
+                  className={cn(
+                    home2FontClass(locale),
+                    "home2-offcanvas__nav-link",
+                    pathname === link.href && "text-neera-gold"
+                  )}
+                >
+                  {tNav(link.key)}
+                </Link>
+              )
+            )}
+          </nav>
+
+          <div className="home2-offcanvas__mobile-lang mx-0 mt-4">
+            <span className={cn(home2FontClass(locale), "home2-offcanvas__lang-label")}>
+              {tNav("language")}
+            </span>
+            <LanguageSwitcher variant="hero" />
+          </div>
+        </div>
+
+        {/* Desktop: contact sidebar */}
+        <div className="home2-offcanvas__desktop hidden lg:flex lg:flex-col">
+          <Link href="/" className="mb-5 inline-flex" onClick={() => setOpen(false)}>
+            <NavbarLogo
+              locale={locale}
+              textClassName="text-deep-sea"
+              descriptorClassName="text-deep-sea/65"
+              imageClassName="text-neera-gold"
+            />
+          </Link>
+
+          <p className={cn(home2FontClass(locale), "home2-offcanvas__desc mb-6")}>
+            {tFooter("description")}
+          </p>
+
+          <div className="home2-offcanvas__card mb-4">
+            <HeadsetIcon className="shrink-0 text-neera-gold" />
+            <p className={cn(home2FontClass(locale), "home2-offcanvas__card-text")}>
+              {tNav("sidebarCallPrefix")}{" "}
+              <a href={`tel:${phoneMain.replace(/\s/g, "")}`} className="text-neera-gold">
+                {phoneMain}
+              </a>{" "}
+              {tNav("sidebarCallMiddle")}{" "}
+              <a href={`tel:${phoneAboard.replace(/\s/g, "")}`} className="text-neera-gold">
+                {phoneAboard}
+              </a>
+            </p>
+          </div>
+
+          <div className="home2-offcanvas__card home2-offcanvas__card--whatsapp mb-6">
+            <div className="min-w-0 flex-1">
+              <div className="mb-2 flex items-center gap-2 text-[#1a1a1a]">
+                <WhatsAppIcon className="h-5 w-5 shrink-0" />
+                <span className={cn(home2FontClass(locale), "text-sm font-medium")}>
+                  {tNav("sidebarWhatsAppTitle")}
+                </span>
+              </div>
+              <p className={cn(home2FontClass(locale), "home2-offcanvas__card-text")}>
+                {tNav("sidebarWhatsAppHelp")}
+              </p>
+            </div>
+            <a
+              href={`https://wa.me/${whatsappNumber}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="home2-offcanvas__qr shrink-0"
+            >
+              <Image
+                src={WHATSAPP_QR}
+                alt="WhatsApp QR"
+                width={88}
+                height={88}
+                quality={IMAGE_QUALITY}
+              />
+            </a>
+          </div>
+
+          <div className="home2-offcanvas__cta relative mt-auto overflow-hidden">
+            <Image
+              src={SIDEBAR_CTA_BG}
+              alt=""
+              fill
+              className="object-cover"
+              sizes="420px"
+              quality={IMAGE_QUALITY}
+              aria-hidden
+            />
+            <div className="absolute inset-0 bg-[#0a1628]/82" aria-hidden />
+            <div className="relative z-[1] p-6">
+              <SplitHeadingMini locale={locale} tFooter={tFooter} />
+              <form onSubmit={handleNewsletterSubmit} className="home2-offcanvas__form">
+                <div className="flex items-end gap-3 border-b border-white/35 pb-2">
+                  <input
+                    type="email"
+                    name="email"
+                    required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder={tFooter("emailPlaceholder")}
+                    className={cn(home2FontClass(locale), "home2-offcanvas__input min-w-0 flex-1")}
+                  />
+                  <button type="submit" className="home2-offcanvas__submit shrink-0" disabled={!agreed}>
+                    <span className="sr-only">{tFooter("submit")}</span>
+                    <PaperPlaneIcon className="h-4 w-4 text-white" />
+                  </button>
+                </div>
+                <label className={cn(home2FontClass(locale), "home2-offcanvas__privacy mt-4 flex items-start gap-2")}>
+                  <input
+                    type="checkbox"
+                    checked={agreed}
+                    onChange={(e) => setAgreed(e.target.checked)}
+                    className="mt-0.5"
+                  />
+                  <span>
+                    {tNav("sidebarPrivacyPrefix")}{" "}
+                    <Link href="/privacy" className="underline" onClick={() => setOpen(false)}>
+                      {tNav("privacy")}
+                    </Link>
+                  </span>
+                </label>
+              </form>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  );
+
   return (
     <>
       <button
@@ -128,181 +312,7 @@ export function Home2MenuToggle({ navItems }: Home2MenuToggleProps) {
         <TwoLineMenuIcon />
       </button>
 
-      <div
-        className={cn("home2-offcanvas", open && "home2-offcanvas--open")}
-        aria-hidden={!open}
-      >
-        <button
-          type="button"
-          className="home2-offcanvas__backdrop"
-          aria-label={tNav("closeMenu")}
-          onClick={() => setOpen(false)}
-        />
-
-        <aside
-          className="home2-offcanvas__panel"
-          role="dialog"
-          aria-modal="true"
-          aria-label={tNav("openMenu")}
-        >
-          <button
-            type="button"
-            className="home2-offcanvas__close"
-            aria-label={tNav("closeMenu")}
-            onClick={() => setOpen(false)}
-          >
-            <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden>
-              <path strokeLinecap="round" strokeWidth="1.75" d="M6 6l12 12M18 6L6 18" />
-            </svg>
-          </button>
-
-          {/* Mobile: pages + language */}
-          <div className="home2-offcanvas__mobile lg:hidden">
-            <nav className="home2-offcanvas__nav">
-              {mobileLinks.map((link) =>
-                link.onClick ? (
-                  <button
-                    key={link.key}
-                    type="button"
-                    onClick={() => {
-                      link.onClick?.();
-                      setOpen(false);
-                    }}
-                    className={cn(home2FontClass(locale), "home2-offcanvas__nav-link text-start")}
-                  >
-                    {tNav(link.key)}
-                  </button>
-                ) : (
-                  <Link
-                    key={link.key}
-                    href={link.href!}
-                    onClick={() => setOpen(false)}
-                    className={cn(
-                      home2FontClass(locale),
-                      "home2-offcanvas__nav-link",
-                      pathname === link.href && "text-neera-gold"
-                    )}
-                  >
-                    {tNav(link.key)}
-                  </Link>
-                )
-              )}
-            </nav>
-
-            <div className="home2-offcanvas__mobile-lang mx-0 mt-4">
-              <span className={cn(home2FontClass(locale), "home2-offcanvas__lang-label")}>
-                {tNav("language")}
-              </span>
-              <LanguageSwitcher variant="hero" />
-            </div>
-          </div>
-
-          {/* Desktop: contact sidebar */}
-          <div className="home2-offcanvas__desktop hidden lg:flex lg:flex-col">
-            <Link href="/" className="mb-5 inline-flex" onClick={() => setOpen(false)}>
-              <NavbarLogo
-                locale={locale}
-                textClassName="text-deep-sea"
-                descriptorClassName="text-deep-sea/65"
-                imageClassName="text-neera-gold"
-              />
-            </Link>
-
-            <p className={cn(home2FontClass(locale), "home2-offcanvas__desc mb-6")}>
-              {tFooter("description")}
-            </p>
-
-            <div className="home2-offcanvas__card mb-4">
-              <HeadsetIcon className="shrink-0 text-neera-gold" />
-              <p className={cn(home2FontClass(locale), "home2-offcanvas__card-text")}>
-                {tNav("sidebarCallPrefix")}{" "}
-                <a href={`tel:${phoneMain.replace(/\s/g, "")}`} className="text-neera-gold">
-                  {phoneMain}
-                </a>{" "}
-                {tNav("sidebarCallMiddle")}{" "}
-                <a href={`tel:${phoneAboard.replace(/\s/g, "")}`} className="text-neera-gold">
-                  {phoneAboard}
-                </a>
-              </p>
-            </div>
-
-            <div className="home2-offcanvas__card home2-offcanvas__card--whatsapp mb-6">
-              <div className="min-w-0 flex-1">
-                <div className="mb-2 flex items-center gap-2 text-[#1a1a1a]">
-                  <WhatsAppIcon className="h-5 w-5 shrink-0" />
-                  <span className={cn(home2FontClass(locale), "text-sm font-medium")}>
-                    {tNav("sidebarWhatsAppTitle")}
-                  </span>
-                </div>
-                <p className={cn(home2FontClass(locale), "home2-offcanvas__card-text")}>
-                  {tNav("sidebarWhatsAppHelp")}
-                </p>
-              </div>
-              <a
-                href={`https://wa.me/${whatsappNumber}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="home2-offcanvas__qr shrink-0"
-              >
-                <Image
-                  src={WHATSAPP_QR}
-                  alt="WhatsApp QR"
-                  width={88}
-                  height={88}
-                  quality={IMAGE_QUALITY}
-                />
-              </a>
-            </div>
-
-            <div className="home2-offcanvas__cta relative mt-auto overflow-hidden">
-              <Image
-                src={SIDEBAR_CTA_BG}
-                alt=""
-                fill
-                className="object-cover"
-                sizes="420px"
-                quality={IMAGE_QUALITY}
-                aria-hidden
-              />
-              <div className="absolute inset-0 bg-[#0a1628]/82" aria-hidden />
-              <div className="relative z-[1] p-6">
-                <SplitHeadingMini locale={locale} tFooter={tFooter} />
-                <form onSubmit={handleNewsletterSubmit} className="home2-offcanvas__form">
-                  <div className="flex items-end gap-3 border-b border-white/35 pb-2">
-                    <input
-                      type="email"
-                      name="email"
-                      required
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      placeholder={tFooter("emailPlaceholder")}
-                      className={cn(home2FontClass(locale), "home2-offcanvas__input min-w-0 flex-1")}
-                    />
-                    <button type="submit" className="home2-offcanvas__submit shrink-0" disabled={!agreed}>
-                      <span className="sr-only">{tFooter("submit")}</span>
-                      <PaperPlaneIcon className="h-4 w-4 text-white" />
-                    </button>
-                  </div>
-                  <label className={cn(home2FontClass(locale), "home2-offcanvas__privacy mt-4 flex items-start gap-2")}>
-                    <input
-                      type="checkbox"
-                      checked={agreed}
-                      onChange={(e) => setAgreed(e.target.checked)}
-                      className="mt-0.5"
-                    />
-                    <span>
-                      {tNav("sidebarPrivacyPrefix")}{" "}
-                      <Link href="/privacy" className="underline" onClick={() => setOpen(false)}>
-                        {tNav("privacy")}
-                      </Link>
-                    </span>
-                  </label>
-                </form>
-              </div>
-            </div>
-          </div>
-        </aside>
-      </div>
+      {mounted ? createPortal(offcanvas, document.body) : null}
     </>
   );
 }

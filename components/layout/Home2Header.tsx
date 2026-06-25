@@ -136,7 +136,7 @@ export function Home2Header() {
                 href={`tel:${t("callPhone").replace(/\s/g, "")}`}
                 className={cn(
                   home2FontClass(locale),
-                  "text-sm font-medium tracking-wide text-neera-gold transition-colors hover:text-neera-gold-dark"
+                  "text-sm font-bold tracking-wide text-neera-gold transition-colors hover:text-neera-gold-dark"
                 )}
               >
                 {t("callPhone")}
