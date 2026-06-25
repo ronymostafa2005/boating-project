@@ -72,7 +72,7 @@ export function PricingPlanSection() {
           <p
             className={cn(
               bodyFontClass(locale),
-              "mb-3 text-[11px] font-medium uppercase tracking-[0.24em] text-[#1a1a1a]/55"
+              "mb-3 text-sm font-bold uppercase tracking-[0.24em] text-[#1a1a1a]/70 sm:text-[15px]"
             )}
           >
             {t("pricingEyebrow")}
@@ -90,7 +90,7 @@ export function PricingPlanSection() {
         </motion.div>
       </div>
 
-      <div className="container-luxury grid gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-0">
+      <div className="container-luxury grid gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
         {HOME2_PRICING.map((plan, index) => {
           const featured = "featured" in plan && plan.featured;
 
