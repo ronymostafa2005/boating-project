@@ -1,12 +1,20 @@
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import type { Metadata } from "next";
-import { generateSimplePageMetadata, SimpleContentPage } from "@/components/pages/SimpleContentPage";
+import { LoginSection } from "@/components/auth/LoginSection";
 
-type Props = { params: Promise<{ locale: string }> };
+type Props = {
+  params: Promise<{ locale: string }>;
+};
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  return generateSimplePageMetadata({ params }, "login");
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "loginPage" });
+  return { title: t("title"), description: t("metaDescription") };
 }
 
-export default function LoginPage({ params }: Props) {
-  return <SimpleContentPage params={params} pageKey="login" />;
+export default async function LoginPage({ params }: Props) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
+  return <LoginSection />;
 }

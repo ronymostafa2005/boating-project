@@ -1,12 +1,10 @@
-import type { Metadata } from "next";
-import { generateSimplePageMetadata, SimpleContentPage } from "@/components/pages/SimpleContentPage";
+import { redirect } from "next/navigation";
 
-type Props = { params: Promise<{ locale: string }> };
+type Props = {
+  params: Promise<{ locale: string }>;
+};
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  return generateSimplePageMetadata({ params }, "serviceDetail");
-}
-
-export default function ServiceDetailPage({ params }: Props) {
-  return <SimpleContentPage params={params} pageKey="serviceDetail" />;
+export default async function ServiceDetailRedirect({ params }: Props) {
+  const { locale } = await params;
+  redirect(`/${locale}/services/deck-boats`);
 }

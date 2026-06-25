@@ -29,7 +29,7 @@ export function buildNavItems(): NavDropdownItem[] {
           showArrow: true,
           children: [
             { key: "portfolioListing", href: "/portfolio" },
-            { key: "portfolioDetail", href: "/portfolio/detail" },
+            { key: "portfolioDetail", href: "/portfolio/harbor-heaven" },
           ],
         },
         {
@@ -38,10 +38,11 @@ export function buildNavItems(): NavDropdownItem[] {
           showArrow: true,
           children: [
             { key: "serviceListing", href: "/services" },
-            { key: "serviceDetail", href: "/services/detail" },
+            { key: "serviceDetail", href: "/services/deck-boats" },
           ],
         },
         { key: "login", href: "/login" },
+        { key: "register", href: "/register" },
         { key: "comingSoon", href: "/coming-soon" },
         { key: "page404", href: "/404" },
       ],
