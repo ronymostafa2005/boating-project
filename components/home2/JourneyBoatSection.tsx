@@ -8,6 +8,7 @@ import { Link } from "@/lib/i18n/navigation";
 import { SplitHeading } from "@/components/ui/SplitHeading";
 import { JourneyDecorIcons } from "@/components/home2/JourneyDecorIcons";
 import { HOME2_TOURS } from "@/data/home2";
+import { HOME2_TOUR_SLUGS } from "@/data/tours";
 import { MOTION_EASE, slideInFromEnd } from "@/lib/motionVariants";
 import { cn, bodyFontClass, displayFontClass } from "@/lib/utils";
 import { hydratedInitial, useIsHydrated } from "@/hooks/useIsHydrated";
@@ -121,13 +122,14 @@ export function JourneyBoatSection() {
           {HOME2_TOURS.map((tour) => {
             const desc = t(tour.descKey);
             const hasDesc = Boolean(desc);
+            const tourHref = `/tours/${HOME2_TOUR_SLUGS[tour.nameKey] ?? "robin-yacht"}`;
 
             return (
               <article key={tour.nameKey} className="home2-tour-card-vbo group">
                 <div className="home2-tour-card-vbo__inner">
                   <div className="home2-tour-card-vbo__media-block">
                     <div className="home2-tour-card-vbo__image-wrap">
-                      <Link href="/boats" className="block h-full w-full">
+                      <Link href={tourHref} className="block h-full w-full">
                         <SafeImage
                           src={tour.image}
                           alt={t(tour.nameKey)}
@@ -156,7 +158,7 @@ export function JourneyBoatSection() {
 
                       <div className="home2-tour-card-vbo__title-row">
                         <h4 className={cn(displayFontClass(locale), "home2-tour-card-vbo__title")}>
-                          <Link href="/boats">{t(tour.nameKey)}</Link>
+                          <Link href={tourHref}>{t(tour.nameKey)}</Link>
                         </h4>
                         {!hasDesc ? (
                           <TourPrice price={tour.price} perRoom={t("perRoom")} inline locale={locale} />
@@ -180,7 +182,7 @@ export function JourneyBoatSection() {
                         <TourPrice price={tour.price} perRoom={t("perRoom")} locale={locale} />
                       ) : null}
                     </div>
-                    <Link href="/boats" className={cn(bodyFontClass(locale), "home2-tour-card-vbo__btn")}>
+                    <Link href={tourHref} className={cn(bodyFontClass(locale), "home2-tour-card-vbo__btn")}>
                       {t("details")}
                     </Link>
                   </div>
@@ -197,7 +199,7 @@ export function JourneyBoatSection() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.5 }}
         >
-          <Link href="/boats" className={cn(bodyFontClass(locale), "home2-journey-explore-btn")}>
+          <Link href="/tours" className={cn(bodyFontClass(locale), "home2-journey-explore-btn")}>
             <span>{t("exploreAll")}</span>
           </Link>
         </motion.div>

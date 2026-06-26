@@ -146,8 +146,8 @@ export function Home2Header() {
 
           <LanguageSwitcher variant="light" className="inline-flex shrink-0 max-lg:hidden" />
 
-          <Link href="/contact" className={cn("home2-quote-btn hidden sm:inline-flex", home2DisplayFontClass(locale))}>
-            {t("requestQuote")}
+          <Link href="/tours" className={cn("home2-quote-btn hidden sm:inline-flex", home2DisplayFontClass(locale))}>
+            {t("bookNow")}
           </Link>
 
           <Home2MenuToggle navItems={navItems} />

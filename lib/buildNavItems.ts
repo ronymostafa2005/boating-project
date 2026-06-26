@@ -45,14 +45,25 @@ export function buildNavItems(): NavDropdownItem[] {
         { key: "register", href: "/register" },
         { key: "comingSoon", href: "/coming-soon" },
         { key: "page404", href: "/404" },
+        { key: "tourDetail", href: "/tours/magical-yacht" },
+        { key: "bookingDetail", href: "/booking-details" },
       ],
     },
     { key: "locations", href: "/map" },
     {
       key: "tour",
       children: [
+        { key: "tourListing", href: "/tours" },
         { key: "boats", href: "/boats" },
         { key: "howItWorks", href: "/how-it-works" },
+      ],
+    },
+    {
+      key: "booking",
+      children: [
+        { key: "bookNow", href: "/tours" },
+        { key: "roomAvailability", href: "/room-availability" },
+        { key: "myBookings", href: "/booking-lists" },
       ],
     },
     {

@@ -6210,3 +6210,450 @@ body:has(.auth-page--fullscreen) main {
   color: rgba(26, 26, 26, 0.68);
 }
 
+/* Tour listing & booking UI */
+.tour-listing__filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.tour-listing__filter {
+  border: 1px solid rgba(26, 26, 26, 0.14);
+  background: #fff;
+  padding: 0.55rem 1rem;
+  font-size: 0.8125rem;
+  color: rgba(26, 26, 26, 0.72);
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+}
+
+.tour-listing__filter:hover,
+.tour-listing__filter.is-active {
+  border-color: var(--neera-gold);
+  color: var(--neera-gold);
+}
+
+.tour-listing__grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr;
+}
+
+.tour-listing__grid--compact {
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .tour-listing__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .tour-listing__grid--compact {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1200px) {
+  .tour-listing__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem;
+  }
+
+  .tour-listing__grid--compact {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.tour-detail__layout {
+  display: grid;
+  gap: 2rem;
+}
+
+@media (min-width: 1024px) {
+  .tour-detail__layout {
+    grid-template-columns: minmax(0, 1fr) 360px;
+    gap: 2.5rem;
+    align-items: start;
+  }
+}
+
+.tour-detail-gallery__main {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: #f3f3f3;
+}
+
+.tour-detail-gallery__thumbs {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.tour-detail-gallery__thumb {
+  position: relative;
+  width: 5.5rem;
+  height: 4rem;
+  border: 2px solid transparent;
+  padding: 0;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.tour-detail-gallery__thumb.is-active {
+  border-color: var(--neera-gold);
+}
+
+.tour-detail__name {
+  margin: 1.25rem 0 0.5rem;
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  color: #1a1a1a;
+}
+
+.tour-detail__meta {
+  font-size: 0.875rem;
+  color: rgba(26, 26, 26, 0.62);
+}
+
+.tour-detail__price {
+  margin: 0.75rem 0;
+  font-size: 1.125rem;
+  color: #1a1a1a;
+}
+
+.tour-detail__price-unit {
+  font-size: 0.8125rem;
+  color: rgba(26, 26, 26, 0.55);
+}
+
+.tour-detail__description {
+  margin-top: 1rem;
+  font-size: 0.9375rem;
+  line-height: 1.75;
+  color: rgba(26, 26, 26, 0.72);
+}
+
+.tour-detail-booking {
+  border: 1px solid rgba(26, 26, 26, 0.1);
+  padding: 1.25rem;
+  background: #fafafa;
+}
+
+.tour-detail-booking__title {
+  margin: 0 0 1rem;
+  font-size: 1.125rem;
+  color: #1a1a1a;
+}
+
+.tour-detail-booking__calendar {
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(26, 26, 26, 0.08);
+}
+
+.tour-detail-booking__calendar-title {
+  margin: 0 0 0.75rem;
+  font-size: 0.875rem;
+  color: rgba(26, 26, 26, 0.7);
+}
+
+.tour-booking-search__row {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 0.75rem;
+}
+
+.tour-booking-search__row--3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+@media (max-width: 640px) {
+  .tour-booking-search__row,
+  .tour-booking-search__row--3 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.tour-booking-search__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.8125rem;
+  color: rgba(26, 26, 26, 0.68);
+}
+
+.tour-booking-search__field input,
+.tour-booking-search__field select,
+.booking-details__field input,
+.booking-details__field textarea {
+  width: 100%;
+  border: 1px solid rgba(26, 26, 26, 0.16);
+  background: #fff;
+  padding: 0.65rem 0.75rem;
+  font-size: 0.875rem;
+  color: #1a1a1a;
+}
+
+.tour-booking-search__submit {
+  width: 100%;
+  margin-top: 0.5rem;
+  border: 0;
+  background: var(--neera-gold);
+  padding: 0.8rem 1rem;
+  font-size: 0.875rem;
+  color: #fff;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.tour-booking-search__submit:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+.tour-booking-search__submit:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.tour-availability-calendar {
+  border: 1px solid rgba(26, 26, 26, 0.1);
+  padding: 1rem;
+  background: #fff;
+}
+
+.tour-availability-calendar--compact {
+  padding: 0.75rem;
+}
+
+.tour-availability-calendar__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.tour-availability-calendar__month {
+  margin: 0;
+  font-size: 0.9375rem;
+  color: #1a1a1a;
+}
+
+.tour-availability-calendar__nav {
+  border: 0;
+  background: transparent;
+  padding: 0.25rem 0.5rem;
+  font-size: 1.25rem;
+  line-height: 1;
+  color: rgba(26, 26, 26, 0.55);
+  cursor: pointer;
+}
+
+.tour-availability-calendar__weekdays,
+.tour-availability-calendar__grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 0.25rem;
+}
+
+.tour-availability-calendar__weekday {
+  text-align: center;
+  font-size: 0.6875rem;
+  color: rgba(26, 26, 26, 0.5);
+}
+
+.tour-availability-calendar__cell {
+  min-height: 2rem;
+  border: 0;
+  background: rgba(26, 26, 26, 0.04);
+  font-size: 0.8125rem;
+  color: rgba(26, 26, 26, 0.35);
+}
+
+.tour-availability-calendar__cell.is-empty {
+  background: transparent;
+}
+
+.tour-availability-calendar__cell.is-available {
+  background: rgba(198, 156, 109, 0.14);
+  color: #1a1a1a;
+  cursor: pointer;
+}
+
+.tour-availability-calendar__cell.is-available.is-selected {
+  background: var(--neera-gold);
+  color: #fff;
+}
+
+.tour-availability-calendar__legend {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.75rem;
+  font-size: 0.75rem;
+  color: rgba(26, 26, 26, 0.62);
+}
+
+.tour-availability-calendar__legend i {
+  display: inline-block;
+  width: 0.75rem;
+  height: 0.75rem;
+  margin-inline-end: 0.35rem;
+  vertical-align: middle;
+}
+
+.tour-availability-calendar__legend i.is-available {
+  background: rgba(198, 156, 109, 0.35);
+}
+
+.tour-availability-calendar__legend i.is-unavailable {
+  background: rgba(26, 26, 26, 0.08);
+}
+
+.room-availability__intro,
+.booking-lists__header {
+  margin-bottom: 1.5rem;
+}
+
+.room-availability__title,
+.booking-lists__title,
+.booking-details__title {
+  margin: 0 0 0.5rem;
+  font-size: clamp(1.375rem, 2.2vw, 1.75rem);
+  color: #1a1a1a;
+}
+
+.room-availability__text,
+.booking-lists__intro {
+  margin: 0;
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: rgba(26, 26, 26, 0.68);
+}
+
+.room-availability__search-panel {
+  margin-bottom: 1.5rem;
+  max-width: 48rem;
+}
+
+.room-availability__master-calendar {
+  margin-bottom: 2.5rem;
+}
+
+.room-availability__preview-title {
+  margin: 0 0 1rem;
+  font-size: 1.125rem;
+  color: #1a1a1a;
+}
+
+.booking-details__layout {
+  display: grid;
+  gap: 2rem;
+}
+
+@media (min-width: 1024px) {
+  .booking-details__layout {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 2.5rem;
+    align-items: start;
+  }
+}
+
+.booking-details__notice {
+  margin: 0 0 1rem;
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+}
+
+.booking-details__notice--warn {
+  background: rgba(198, 156, 109, 0.12);
+  color: rgba(26, 26, 26, 0.78);
+}
+
+.booking-details__summary {
+  margin: 0 0 1rem;
+  font-size: 0.875rem;
+  line-height: 1.7;
+  color: rgba(26, 26, 26, 0.72);
+}
+
+.booking-details__form-title {
+  margin: 0 0 1rem;
+  font-size: 1.125rem;
+  color: #1a1a1a;
+}
+
+.booking-details__row {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 0.75rem;
+}
+
+@media (max-width: 640px) {
+  .booking-details__row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.booking-details__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.8125rem;
+  color: rgba(26, 26, 26, 0.68);
+}
+
+.booking-details__footer {
+  margin: 1rem 0 0;
+  font-size: 0.8125rem;
+}
+
+.booking-lists__table-wrap {
+  overflow-x: auto;
+}
+
+.booking-lists__table {
+  width: 100%;
+  min-width: 52rem;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.booking-lists__table th,
+.booking-lists__table td {
+  border-bottom: 1px solid rgba(26, 26, 26, 0.1);
+  padding: 0.85rem 0.75rem;
+  text-align: start;
+  vertical-align: middle;
+}
+
+.booking-lists__table th {
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgba(26, 26, 26, 0.55);
+}
+
+.booking-lists__status {
+  display: inline-block;
+  padding: 0.2rem 0.55rem;
+  font-size: 0.75rem;
+}
+
+.booking-lists__status.is-confirmed {
+  background: rgba(34, 139, 34, 0.12);
+  color: #1f6b1f;
+}
+
+.booking-lists__status.is-pending {
+  background: rgba(198, 156, 109, 0.18);
+  color: #8a6538;
+}
+
+.booking-lists__status.is-cancelled {
+  background: rgba(26, 26, 26, 0.08);
+  color: rgba(26, 26, 26, 0.55);
+}
+

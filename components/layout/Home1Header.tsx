@@ -43,13 +43,13 @@ export function Home1Header() {
         <div className="col-start-3 row-start-1 flex shrink-0 items-center justify-self-end gap-2 sm:gap-3">
           <LanguageSwitcher variant="hero" className="inline-flex shrink-0 max-lg:hidden" />
           <Link
-            href="/boats"
+            href="/tours"
             className={cn(
               "hidden bg-neera-gold px-10 py-4 text-sm font-semibold uppercase tracking-[0.12em] text-white transition-colors hover:bg-neera-gold-dark sm:inline-flex",
               bodyFontClass(locale)
             )}
           >
-            {t("rentNow")}
+            {t("bookNow")}
           </Link>
           <MobileNav variant="hero" />
         </div>

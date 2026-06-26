@@ -8,6 +8,8 @@
     "pages": "Pages",
     "locations": "Locations",
     "tour": "Tour",
+    "booking": "Booking",
+    "myBookings": "My Bookings",
     "blogs": "Blogs",
     "boats": "Fleet",
     "map": "Map",
@@ -29,6 +31,11 @@
     "services": "Services",
     "serviceListing": "Service Listing",
     "serviceDetail": "Service Detail",
+    "tourListing": "Tour Listing",
+    "tourDetail": "Tour Detail",
+    "roomAvailability": "Room Availability",
+    "bookingDetail": "Booking Detail",
+    "bookingListing": "Booking Listing",
     "login": "Login",
     "register": "Register",
     "comingSoon": "Coming Soon",
@@ -1047,5 +1054,159 @@
     "heading": "Oops ! The Page Not Found.",
     "description": "Proin non eros elementum, sagittis diam at, feugiat nunc. Ut velit arcu, posuere at neque quis, vestibulum vehicula dui. Praesent at felis ante. Cras sed ultricies risus. Nullam porta fermentum egestas. Praesent quis mauris ultrices.",
     "backToHome": "Back To Home"
+  },
+  "tours": {
+    "title": "Tour Listing",
+    "metaDescription": "Browse yacht tours and boat rentals by destination. Check availability and book your next voyage.",
+    "filterLabel": "Filter tours by location",
+    "checkAvailability": "Check Availability",
+    "availabilityCalendar": "Availability Calendar",
+    "bookNow": "Book Now",
+    "search": "Search",
+    "checkIn": "Check-in",
+    "checkOut": "Check-out",
+    "rooms": "Rooms",
+    "adults": "Adults",
+    "children": "Children",
+    "prevMonth": "Previous month",
+    "nextMonth": "Next month",
+    "available": "Available",
+    "unavailable": "Unavailable",
+    "weekdays": ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"],
+    "roomAvailabilityTitle": "Room Availability",
+    "roomAvailabilityIntro": "Search across all tours to find available rooms for your travel dates.",
+    "featuredTours": "Featured Tours",
+    "bookingDetailsTitle": "Booking Details",
+    "insufficientData": "Please select check-in and check-out dates to continue.",
+    "selectedTour": "Selected tour",
+    "guestDetails": "Guest Details",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "email": "Email",
+    "phone": "Phone",
+    "specialRequests": "Special Requests",
+    "confirmBooking": "Confirm Booking",
+    "viewBookings": "View my bookings",
+    "bookingListsTitle": "Booking Lists",
+    "bookingListsIntro": "Review your recent bookings and reservation status.",
+    "bookingId": "Booking ID",
+    "tour": "Tour",
+    "total": "Total",
+    "status": "Status",
+    "action": "Action",
+    "view": "View",
+    "statuses": {
+      "confirmed": "Confirmed",
+      "pending": "Pending",
+      "cancelled": "Cancelled"
+    },
+    "locations": {
+      "all": "All",
+      "california": "California",
+      "canada": "Canada",
+      "french": "French",
+      "icelands": "Icelands",
+      "indonesia": "Indonesia",
+      "kerela": "Kerela",
+      "usa": "USA"
+    },
+    "items": {
+      "robinYacht": {
+        "name": "Robin Yacht",
+        "meta": "2 - 6 Persons, Canada, Zona A",
+        "desc": "Lorem ipsum dolor sit amet",
+        "description": "Enjoy a spacious yacht experience in Canada with premium amenities, a professional crew, and flexible booking options for families and small groups."
+      },
+      "seaRoger": {
+        "name": "Sea Roger",
+        "meta": "French, 2 - 3 Persons, Zona A",
+        "desc": "Le-Meridien Curise's",
+        "description": "A refined French Riviera-style cruise with elegant cabins, curated dining, and scenic coastal routes ideal for couples."
+      },
+      "roastJack": {
+        "name": "Roast Jack",
+        "meta": "Indonesia, 4 Persons, Zona B",
+        "desc": "Tropical island escape",
+        "description": "Discover Indonesia's crystal waters aboard Roast Jack — perfect for island hopping, snorkeling, and sunset cruises."
+      },
+      "seaKean": {
+        "name": "Sea Kean",
+        "meta": "2 - 6 Persons, 22m2, California",
+        "desc": "",
+        "description": "California's Sea Kean offers a modern yacht layout with generous deck space and comfortable cabins for coastal adventures."
+      },
+      "millyHarry": {
+        "name": "Milly Harry",
+        "meta": "California, 2 Persons, Zona A",
+        "desc": "",
+        "description": "An intimate two-person yacht charter along the California coast — ideal for romantic getaways and private celebrations."
+      },
+      "rickshaw": {
+        "name": "Rickshaw",
+        "meta": "French, 2 - 3 Persons, Zona A",
+        "desc": "Le-Meridien Curise's",
+        "description": "Rickshaw blends classic French maritime charm with contemporary comfort for short luxury cruises."
+      },
+      "oceanRider": {
+        "name": "Ocean Rider",
+        "meta": "USA, 2 Persons, Zona B",
+        "desc": "",
+        "description": "Ocean Rider is built for speed and style — a compact USA-based yacht for thrilling day trips and harbor tours."
+      },
+      "murphyRider": {
+        "name": "Murphy Rider",
+        "meta": "Indonesia, 2 Persons, Zona A",
+        "desc": "",
+        "description": "Murphy Rider delivers a boutique Indonesian sailing experience with personalized service and stunning archipelago views."
+      },
+      "oceanAngel": {
+        "name": "Ocean Angel",
+        "meta": "Icelands, 2 Persons, Zona B",
+        "desc": "",
+        "description": "Sail Iceland's dramatic fjords aboard Ocean Angel — a unique arctic yacht adventure with heated cabins and expert guides."
+      },
+      "oceanHero": {
+        "name": "Ocean Hero",
+        "meta": "Icelands, 2 Persons, Zona A",
+        "desc": "",
+        "description": "Ocean Hero offers rugged Icelandic exploration with premium onboard comfort and unforgettable northern scenery."
+      },
+      "partyYacht": {
+        "name": "Party Yacht",
+        "meta": "2 - 6 Persons, Canada, Zona A",
+        "desc": "Perfect for celebrations",
+        "description": "Party Yacht is designed for events and gatherings — spacious decks, sound system ready, and a crew that knows how to celebrate."
+      },
+      "joansCataran": {
+        "name": "Joans Cataran",
+        "meta": "Kerela, 4 Persons, Zona B",
+        "desc": "Backwater cruise experience",
+        "description": "Cruise Kerala's serene backwaters on Joans Cataran — a traditional catamaran-style tour with local cuisine and cultural stops."
+      },
+      "deepBlueHorse": {
+        "name": "Deep Blue Horse",
+        "meta": "California, 4 Persons, Zona A",
+        "desc": "",
+        "description": "Deep Blue Horse is a premium California yacht with expansive living areas, ideal for multi-day coastal voyages."
+      },
+      "monaArch": {
+        "name": "Mona Arch",
+        "meta": "USA, 4 Persons, Zona B",
+        "desc": "",
+        "description": "Mona Arch combines USA east-coast elegance with modern yacht amenities for groups seeking comfort and adventure."
+      },
+      "magicalYacht": {
+        "name": "Magical Yacht",
+        "meta": "Kerela, 4 Persons, Zona A",
+        "desc": "Luxury backwater retreat",
+        "description": "Magical Yacht offers a luxurious Kerala experience with private suites, gourmet dining, and tailored itineraries."
+      },
+      "charlieMiller": {
+        "name": "Charlie Miller",
+        "meta": "USA, 4 Persons, Zona A",
+        "desc": "",
+        "description": "Charlie Miller is a versatile USA yacht charter suited for fishing trips, harbor tours, and extended family cruises."
+      }
+    }
   }
 }
