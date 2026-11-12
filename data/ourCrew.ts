@@ -1,4 +1,4 @@
-const CDN = "https://neera.wpenginepowered.com/wp-content/uploads";
+const CDN = "/images/neera";
 
 export type CrewMember = {
   id: string;
@@ -56,19 +56,19 @@ export const OUR_CREW_ROW_2: CrewMember[] = [
     id: "crew-6",
     nameKey: "crew6Name",
     roleKey: "crew6Role",
-    image: `${CDN}/2023/12/Neera-team-img-05.jpg`,
+    image: `${CDN}/2023/12/Neera-Home2-filler-carousel-img01.jpg`,
   },
   {
     id: "crew-7",
     nameKey: "crew7Name",
     roleKey: "crew7Role",
-    image: `${CDN}/2023/12/Neera-team-img-06.jpg`,
+    image: `${CDN}/2023/12/Neera-insta-img-03.jpg`,
   },
   {
     id: "crew-8",
     nameKey: "crew8Name",
     roleKey: "crew8Role",
-    image: `${CDN}/2023/12/Neera-team-img-08.jpg`,
+    image: `${CDN}/2023/12/Neera-insta-img-05.jpg`,
   },
 ];
 

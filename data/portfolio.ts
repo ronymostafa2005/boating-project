@@ -1,6 +1,6 @@
 import { HOME2_PORTFOLIO } from "@/data/home2";
 
-const CDN = "https://neera.wpenginepowered.com/wp-content/uploads";
+const CDN = "/images/neera";
 
 const SLUGS = [
   "harbor-heaven",

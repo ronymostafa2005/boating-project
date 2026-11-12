@@ -1,9 +1,19 @@
-const CDN = "https://neera.wpenginepowered.com/wp-content/uploads";
+const CDN = "/images/neera";
 
-export const HOME2_HERO_SLIDES = [
+export type Home2HeroSlide = {
+  id: number;
+  /** Optional self-hosted background clip (e.g. "/videos/hero-1.mp4"). Without it the `thumb` image is shown. */
+  video?: string;
+  thumb: string;
+  subtitleKey: string;
+  titleLine1Key: string;
+  titleLine2Key: string;
+  descKey: string;
+};
+
+export const HOME2_HERO_SLIDES: Home2HeroSlide[] = [
   {
     id: 1,
-    video: `${CDN}/2023/12/Neera-Slider-video-03.mp4`,
     thumb: `${CDN}/2024/01/Neera-slider-2-img-01.png`,
     subtitleKey: "heroSlide1Subtitle",
     titleLine1Key: "heroSlide1TitleLine1",
@@ -12,7 +22,6 @@ export const HOME2_HERO_SLIDES = [
   },
   {
     id: 2,
-    video: `${CDN}/2023/12/Neera-Slider-video-02.mp4`,
     thumb: `${CDN}/2024/01/Neera-slider-2-img-03.png`,
     subtitleKey: "heroSlide2Subtitle",
     titleLine1Key: "heroSlide2TitleLine1",
@@ -21,14 +30,13 @@ export const HOME2_HERO_SLIDES = [
   },
   {
     id: 3,
-    video: `${CDN}/2023/12/Neera-Slider-video-01.mp4`,
     thumb: `${CDN}/2024/01/Neera-slider-2-img-02.png`,
     subtitleKey: "heroSlide3Subtitle",
     titleLine1Key: "heroSlide3TitleLine1",
     titleLine2Key: "heroSlide3TitleLine2",
     descKey: "heroSlide3Desc",
   },
-] as const;
+];
 
 export const HOME2_FILLER_SLIDES = [
   { image: `${CDN}/2023/12/Neera-Home2-filler-carousel-img01.jpg`, titleKey: "filler1" },
@@ -64,7 +72,7 @@ export const HOME2_SHIP_TYPES = [
 
 export const HOME2_SHIPS_BG = `${CDN}/2023/12/Neera-Services-section-bg-01.jpg`;
 
-const VBO = "https://neera.wpenginepowered.com/wp-content/plugins/vikbooking/site/resources/uploads";
+const VBO = "/images/neera/vikbooking";
 
 export const HOME2_TOURS = [
   {
@@ -240,8 +248,8 @@ export const HOME2_LOCATION_TABS = [
     mapImage: HOME2_MAP_IMAGE,
     hotspots: [
       { labelKey: "hsItaly1", image: `${CDN}/2024/01/travel-location-image-1.jpg`, left: "59%", top: "42%" },
-      { labelKey: "hsItaly2", image: `${CDN}/2024/01/travel-location-image-2.jpg`, left: "19%", top: "16%" },
-      { labelKey: "hsItaly3", image: `${CDN}/2024/01/travel-location-image-3.jpg`, left: "19%", top: "64%" },
+      { labelKey: "hsItaly2", image: `${CDN}/2024/01/contact-hover-image-1.jpg`, left: "19%", top: "16%" },
+      { labelKey: "hsItaly3", image: `${CDN}/2023/12/Neera-Side-Bar-Insta-img-03.jpg`, left: "19%", top: "64%" },
     ],
     stops: [
       { type: "port", placeKey: "italyStop1", timeKey: "italyTime1", noteKey: "allAboardNote" },
@@ -257,9 +265,9 @@ export const HOME2_LOCATION_TABS = [
     labelKey: "locCorsica",
     mapImage: HOME2_MAP_IMAGE,
     hotspots: [
-      { labelKey: "hsCorsica1", image: `${CDN}/2024/01/travel-location-image-4.jpg`, left: "59%", top: "42%" },
-      { labelKey: "hsCorsica2", image: `${CDN}/2024/01/travel-location-image-5.jpg`, left: "19%", top: "16%" },
-      { labelKey: "hsCorsica3", image: `${CDN}/2024/01/travel-location-image-6.jpg`, left: "19%", top: "64%" },
+      { labelKey: "hsCorsica1", image: `${CDN}/2024/01/contact-hover-image-3.jpg`, left: "59%", top: "42%" },
+      { labelKey: "hsCorsica2", image: `${CDN}/2023/12/Neera-Side-Bar-Insta-img-04.jpg`, left: "19%", top: "16%" },
+      { labelKey: "hsCorsica3", image: `${CDN}/2023/12/Neera-Side-Bar-Insta-img-06.jpg`, left: "19%", top: "64%" },
     ],
     stops: [
       { type: "port", placeKey: "corsicaStop1", timeKey: "corsicaTime1", noteKey: "allAboardNote" },
@@ -275,9 +283,9 @@ export const HOME2_LOCATION_TABS = [
     labelKey: "locSardinia",
     mapImage: HOME2_MAP_IMAGE,
     hotspots: [
-      { labelKey: "hsSardinia1", image: `${CDN}/2024/01/travel-location-image-7.jpg`, left: "59%", top: "42%" },
-      { labelKey: "hsSardinia2", image: `${CDN}/2024/01/travel-location-image-8.jpg`, left: "19%", top: "16%" },
-      { labelKey: "hsSardinia3", image: `${CDN}/2024/01/travel-location-image-9.jpg`, left: "19%", top: "64%" },
+      { labelKey: "hsSardinia1", image: `${CDN}/2023/12/Neera-Client-logo-bg-01.jpg`, left: "59%", top: "42%" },
+      { labelKey: "hsSardinia2", image: `${CDN}/2023/12/Neera-Side-Bar-Insta-img-05.jpg`, left: "19%", top: "16%" },
+      { labelKey: "hsSardinia3", image: `${CDN}/2024/01/contact-hover-image-2.jpg`, left: "19%", top: "64%" },
     ],
     stops: [
       { type: "port", placeKey: "sardiniaStop1", timeKey: "sardiniaTime1", noteKey: "allAboardNote" },
@@ -293,9 +301,9 @@ export const HOME2_LOCATION_TABS = [
     labelKey: "locCaprira",
     mapImage: HOME2_MAP_IMAGE,
     hotspots: [
-      { labelKey: "hsCaprira1", image: `${CDN}/2024/01/travel-location-image-10.jpg`, left: "59%", top: "42%" },
-      { labelKey: "hsCaprira2", image: `${CDN}/2024/01/travel-location-image-11.jpg`, left: "19%", top: "16%" },
-      { labelKey: "hsCaprira3", image: `${CDN}/2024/01/travel-location-image-12.jpg`, left: "19%", top: "64%" },
+      { labelKey: "hsCaprira1", image: `${CDN}/2023/12/Neera-insta-img-01.jpg`, left: "59%", top: "42%" },
+      { labelKey: "hsCaprira2", image: `${CDN}/2023/12/Neera-Side-Bar-Insta-img-02.jpg`, left: "19%", top: "16%" },
+      { labelKey: "hsCaprira3", image: `${VBO}/tour-detail-1.jpg`, left: "19%", top: "64%" },
     ],
     stops: [
       { type: "port", placeKey: "capriraStop1", timeKey: "capriraTime1", noteKey: "allAboardNote" },
@@ -311,9 +319,9 @@ export const HOME2_LOCATION_TABS = [
     labelKey: "locEgypt",
     mapImage: HOME2_MAP_IMAGE,
     hotspots: [
-      { labelKey: "hsEgypt1", image: `${CDN}/2024/01/travel-location-image-13.jpg`, left: "59%", top: "42%" },
-      { labelKey: "hsEgypt2", image: `${CDN}/2024/01/travel-location-image-14.jpg`, left: "19%", top: "16%" },
-      { labelKey: "hsEgypt3", image: `${CDN}/2024/01/travel-location-image-15.jpg`, left: "19%", top: "64%" },
+      { labelKey: "hsEgypt1", image: `${CDN}/2023/12/Neera-insta-img-02.jpg`, left: "59%", top: "42%" },
+      { labelKey: "hsEgypt2", image: `${VBO}/tour-detail-2.jpg`, left: "19%", top: "16%" },
+      { labelKey: "hsEgypt3", image: `${CDN}/2023/12/Neera-Hotspot-img-07.jpg`, left: "19%", top: "64%" },
     ],
     stops: [
       { type: "port", placeKey: "egyptStop1", timeKey: "egyptTime1", noteKey: "allAboardNote" },
@@ -329,9 +337,9 @@ export const HOME2_LOCATION_TABS = [
     labelKey: "locLosAngeles",
     mapImage: HOME2_MAP_IMAGE,
     hotspots: [
-      { labelKey: "hsLa1", image: `${CDN}/2024/01/travel-location-image-16.jpg`, left: "59%", top: "42%" },
-      { labelKey: "hsLa2", image: `${CDN}/2024/01/travel-location-image-17.jpg`, left: "19%", top: "16%" },
-      { labelKey: "hsLa3", image: `${CDN}/2024/01/travel-location-image-18.jpg`, left: "19%", top: "64%" },
+      { labelKey: "hsLa1", image: `${CDN}/2023/12/Neera-Hotspot-img-05.jpg`, left: "59%", top: "42%" },
+      { labelKey: "hsLa2", image: `${CDN}/2023/12/Neera-Hotspot-img-06.jpg`, left: "19%", top: "16%" },
+      { labelKey: "hsLa3", image: `${CDN}/2024/01/travel-location-image-1.jpg`, left: "19%", top: "64%" },
     ],
     stops: [
       { type: "port", placeKey: "laStop1", timeKey: "laTime1", noteKey: "allAboardNote" },

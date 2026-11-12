@@ -26,10 +26,6 @@ const nextConfig = {
         protocol: "https",
         hostname: "images.unsplash.com",
       },
-      {
-        protocol: "https",
-        hostname: "neera.wpenginepowered.com",
-      },
     ],
     formats: ["image/avif", "image/webp"],
     minimumCacheTTL: 86400,

@@ -1822,7 +1822,7 @@ body {
   content: "";
   position: absolute;
   inset: 0;
-  background: url("https://neera.wpenginepowered.com/wp-content/uploads/2024/01/home-two-pricing-image-2.jpg")
+  background: url("/images/neera/2024/01/home-two-pricing-image-2.jpg")
     center 60% / 70% auto no-repeat;
   opacity: 0.05;
   pointer-events: none;

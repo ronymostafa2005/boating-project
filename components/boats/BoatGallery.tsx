@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
+import { FALLBACK_BOAT_IMAGE } from "@/lib/imageDefaults";
 
 interface BoatGalleryProps {
   images: string[];
@@ -11,7 +12,7 @@ interface BoatGalleryProps {
 
 export function BoatGallery({ images, alt }: BoatGalleryProps) {
   const [activeIndex, setActiveIndex] = useState(0);
-  const displayImages = images.length > 0 ? images : ["/images/placeholder-boat.jpg"];
+  const displayImages = images.length > 0 ? images : [FALLBACK_BOAT_IMAGE];
 
   return (
     <div className="space-y-4">

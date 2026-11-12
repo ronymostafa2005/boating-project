@@ -9,8 +9,8 @@ export const mockBoats: Boat[] = [
     type: "yacht",
     capacity: 20,
     images: [
-      "https://neera.wpenginepowered.com/wp-content/uploads/2024/01/home-1-image-carousel-1.jpg",
-      "https://neera.wpenginepowered.com/wp-content/uploads/2024/01/home-1-image-carousel-2.jpg",
+      "/images/neera/2024/01/home-1-image-carousel-1.jpg",
+      "/images/neera/2024/01/home-two-pricing-image-2.jpg",
     ],
     description: {
       ar: "يخت فاخر مثالي للمناسبات الخاصة والرحلات العائلية في مياه جدة الصافية.",

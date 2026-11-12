@@ -6,7 +6,7 @@ export const HOME_ABOUT_STATS = [
   { value: 20, labelKey: "statsYearsInField" },
 ] as const;
 
-const CDN = "https://neera.wpenginepowered.com/wp-content/uploads";
+const CDN = "/images/neera";
 
 export const ABOUT_PARTNERS = [
   {

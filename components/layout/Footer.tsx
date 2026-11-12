@@ -9,11 +9,9 @@ import { BackToTopAnchorIcon } from "@/components/ui/BackToTopAnchorIcon";
 import { YachtLogo } from "@/components/ui/YachtLogo";
 import { cn } from "@/lib/utils";
 
-const CDN = "https://neera.wpenginepowered.com/wp-content/uploads";
-const FOOTER_PATTERN = `${CDN}/2023/12/Neera-Footer-Pattern-Bg.png`;
-const NEWSLETTER_BG = `${CDN}/2023/12/Neera-Footer-newsletter-bg.jpg`;
-const GOOGLE_PLAY = `${CDN}/2023/12/google-paly-button.svg`;
-const APP_STORE = `${CDN}/2023/12/app-store-image.svg`;
+const NEWSLETTER_BG = "/images/neera/2023/12/Neera-Footer-newsletter-bg.jpg";
+const GOOGLE_PLAY = "/images/badges/google-play-badge.png";
+const APP_STORE = "/images/badges/app-store-badge.svg";
 
 const NAV_LINKS = [
   { key: "whatWeDo", href: "/how-it-works" },
@@ -167,12 +165,6 @@ export function Footer() {
 
   return (
     <footer className="neera-footer relative bg-[#0f1e2d] text-white">
-      <div
-        className="neera-footer-pattern pointer-events-none absolute inset-0"
-        aria-hidden
-        style={{ backgroundImage: `url(${FOOTER_PATTERN})` }}
-      />
-
       <div className="container-luxury relative z-[1] pt-16 pb-8 lg:pt-24 xl:pt-28">
         {/* Top row: brand + newsletter CTA */}
         <div className="mb-14 grid gap-10 lg:mb-16 lg:grid-cols-12 lg:gap-8">
@@ -277,14 +269,14 @@ export function Footer() {
                 target="_blank"
                 rel="nofollow noopener noreferrer"
               >
-                <Image src={GOOGLE_PLAY} alt="Google Play" width={140} height={42} className="h-10 w-auto" />
+                <Image src={GOOGLE_PLAY} alt="Get it on Google Play" width={134} height={40} className="h-10 w-auto" />
               </a>
               <a
                 href="https://apps.apple.com/us/app/apple-store/"
                 target="_blank"
                 rel="nofollow noopener noreferrer"
               >
-                <Image src={APP_STORE} alt="App Store" width={140} height={42} className="h-10 w-auto" />
+                <Image src={APP_STORE} alt="Download on the App Store" width={120} height={40} className="h-10 w-auto" />
               </a>
             </div>
           </div>

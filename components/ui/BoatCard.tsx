@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Link } from "@/lib/i18n/navigation";
 import { getLocalized, formatPrice } from "@/lib/utils";
+import { FALLBACK_BOAT_IMAGE } from "@/lib/imageDefaults";
 import type { Boat } from "@/types/boat";
 import type { Locale } from "@/types/locale";
 
@@ -15,7 +16,7 @@ interface BoatCardProps {
 export function BoatCard({ boat, locale }: BoatCardProps) {
   const t = useTranslations("boats");
   const name = getLocalized(boat.name, locale);
-  const image = boat.images[0] || "/images/placeholder-boat.jpg";
+  const image = boat.images[0] || FALLBACK_BOAT_IMAGE;
 
   return (
     <Link

@@ -1,4 +1,4 @@
-const CDN = "https://neera.wpenginepowered.com/wp-content/uploads";
+const CDN = "/images/neera";
 
 export const shopImg = (n: number, variant = 1) =>
   `${CDN}/2024/01/shop-${n}-${variant}-1000x1365.jpg`;
@@ -188,11 +188,11 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     id: "shop-11",
     nameKey: "product11Name",
     priceKey: "product11Price",
-    image: shopImg(11),
+    image: shopImg(3),
     slug: "steering-wheel",
     priceMin: 230,
     priceMax: 230,
-    galleryId: 11,
+    galleryId: 3,
     galleryCount: 1,
     categoryKey: "category1",
     tagKey: "tag2",
@@ -204,11 +204,11 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     id: "shop-12",
     nameKey: "product12Name",
     priceKey: "product12Price",
-    image: shopImg(12),
+    image: shopImg(2),
     slug: "weather-station",
     priceMin: 33.95,
     priceMax: 39.95,
-    galleryId: 12,
+    galleryId: 2,
     galleryCount: 1,
     categoryKey: "category1",
     tagKey: "tag2",

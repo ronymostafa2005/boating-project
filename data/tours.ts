@@ -1,5 +1,5 @@
-const VBO = "https://neera.wpenginepowered.com/wp-content/plugins/vikbooking/site/resources/uploads";
-const CDN = "https://neera.wpenginepowered.com/wp-content/uploads";
+const VBO = "/images/neera/vikbooking";
+const CDN = "/images/neera";
 
 export const TOUR_LOCATION_FILTERS = [
   "all",
@@ -58,7 +58,7 @@ export const TOUR_LISTING_ITEMS: TourItem[] = [
     price: "140",
     capacity: 4,
     image: `${VBO}/tour-detail-6.jpg`,
-    gallery: [`${VBO}/tour-detail-6.jpg`, `${VBO}/tour-detail-7.jpg`],
+    gallery: [`${VBO}/tour-detail-6.jpg`],
     descriptionKey: "seaKean",
   },
   {
@@ -76,7 +76,7 @@ export const TOUR_LISTING_ITEMS: TourItem[] = [
     price: "200",
     capacity: 2,
     image: `${VBO}/neera-tour-listing-img-01.jpg`,
-    gallery: [`${VBO}/neera-tour-listing-img-01.jpg`, `${VBO}/tour-detail-9.jpg`],
+    gallery: [`${VBO}/neera-tour-listing-img-01.jpg`],
     descriptionKey: "rickshaw",
   },
   {

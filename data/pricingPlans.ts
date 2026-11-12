@@ -1,4 +1,4 @@
-const CDN = "https://neera.wpenginepowered.com/wp-content/uploads";
+const CDN = "/images/neera";
 
 export const PRICING_FAQ_BG = `${CDN}/2023/12/Neera-Testimonial-2-bg.jpg`;
 

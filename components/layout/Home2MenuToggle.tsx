@@ -12,7 +12,7 @@ import { IMAGE_QUALITY } from "@/lib/imageDefaults";
 import { cn, home2FontClass } from "@/lib/utils";
 import type { Locale } from "@/types/locale";
 
-const CDN = "https://neera.wpenginepowered.com/wp-content/uploads";
+const CDN = "/images/neera";
 const WHATSAPP_QR = `${CDN}/2023/12/Neera-WhatsApp-QR.png`;
 const SIDEBAR_CTA_BG = `${CDN}/2023/12/Neera-Footer-newsletter-bg.jpg`;
 

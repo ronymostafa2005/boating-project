@@ -1,8 +1,7 @@
 import { Link } from "@/lib/i18n/navigation";
 import { cn, bodyFontClass, displayFontClass } from "@/lib/utils";
 
-const BREADCRUMB_BG =
-  "https://neera.wpenginepowered.com/wp-content/uploads/2024/01/Neera-breadrcrumb-img-01.jpg";
+const BREADCRUMB_BG = "/images/neera/2023/12/Neera-Services-section-bg-01.jpg";
 
 export type BreadcrumbSegment = {
   label: string;

@@ -1,6 +1,6 @@
 import { HOME2_SHIP_TYPES } from "@/data/home2";
 
-const CDN = "https://neera.wpenginepowered.com/wp-content/uploads";
+const CDN = "/images/neera";
 const DETAIL = `${CDN}/2024/01`;
 
 export type ServiceItem = {
@@ -18,11 +18,11 @@ export const SERVICE_LISTING_ITEMS: ServiceItem[] = [
     descKey: "shipSailDesc",
     slug: "sail-boat",
     image: HOME2_SHIP_TYPES[0].image,
-    heroImage: `${DETAIL}/service-listing-detail-image-1.jpg`,
+    heroImage: HOME2_SHIP_TYPES[0].image,
     galleryImages: [
-      `${DETAIL}/service-listing-detail-row-1.jpg`,
-      `${DETAIL}/service-listing-detail-row-3.jpg`,
-      `${DETAIL}/service-listing-detail-row-6.jpg`,
+      `${DETAIL}/home-two-pricing-image-2.jpg`,
+      `${DETAIL}/home-two-pricing-image-3.jpg`,
+      `${DETAIL}/home-1-image-carousel-1.jpg`,
     ],
   },
   {
@@ -30,11 +30,11 @@ export const SERVICE_LISTING_ITEMS: ServiceItem[] = [
     descKey: "shipJetDesc",
     slug: "jet-boats",
     image: HOME2_SHIP_TYPES[1].image,
-    heroImage: `${DETAIL}/service-listing-detail-image-4.jpg`,
+    heroImage: HOME2_SHIP_TYPES[1].image,
     galleryImages: [
-      `${DETAIL}/service-listing-detail-row-1.jpg`,
+      `${DETAIL}/home-two-pricing-image-2.jpg`,
       `${DETAIL}/service-listing-detail-row-2.jpg`,
-      `${DETAIL}/service-listing-detail-row-3.jpg`,
+      `${DETAIL}/home-two-pricing-image-3.jpg`,
     ],
   },
   {
@@ -42,11 +42,11 @@ export const SERVICE_LISTING_ITEMS: ServiceItem[] = [
     descKey: "shipMotorDesc",
     slug: "motor-boat",
     image: HOME2_SHIP_TYPES[2].image,
-    heroImage: `${DETAIL}/service-listing-detail-image-3.jpg`,
+    heroImage: HOME2_SHIP_TYPES[2].image,
     galleryImages: [
       `${DETAIL}/service-listing-detail-row-4.jpg`,
       `${DETAIL}/service-listing-detail-row-5.jpg`,
-      `${DETAIL}/service-listing-detail-row-6.jpg`,
+      `${DETAIL}/home-1-image-carousel-1.jpg`,
     ],
   },
   {
@@ -56,9 +56,9 @@ export const SERVICE_LISTING_ITEMS: ServiceItem[] = [
     image: HOME2_SHIP_TYPES[3].image,
     heroImage: HOME2_SHIP_TYPES[3].image,
     galleryImages: [
-      `${DETAIL}/service-listing-detail-row-1.jpg`,
-      `${DETAIL}/service-listing-detail-row-3.jpg`,
-      `${DETAIL}/service-listing-detail-row-6.jpg`,
+      `${DETAIL}/home-two-pricing-image-2.jpg`,
+      `${DETAIL}/home-two-pricing-image-3.jpg`,
+      `${DETAIL}/home-1-image-carousel-1.jpg`,
     ],
   },
   {
@@ -78,10 +78,10 @@ export const SERVICE_LISTING_ITEMS: ServiceItem[] = [
     descKey: "shipPontoonDesc",
     slug: "pontoon-boats",
     image: HOME2_SHIP_TYPES[5].image,
-    heroImage: `${DETAIL}/service-listing-detail-image-2.jpg`,
+    heroImage: HOME2_SHIP_TYPES[5].image,
     galleryImages: [
-      `${DETAIL}/service-listing-detail-row-1.jpg`,
-      `${DETAIL}/service-listing-detail-row-3.jpg`,
+      `${DETAIL}/home-two-pricing-image-2.jpg`,
+      `${DETAIL}/home-two-pricing-image-3.jpg`,
       `${DETAIL}/service-listing-detail-row-5.jpg`,
     ],
   },
