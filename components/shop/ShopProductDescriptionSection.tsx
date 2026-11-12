@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import { SHOP_DESCRIPTION_IMAGE } from "@/data/shop";
 import { IMAGE_QUALITY } from "@/lib/imageDefaults";
-import { cn, bodyFontClass, displayFontClass } from "@/lib/utils";
+import { cn, bodyFontClass } from "@/lib/utils";
 import type { Locale } from "@/types/locale";
 
 function FeatureIcon() {

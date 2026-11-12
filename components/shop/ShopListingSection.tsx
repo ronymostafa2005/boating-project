@@ -6,7 +6,6 @@ import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/lib/i18n/navigation";
 import {
   SHOP_MAX_PRICE,
-  SHOP_MIN_PRICE,
   SHOP_PER_PAGE,
   SHOP_PRODUCTS,
 } from "@/data/shop";
